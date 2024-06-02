@@ -29,7 +29,7 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-text-dark text-text-light p-3">
+    <header className="bg-secondary-color-light text-text-light p-3">
         <div className='flex justify-between items-center'>
             <div className="text-lg flex gap-2 items-center">
                 <span>Directorio de</span>
