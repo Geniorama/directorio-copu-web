@@ -1,9 +1,5 @@
-import Image from "next/image";
+import { HomePage } from "./views/HomePage";
 
 export default function Home() {
-  return (
-    <div>
-      fdsfdsljf
-    </div>
-  );
+  return <HomePage />
 }

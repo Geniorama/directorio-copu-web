@@ -54,7 +54,7 @@ export default function Select(props: SelectProps) {
   }, [props.options, selectRef]);
 
   return (
-    <div className="text-xs" ref={selectRef}>
+    <div className="text-xs relative" ref={selectRef}>
       <input
         type="text"
         className={`border p-3 w-full outline-none focus:border-primary-color ${value.length > 0 && isValidCountry(value) ? 'bg-primary-color border-primary-color text-secondary-color font-bold' : 'bg-secondary-color-light border-white text-[#cccccc]'}`}
@@ -64,9 +64,9 @@ export default function Select(props: SelectProps) {
         onChange={e => handleChange(e)}
       />
       {openList && filteredOptions && filteredOptions.length > 0 && (
-        <ul className="bg-[#080809] max-h-[200px] overflow-y-scroll custom-scroll mt-1">
+        <ul className="bg-[#080809] max-h-[200px] overflow-y-scroll custom-scroll mt-1 absolute w-full">
           {filteredOptions.map(option => (
-            <li key={option.code} onClick={e => handleClick(e)} className="p-2 hover:bg-secondary-color border-b border-[#2D2D2D] cursor-pointer option">
+            <li key={option.code} onClick={e => handleClick(e)} className="p-3 hover:bg-secondary-color border-b border-[#2D2D2D] cursor-pointer option">
               {option.name}
             </li>
           ))}
