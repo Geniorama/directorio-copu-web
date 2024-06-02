@@ -33,7 +33,7 @@ export default function Switch() {
   }
 
   return (
-    <div onClick={handleClick} className='text-xs cursor-pointer bg-secondary-color-light p-1 flex font-bold rounded-full relative text-center'>
+    <div onClick={handleClick} className='text-xs cursor-pointer bg-[#2D2D33] p-1 flex font-bold rounded-full relative text-center'>
         <div id='badge-switch' className='transition-all px-8 py-1 rounded-full bg-primary-color text-primary-color absolute whitespace-nowrap right-[5px] w-[180px]'>
             {/* <span className='opacity-0 whitespace-nowrap text-primary-color'>Directorio Copu</span> */}
         </div>

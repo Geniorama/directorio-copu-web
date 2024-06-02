@@ -2,7 +2,7 @@
 
 import LogoCopu from '../../../../../public/img/logo-copu.svg';
 import Link from 'next/link';
-import { Switch } from '@/app/utils/Switch';
+import { Switch } from '@/app/components/Switch';
 import { Button } from '@/app/utils/Button';
 import WpIcon from '../../../../../public/img/wp-icon.svg';
 import MenuIcon from '../../../../../public/img/menu-icon.svg';
