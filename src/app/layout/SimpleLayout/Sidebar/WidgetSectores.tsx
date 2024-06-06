@@ -49,9 +49,9 @@ export default function WidgetSectores() {
       <TitleWidget title="Sectores Creativos" icon={<img src={Icon.src} />} />
 
       <ul className="text-xs mt-4 max-h-[30vh] overflow-y-scroll custom-scroll">
-        <li className="py-[2px]">Todos los sectores creativos</li>
+        <li className="py-[2px] text-primary-color font-bold">Todos los sectores creativos</li>
         {sectores.map((item) => (
-          <li className="py-[2px]" key={item.id}>
+          <li className="py-[2px] font-light hover:font-bold cursor-pointer transition" key={item.id}>
             {item.name}
           </li>
         ))}

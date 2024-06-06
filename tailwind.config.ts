@@ -15,10 +15,12 @@ const config: Config = {
       },
       colors:{
         "primary-color": "#1DEC80",
+        "primary-color-hover": "#13B762",
         "secondary-color": "#121212",
         "text-dark": "#080809",
         "text-light": "#FFFFFF",
-        "secondary-color-light": "#18181B"
+        "secondary-color-light": "#18181B",
+        "secondary-color-hover": "#2D2D33"
       }
     },
   },

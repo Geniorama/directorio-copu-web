@@ -9,7 +9,7 @@ interface ButtonProps {
 
 export default function Button(props:ButtonProps) {
   return (
-    <Link className="bg-primary-color px-3 py-1 rounded-full text-text-dark font-bold flex gap-1 items-center " href={props.href ? props.href : '#'}>
+    <Link className="bg-primary-color px-3 py-1 rounded-full text-text-dark font-bold flex gap-1 items-center hover:bg-primary-color-hover transition" href={props.href ? props.href : '#'}>
         {props.icon && (
             <span>
                 {props.icon}

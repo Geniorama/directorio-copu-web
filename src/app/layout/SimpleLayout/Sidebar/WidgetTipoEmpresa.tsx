@@ -30,10 +30,10 @@ export default function WidgetTipoEmpresa() {
         />
 
         <div className='text-xs mt-3'>
-            <button onClick={() => addType('Multinacionales')} className={`text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes('Multinacionales') ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light'}`}>Multinacionales</button>
-            <button onClick={() => addType('Medianas')} className={`text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes('Medianas') ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light'}`}>Medianas</button>
-            <button onClick={() => addType('Estudios')} className={`text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes('Estudios') ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light'}`}>Estudios</button>
-            <button onClick={() => addType('Empresas personales')} className={`text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes('Empresas personales') ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light'}`}>Empresas personales</button>
+            <button onClick={() => addType('Multinacionales')} className={`transition text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes('Multinacionales') ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light hover:bg-secondary-color-hover hover:border-secondary-color-hover'}`}>Multinacionales</button>
+            <button onClick={() => addType('Medianas')} className={`transition text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes('Medianas') ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light hover:bg-secondary-color-hover hover:border-secondary-color-hover'}`}>Medianas</button>
+            <button onClick={() => addType('Estudios')} className={`transition text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes('Estudios') ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light hover:bg-secondary-color-hover hover:border-secondary-color-hover'}`}>Estudios</button>
+            <button onClick={() => addType('Empresas personales')} className={`transition text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes('Empresas personales') ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light hover:bg-secondary-color-hover hover:border-secondary-color-hover'}`}>Empresas personales</button>
         </div>
     </div>
   )

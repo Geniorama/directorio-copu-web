@@ -13,7 +13,7 @@ export default function Switch() {
 
     if(badge && textOn && textOff){
         if(on){
-            badge.style.right = '5px'
+            badge.style.right = '4px'
             badge.innerText = textOn
             
         } else {
@@ -22,7 +22,7 @@ export default function Switch() {
             setTimeout(()=>{
                 location.href = "https://copu.media"
                 console.log('redireccionando')
-            }, 300)
+            }, 100)
         }
     }
     
@@ -34,13 +34,13 @@ export default function Switch() {
 
   return (
     <div onClick={handleClick} className='text-xs cursor-pointer bg-[#2D2D33] p-1 flex font-bold rounded-full relative text-center'>
-        <div id='badge-switch' className='transition-all px-8 py-1 rounded-full bg-primary-color text-primary-color absolute whitespace-nowrap right-[5px] w-[180px]'>
+        <div id='badge-switch' className='transition-all px-8 py-1 rounded-full bg-primary-color text-primary-color absolute whitespace-nowrap w-[180px]'>
             {/* <span className='opacity-0 whitespace-nowrap text-primary-color'>Directorio Copu</span> */}
         </div>
-        <div id='off-state' className='px-8 py-1 rounded-full relative w-[180px]'>
+        <div id='off-state' className={`transition px-8 py-1 rounded-full relative w-[180px] ${on && 'hover:bg-[#3C3C45]'}`}>
             <span className={`${on ? 'text-text-light' : 'text-text-dark'}`}>Web Copu</span>
         </div>
-        <div id='on-state' className='px-8 py-1 rounded-full relative whitespace-nowrap w-[180px]'>
+        <div id='on-state' className={`px-8 py-1 rounded-full relative whitespace-nowrap w-[180px] transition ${!on && 'hover:bg-[#3C3C45]'}`}>
             <span className={`${on ? 'text-text-dark' : 'text-text-light'}`}>Directorio Copu</span>
         </div>
     </div>

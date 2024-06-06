@@ -14,7 +14,7 @@ export default function Sidebar() {
                 <span>Filtrar</span>
             </button>
 
-            <button>
+            <button className='transition w-[35px] h-[35px] flex items-center justify-center rounded-full hover:bg-secondary-color-hover'>
                 <img src={IconCollapse.src} alt="" />
             </button>
         </div>
