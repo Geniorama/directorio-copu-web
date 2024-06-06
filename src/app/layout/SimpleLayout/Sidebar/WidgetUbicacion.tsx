@@ -4,18 +4,6 @@ import Icon from '../../../:./../../../public/img/distance.svg'
 import { Select } from '@/app/utils/Select'
 import { countries } from '@/app/api/countries'
 
-const options = [
-    {
-        value: 'AR',
-        name: 'Argentina'
-    },
-
-    {
-        value: 'CO',
-        name: 'Colombia'
-    }
-]
-
 export default function WidgetUbicacion() {
   return (
     <div>
