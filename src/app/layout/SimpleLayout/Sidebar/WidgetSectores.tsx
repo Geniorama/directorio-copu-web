@@ -1,5 +1,6 @@
 import { TitleWidget } from "@/app/utils/TitleWidget";
 import Icon from "../../../../../public/img/category.svg";
+import useFilter from "@/app/hooks/useFilter";
 
 const sectores = [
   {
@@ -44,14 +45,17 @@ const sectores = [
 ];
 
 export default function WidgetSectores() {
+
+  const { addSector, sector, addAllSectors } = useFilter()
+
   return (
     <div>
       <TitleWidget title="Sectores Creativos" icon={<img src={Icon.src} />} />
 
       <ul className="text-xs mt-4 max-h-[30vh] overflow-y-scroll custom-scroll">
-        <li className="py-[2px] text-primary-color font-bold">Todos los sectores creativos</li>
+        <li onClick={addAllSectors} className={`py-[2px] cursor-pointer ${sector.includes('all') ? 'text-primary-color font-bold' : 'font-light'}`}>Todos los sectores creativos</li>
         {sectores.map((item) => (
-          <li className="py-[2px] font-light hover:font-bold cursor-pointer transition" key={item.id}>
+          <li onClick={() => addSector(item.name)} className={`py-[2px] hover:font-bold cursor-pointer transition ${sector.includes(item.name) ? 'text-primary-color font-bold' : 'font-light'}`} key={item.id}>
             {item.name}
           </li>
         ))}

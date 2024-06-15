@@ -21,7 +21,7 @@ export default function WidgetTipoEmpresa() {
     }
     
   }
-
+ 
   return (
     <div>
         <TitleWidget
