@@ -12,10 +12,10 @@ export default function HeadingCompany(props: HeadingCompanyProps) {
   return (
     <div>
         <div>
-          <img src={props.cover} className='w-full h-[40vh] object-cover rounded-3xl' alt="" />
+          <img src={props.cover} className='w-full h-[120px] md:h-[40vh] object-cover rounded-3xl' alt="" />
         </div>
-        <div className='text-center mt-[-90px]'>
-          <img className='w-[180px] aspect-square object-cover rounded-full mx-auto' src={props.imgProfile} alt="" />
+        <div className='text-center md:mt-[-90px]'>
+          <img className='w-[170px]  md:w-[180px] aspect-square object-cover rounded-full mx-auto' src={props.imgProfile} alt="" />
 
           <div className='my-3 text-[#C7C7DF]'>
             <h1 className='font-bold text-2xl'>{props.name}</h1>
