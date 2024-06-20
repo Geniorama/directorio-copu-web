@@ -2,6 +2,7 @@ import { HeadingCompany } from "@/app/components/HeadingCompany"
 import { ButtonTab } from "@/app/utils/ButtonTab"
 import TabInicio from "@/app/components/CompaniesTabs/TabInicio/TabInicio"
 import LogoCopu from "../../../../public/img/logo-copu.svg"
+import { TabContacto } from "@/app/components/CompaniesTabs/TabContacto"
 
 export default function page() {
   return (
@@ -30,7 +31,8 @@ export default function page() {
         </div>
 
         <div>
-          <TabInicio />
+          {/* <TabInicio /> */}
+           <TabContacto />
         </div>
 
         <div className="text-center mt-32">
