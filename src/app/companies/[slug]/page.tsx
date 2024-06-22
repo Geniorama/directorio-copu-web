@@ -3,6 +3,7 @@ import { ButtonTab } from "@/app/utils/ButtonTab"
 import TabInicio from "@/app/components/CompaniesTabs/TabInicio/TabInicio"
 import LogoCopu from "../../../../public/img/logo-copu.svg"
 import { TabContacto } from "@/app/components/CompaniesTabs/TabContacto"
+import { TabPersonas } from "@/app/components/CompaniesTabs/TabPersonas"
 
 export default function page() {
   return (
@@ -23,6 +24,9 @@ export default function page() {
             Contacto
           </ButtonTab>
           <ButtonTab>
+            Personas
+          </ButtonTab>
+          <ButtonTab>
             Premios
           </ButtonTab>
           <ButtonTab>
@@ -32,7 +36,8 @@ export default function page() {
 
         <div>
           {/* <TabInicio /> */}
-           <TabContacto />
+           {/* <TabContacto /> */}
+           <TabPersonas />
         </div>
 
         <div className="text-center mt-32">

@@ -1,0 +1,1 @@
+export { default as TabPersonas } from './TabPersonas'
