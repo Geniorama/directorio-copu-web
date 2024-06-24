@@ -5,56 +5,63 @@ import LogoGeniorama from "../../../../../public/img/logo-geniorama.svg";
 import Link from "next/link";
 import LogoFb from "../../../../../public/img/logo-fb.svg";
 import IgIcon from "../../../../../public/img/ig.svg";
-import BeHanceIcon from "../../../../../public/img/behance.svg";
+import YtIcon from "../../../../../public/img/yt-icon.svg";
+import LinkedInIcon from "../../../../../public/img/linkedin-icon.svg";
+import MailIcon from "../../../../../public/img/mail.svg";
+import ThreadsIcon from "../../../../../public/img/threads-icon.svg";
+import Xicon from "../../../../../public/img/x-icon.svg";
+import TikTokIcon from "../../../../../public/img/tik-tok-icon.svg";
+
+
 import { useEffect } from "react";
 
 const socialMedia = [
   {
-    name: "Instagram",
+    name: "Facebook",
     link: "https://www.instagram.com/copu___/",
-    image: IgIcon,
-  },
-
-  {
-    name: "Behance",
-    link: "https://www.behance.net/",
-    image: BeHanceIcon,
+    image: LogoFb,
   },
 
   {
     name: "Instagram",
-    link: "https://www.instagram.com/copu___/",
+    link: "https://www.behance.net/",
     image: IgIcon,
   },
 
   {
-    name: "Behance",
-    link: "https://www.behance.net/",
-    image: BeHanceIcon,
-  },
-
-  {
-    name: "Instagram",
+    name: "YouTube",
     link: "https://www.instagram.com/copu___/",
-    image: IgIcon,
+    image: YtIcon,
   },
 
   {
-    name: "Behance",
+    name: "TikTok",
     link: "https://www.behance.net/",
-    image: BeHanceIcon,
+    image: TikTokIcon,
   },
 
   {
-    name: "Instagram",
+    name: "LinkedIn",
     link: "https://www.instagram.com/copu___/",
-    image: IgIcon,
+    image: LinkedInIcon,
   },
 
   {
-    name: "Behance",
+    name: "Mail",
+    link: "mailto:info@copu.media",
+    image: MailIcon,
+  },
+
+  {
+    name: "Threads",
+    link: "https://www.instagram.com/copu___/",
+    image: ThreadsIcon,
+  },
+
+  {
+    name: "X",
     link: "https://www.behance.net/",
-    image: BeHanceIcon,
+    image: Xicon,
   },
 ];
 
@@ -92,7 +99,7 @@ export default function Footer() {
         <ul className="social-nav-list text-center grid grid-cols-4 md:flex md:justify-center gap-10 md:gap-6 my-10 md:my-0">
           {socialMedia.map((item, i) => (
             <li key={i}>
-              <Link href={item.link} target="blank">
+              <Link title={item.name} href={item.link} target="blank">
                 <img className="h-5 md:h-4" src={item.image.src} alt={item.name} />
               </Link>
             </li>
