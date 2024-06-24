@@ -5,6 +5,7 @@ import LogoCopu from "../../../../public/img/logo-copu.svg"
 import { TabContacto } from "@/app/components/CompaniesTabs/TabContacto"
 import { TabPersonas } from "@/app/components/CompaniesTabs/TabPersonas"
 import { TabPremios } from "@/app/components/CompaniesTabs/TabPremios"
+import { TabAcreditaciones } from "@/app/components/CompaniesTabs/TabAcreditaciones"
 
 export default function page() {
   return (
@@ -39,7 +40,8 @@ export default function page() {
           {/* <TabInicio /> */}
            {/* <TabContacto /> */}
            {/* <TabPersonas /> */}
-           <TabPremios />
+           {/* <TabPremios /> */}
+           <TabAcreditaciones />
         </div>
 
         <div className="text-center mt-32">
