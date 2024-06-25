@@ -18,7 +18,7 @@ import { useEffect } from "react";
 const socialMedia = [
   {
     name: "Facebook",
-    link: "https://www.instagram.com/copu___/",
+    link: "https://www.facebook.com/copublicitarias",
     image: LogoFb,
   },
 
@@ -30,19 +30,19 @@ const socialMedia = [
 
   {
     name: "YouTube",
-    link: "https://www.instagram.com/copu___/",
+    link: "https://www.youtube.com/@Copu___",
     image: YtIcon,
   },
 
   {
     name: "TikTok",
-    link: "https://www.behance.net/",
+    link: "https://www.tiktok.com/@copu___",
     image: TikTokIcon,
   },
 
   {
     name: "LinkedIn",
-    link: "https://www.instagram.com/copu___/",
+    link: "https://www.linkedin.com/company/10370518/admin/feed/posts/",
     image: LinkedInIcon,
   },
 
@@ -54,13 +54,13 @@ const socialMedia = [
 
   {
     name: "Threads",
-    link: "https://www.instagram.com/copu___/",
+    link: "https://www.threads.net/@copu___",
     image: ThreadsIcon,
   },
 
   {
     name: "X",
-    link: "https://www.behance.net/",
+    link: "https://twitter.com/copu___",
     image: Xicon,
   },
 ];
@@ -108,7 +108,7 @@ export default function Footer() {
 
       <div className="md:flex gap-20 md:w-1/3 justify-end">
         <Link
-          className=" underline md:no-underline pt-5 block md:pt-0"
+          className=" underline md:no-underline pt-5 block md:pt-0 hover:underline"
           href={"/contacto"}
         >
           Contacto
