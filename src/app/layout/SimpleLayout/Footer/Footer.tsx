@@ -84,7 +84,7 @@ export default function Footer() {
   }, [])
 
   return (
-    <footer className="bg-secondary-color-light text-xs p-3 flex md:justify-between flex-col-reverse md:flex-row">
+    <footer className="bg-secondary-color-light text-xs p-5 flex md:justify-between flex-col-reverse md:flex-row">
       <div className="md:w-1/3">
         <p className="flex gap-1 mt-9 md:mt-0">
           <span>Designed by</span>

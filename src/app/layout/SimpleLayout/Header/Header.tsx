@@ -7,9 +7,11 @@ import { Button } from '@/app/utils/Button';
 import WpIcon from '../../../../../public/img/wp-icon.svg';
 import MenuIcon from '../../../../../public/img/menu-icon.svg';
 import { useState, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const buttonOpen = document.getElementById('button-open-menu')
@@ -42,8 +44,8 @@ export default function Header() {
 
             <nav className='text-xs hidden lg:flex gap-20 items-center'>
                 <ul className='flex gap-20 items-center'>
-                    <li><Link href={'/que-es'} className='hover:text-primary-color transition'>Qué es el directorio</Link></li>
-                    <li><Link href={'/planes'} className='hover:text-primary-color transition'>Planes</Link></li>
+                    <li><Link href={'/que-es'} className={`hover:text-primary-color transition ${pathname === '/que-es' ? 'text-primary-color' : 'text-white' }`}>Qué es el directorio</Link></li>
+                    <li><Link href={'/planes'} className={`hover:text-primary-color transition ${pathname === '/planes' ? 'text-primary-color' : 'text-white' }`}>Planes</Link></li>
                     <li>
                         <Button
                             icon={<img src={WpIcon.src} alt='whatsapp' />}

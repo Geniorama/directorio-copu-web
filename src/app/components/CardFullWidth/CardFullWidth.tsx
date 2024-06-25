@@ -28,7 +28,7 @@ export default function CardFullWidth({
   return (
     <div
       style={{ backgroundImage: `url(${!isMobile && bgImage})` }}
-      className={`bg-cover bg-no-repeat lg:p-8 lg:h-[576px] flex items-center lg:bg-black lg:rounded-2xl overflow-hidden text-[#E9E9E9]`}
+      className={`bg-cover bg-no-repeat lg:p-10 lg:h-[576px] flex items-center lg:bg-black lg:rounded-2xl overflow-hidden text-[#E9E9E9]`}
     >
       <div className=" space-y-7 lg:w-1/5">
         {isMobile && bgImageMobile && (

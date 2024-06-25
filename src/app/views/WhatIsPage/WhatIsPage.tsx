@@ -4,7 +4,7 @@ import BgWhatIsCopuMob from "../../../../public/img/cover-what-is-mobile.png";
 
 export default function WhatIsPage() {
   return (
-    <div className="p-5 space-y-12">
+    <div className="p-5 space-y-6">
       <CardFullWidth
         bgImage={BgWhatIsCopu.src}
         bgImageMobile={BgWhatIsCopuMob.src}
