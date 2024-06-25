@@ -43,7 +43,7 @@ export default function Header() {
             <nav className='text-xs hidden lg:flex gap-20 items-center'>
                 <ul className='flex gap-20 items-center'>
                     <li><Link href={'#'} className='hover:text-primary-color transition'>Qué es el directorio</Link></li>
-                    <li><Link href={'#'} className='hover:text-primary-color transition'>Planes</Link></li>
+                    <li><Link href={'/planes'} className='hover:text-primary-color transition'>Planes</Link></li>
                     <li>
                         <Button
                             icon={<img src={WpIcon.src} alt='whatsapp' />}

@@ -73,7 +73,6 @@ export default function Footer() {
     if(listItems.length > 0){
       listItems.forEach((item, i) => {
         if(i === 3 || i === 7){
-          console.log(item)
           item.classList.add('ml-auto')
         } else if(i === 0 || i === 4){
           item.classList.add('mr-auto')
