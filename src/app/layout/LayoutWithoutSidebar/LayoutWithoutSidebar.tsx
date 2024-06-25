@@ -11,7 +11,7 @@ export default function LayoutWithoutSidebar({children}: LayoutWithoutSidebarPro
   return (
     <>
         <Header />
-            <main className="container mx-auto py-10 px-3">
+            <main>
                 {children}
             </main>
         <Footer />

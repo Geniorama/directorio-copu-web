@@ -37,7 +37,7 @@ const plans = [
       "Hasta 10 etiquetas de categorías (Las etiquetas son palabras claves que los usuarios buscan en el directorio. Podrás usarlas para que encuentren más fácil tu empresa.)",
       "5 entradas por evento a Congreso Adictos, Marketing Dealers, Movimiento CLIC y COPU Pary. (Entradas VIP exclusivas para la COPU Pary)",
       "Descuento del 5% en Rueda de Negocios Hand-Shakers",
-      "1 publicación de ofertas laborales de tu empresa en las redes de COPU"
+      "1 publicación de ofertas laborales de tu empresa en las redes de COPU",
     ],
     color: "#FFFFFF",
   },
@@ -66,7 +66,7 @@ const plans = [
       "Descuentos en cursos seleccionados en Nogma y EAN X",
       "Descuento especial en afiliación a la IAB",
       "Hasta 3 publicaciones de ofertas laborales de tu empresa en las redes de COPU",
-      "Acceso a grupo de Whatsapp de COPU con directivos y empresarios de marketing y publicidad."
+      "Acceso a grupo de Whatsapp de COPU con directivos y empresarios de marketing y publicidad.",
     ],
     color: "#1DEC80",
   },
@@ -77,59 +77,63 @@ interface PlansPageProps {
 }
 
 export default function PlansPage({ handlePlan }: PlansPageProps) {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    function detectMobile(){
-      console.log(window.innerWidth)
-      if(screen.width <= 900) {
-        setIsMobile(true)
+    function detectMobile() {
+      console.log(window.innerWidth);
+      if (screen.width <= 900) {
+        setIsMobile(true);
       } else {
-        setIsMobile(false)
+        setIsMobile(false);
       }
     }
 
-    if(document.readyState === "complete"){
-      detectMobile()
+    if (document.readyState === "complete") {
+      detectMobile();
     } else {
-      window.addEventListener('load', detectMobile)
+      window.addEventListener("load", detectMobile);
     }
 
-    window.addEventListener('resize' , detectMobile)
+    window.addEventListener("resize", detectMobile);
 
     return () => {
       window.removeEventListener("resize", detectMobile);
       window.removeEventListener("load", detectMobile);
-    }
-    
-  }, [isMobile, setIsMobile])
+    };
+  }, [isMobile, setIsMobile]);
   return (
-    <div className="flex flex-col lg:grid lg:grid-cols-4 gap-6 items-center py-6 px-12 lg:px-0">
-      <div className="lg:pr-6 order-1">
-        <h1 className=" text-7xl font-bold text-primary-color">Planes</h1>
-        <p className="text-sm">
-          Conoce los planes que tenemos para que tu empresa haga parte del
-          directorio más grande de las industrias creativas de la región.
-        </p>
+    <div className="container mx-auto py-10 px-3">
+      <div className="flex flex-col lg:grid lg:grid-cols-4 gap-6 items-center py-6 px-12 lg:px-0">
+        <div className="lg:pr-6 order-1">
+          <h1 className=" text-7xl font-bold text-primary-color">Planes</h1>
+          <p className="text-sm">
+            Conoce los planes que tenemos para que tu empresa haga parte del
+            directorio más grande de las industrias creativas de la región.
+          </p>
+        </div>
+        {plans.map(
+          (
+            { color, title, description, price, sufixPrice, link, features },
+            i
+          ) => (
+            <div
+              style={{ order: isMobile ? -i + plans.length : i + 1 }}
+              key={i}
+            >
+              <CardPlan
+                color={color}
+                title={title}
+                description={description}
+                price={formatCurrency(price, "es-CO", "COP")}
+                features={features}
+                sufixPrice={sufixPrice}
+                handlePlan={() => handlePlan(link)}
+              />
+            </div>
+          )
+        )}
       </div>
-      {plans.map(
-        (
-          { color, title, description, price, sufixPrice, link, features },
-          i
-        ) => (
-          <div style={{order: isMobile ? -i + plans.length : i + 1}} key={i}>
-            <CardPlan
-              color={color}
-              title={title}
-              description={description}
-              price={formatCurrency(price, "es-CO", "COP")}
-              features={features}
-              sufixPrice={sufixPrice}
-              handlePlan={() => handlePlan(link)}
-            />
-          </div>
-        )
-      )}
     </div>
   );
 }
