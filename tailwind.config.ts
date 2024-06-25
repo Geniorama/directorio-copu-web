@@ -22,7 +22,7 @@ const config: Config = {
         "secondary-color-light": "#18181B",
         "secondary-color-hover": "#2D2D33"
       }
-    },
+    }
   },
   plugins: [],
 };
