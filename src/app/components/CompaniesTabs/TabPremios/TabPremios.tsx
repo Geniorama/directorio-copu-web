@@ -42,7 +42,7 @@ const awards = [
 export default function TabPremios() {
   return (
     <article>
-        <div className='grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-20 mt-10 max-w-[460px] mx-auto'>
+        <div className='grid grid-cols-3 gap-10 md:gap-20 mt-10 max-w-[460px] mx-auto'>
             {awards.map((item, i) => (
                 <div key={i} className='text-center space-y-3'>
                     <img className='mx-auto w-12' src={item.image} alt={item.name} title={item.name} />
