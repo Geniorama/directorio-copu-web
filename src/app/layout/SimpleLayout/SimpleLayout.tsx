@@ -12,7 +12,7 @@ export default function SimpleLayout(props: SimpleLayoutProps) {
     <>
       <Header />
         <main className="min-h-[calc(100vh_-_110px)] flex pt-3 pb-1">
-          <aside className="w-2/12 min-w-[248px] h-[calc(100vh_-_115px)]">
+          <aside className="w-2/12 min-w-[248px] h-[calc(100vh_-_100px)]">
             <Sidebar />
           </aside>
           <div className="grow">
