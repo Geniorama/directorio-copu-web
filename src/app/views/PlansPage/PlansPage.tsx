@@ -105,7 +105,7 @@ export default function PlansPage({ handlePlan }: PlansPageProps) {
   return (
     <div className="container mx-auto py-10 px-3">
       <div className="flex flex-col lg:grid lg:grid-cols-4 gap-6 items-center py-6 px-12 lg:px-0">
-        <div className="lg:pr-6 order-1">
+        <div className="lg:pr-16 order-1">
           <h1 className=" text-7xl font-bold text-primary-color">Planes</h1>
           <p className="text-sm">
             Conoce los planes que tenemos para que tu empresa haga parte del
