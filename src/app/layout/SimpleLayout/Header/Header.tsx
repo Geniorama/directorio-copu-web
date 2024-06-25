@@ -31,10 +31,10 @@ export default function Header() {
   return (
     <header className="bg-secondary-color-light text-text-light p-3">
         <div className='flex justify-between items-center'>
-            <div className="text-lg flex gap-2 items-center">
+            <Link className='text-lg flex gap-2 items-center' href={'/'}>
                 <span>Directorio de</span>
-                <img src={LogoCopu.src} alt="" />
-            </div>
+                <img src={LogoCopu.src} alt="Logo Copu" />
+            </Link>
             
             <button id='button-open-menu' onClick={handleMenu} className='lg:hidden'>
                 <img src={MenuIcon.src} alt="" />

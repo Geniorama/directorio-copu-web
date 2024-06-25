@@ -82,7 +82,7 @@ export default function PlansPage({ handlePlan }: PlansPageProps) {
   useEffect(() => {
     function detectMobile(){
       console.log(window.innerWidth)
-      if(screen.width <= 600) {
+      if(screen.width <= 900) {
         setIsMobile(true)
       } else {
         setIsMobile(false)
