@@ -2,21 +2,22 @@ import React from "react"
 import Link from "next/link"
 
 interface ButtonProps {
-    children: React.ReactNode,
+    children: React.ReactNode
     href?: string
     icon?: React.ReactNode
+    target?: string
 }
 
-export default function Button(props:ButtonProps) {
+export default function Button({children, href, icon, target}:ButtonProps) {
   return (
-    <Link className="bg-primary-color px-3 py-1 rounded-full text-text-dark font-bold flex gap-1 items-center hover:bg-primary-color-hover transition" href={props.href ? props.href : '#'}>
-        {props.icon && (
+    <Link target={target} className="bg-primary-color px-3 py-1 rounded-full text-text-dark font-bold flex gap-1 items-center hover:bg-primary-color-hover transition" href={href ? href : '#'}>
+        {icon && (
             <span>
-                {props.icon}
+                {icon}
             </span>
         )}
         <span>
-            {props.children}
+            {children}
         </span>
     </Link>
   )
