@@ -12,10 +12,10 @@ export default function CardCompanyPro({name, area, href, tags, bgImage}: CardCo
   return (
     <div style={{backgroundImage: `url(${bgImage})`}} className="aspect-video rounded-2xl text-[#C7C7DF] flex items-end bg-cover bg-no-repeat overflow-hidden relative">
         <div className=" flex justify-between items-end gap-10 w-full p-3">
-            <div>
+            <div className="space-y-1">
                 <h2 className="font-bold text-2xl leading-5">Geniorama</h2>
-                <p className="text-lg">Desarrollo web</p>
-                <p className="text-xs">
+                <p className="text-xs" >Desarrolladores web</p>
+                <p className="text-[6px]">
                     Advertising, Marketing Digital
                 </p>
             </div>

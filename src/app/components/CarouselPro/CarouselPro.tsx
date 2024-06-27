@@ -28,6 +28,7 @@ export default function CarouselPro() {
               name="Geniorama"
               area="Web Development"
               bgImage={ExampleImage.src}
+              href="/empresas/geniorama"
             />
           </SwiperSlide>
         ))}
