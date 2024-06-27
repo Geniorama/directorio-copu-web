@@ -13,7 +13,7 @@ export type Tag = {
 export type Plan = {
     id: string,
     name: string,
-    price: number,
+    price?: number,
     sufixPrice?: string,
     description?: string,
     features?: []
@@ -29,10 +29,14 @@ export type Company = {
     id: string | number,
     name: string,
     slug: string,
-    logo?: string,
+    logoLight?: string,
+    logoDark?: string,
     cover?: string,
-    countries?: Country[]
-    tags?: Tag[]
+    countries?: Country[],
+    tags?: Tag[],
     plan?: Plan,
-    sectors?: Sector[]
+    sectors?: Sector[],
+    primaryColor?: string,
+    secondaryColor?: string,
+    reel?: string,
 }

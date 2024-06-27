@@ -1,0 +1,1 @@
+export { default as CardCompanyPremium } from './CardCompanyPremium'
