@@ -17,7 +17,6 @@ export default function HomePage() {
 
       <div className='mt-10 w-[90%] mx-auto space-y-4'>
         <h5 className='text-[#C7C7DF]'>Otras empresas que pueden interesarte</h5>
-        <CarouselPro />
       </div>
     </div>
   )
