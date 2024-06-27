@@ -1,34 +1,40 @@
-
 import { CardCompanyPro } from "../CardCompanyPro";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ExampleImage from "../../../../public/img/cover-card-related_enjoy.png";
 import { Navigation } from "swiper/modules";
 import ArrowLeft from "../../../../public/img/arr-left.svg";
-import ArrowRight from "../../../../public/img/arr-right.svg"
+import ArrowRight from "../../../../public/img/arr-right.svg";
 
 import "swiper/css";
 
 export default function CarouselPro() {
   return (
     <div className="relative">
-        <Swiper
-          modules={[Navigation]}
-          spaceBetween={20}
-          slidesPerView={4}
-          onSwiper={(swiper) => console.log(swiper)}
-          loop
-          navigation={{
-            prevEl: '.custom-swiper-prev',
-            nextEl: '.custom-swiper-next'
-          }}
-          >
+      <Swiper
+        modules={[Navigation]}
+        spaceBetween={20}
+        slidesPerView={4}
+        onSwiper={(swiper) => console.log(swiper)}
+        loop
+        navigation={{
+          prevEl: ".custom-swiper-prev",
+          nextEl: ".custom-swiper-next",
+        }}
+      >
         {[1, 2, 3, 4, 5].map((item, i) => (
           <SwiperSlide key={i}>
             <CardCompanyPro
+              id={i}
               name="Geniorama"
-              area="Web Development"
-              bgImage={ExampleImage.src}
-              href="/empresas/geniorama"
+              sectors={[
+                { id: "1", name: "Web Development", slug: "/web-development" },
+                { id: "2", name: "Software", slug: "/software" }
+              ]}
+              cover={ExampleImage.src}
+              slug="/empresas/geniorama"
+              countries={[{ id: "co", name: "Colombia", code: "CO" }]}
+              tags={[{ id: "agency", title: "Agency", slug: "/agency" }]}
+              plan={{ id: "pro", name: "Pro", price: 900 }}
             />
           </SwiperSlide>
         ))}
