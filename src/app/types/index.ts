@@ -16,7 +16,7 @@ export type Plan = {
     price?: number,
     sufixPrice?: string,
     description?: string,
-    features?: []
+    features?: string[]
 }
 
 export type Sector = {

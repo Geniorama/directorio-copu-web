@@ -122,10 +122,11 @@ export default function PlansPage({ handlePlan }: PlansPageProps) {
               key={i}
             >
               <CardPlan
+                id={title}
                 color={color}
-                title={title}
+                name={title}
                 description={description}
-                price={formatCurrency(price, "es-CO", "COP")}
+                price={parseInt(formatCurrency(price, "es-CO", "COP"))}
                 features={features}
                 sufixPrice={sufixPrice}
                 handlePlan={() => handlePlan(link)}

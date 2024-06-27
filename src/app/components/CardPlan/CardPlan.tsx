@@ -3,8 +3,8 @@ import type { Plan } from "@/app/types";
 
 
 type CardPlanProps = Plan & {
-    color: string;
-    handlePlan: MouseEventHandler<HTMLButtonElement>;
+    color?: string;
+    handlePlan?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function CardPlan({color, name, description, sufixPrice, features, price, handlePlan}:CardPlanProps) {
