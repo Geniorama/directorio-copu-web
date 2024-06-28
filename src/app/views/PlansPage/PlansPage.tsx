@@ -1,7 +1,6 @@
 "use client";
 
 import { CardPlan } from "@/app/components/CardPlan";
-import { formatCurrency } from "../../helpers/index";
 import { useEffect, useState } from "react";
 
 const plans = [
@@ -126,7 +125,7 @@ export default function PlansPage({ handlePlan }: PlansPageProps) {
                 color={color}
                 name={title}
                 description={description}
-                price={parseInt(formatCurrency(price, "es-CO", "COP"))}
+                price={price}
                 features={features}
                 sufixPrice={sufixPrice}
                 handlePlan={() => handlePlan(link)}

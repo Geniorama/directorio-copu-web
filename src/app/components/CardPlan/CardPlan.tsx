@@ -1,5 +1,6 @@
 import { MouseEventHandler } from "react";
 import type { Plan } from "@/app/types";
+import { formatCurrency } from "@/app/helpers";
 
 
 type CardPlanProps = Plan & {
@@ -16,7 +17,9 @@ export default function CardPlan({color, name, description, sufixPrice, features
       <p>{description}</p>
       <div className=" space-y-2">
         <p className=" space-x-1">
-          <span className="text-2xl font-bold">{price}</span>
+          {price && (
+            <span className="text-2xl font-bold">{formatCurrency(price, 'es-CO', 'COP')}</span>
+          )}
           <span>{sufixPrice}</span>
         </p>
         <button onClick={handlePlan} style={{backgroundColor: color}} className={`w-full p-2 rounded-md text-secondary-color font-bold hover:opacity-[70%] transition`}>Quiero este plan</button>
