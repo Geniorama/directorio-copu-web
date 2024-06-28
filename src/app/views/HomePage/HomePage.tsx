@@ -3,39 +3,28 @@ import { SearchBar } from "@/app/components/SearchBar";
 import { FilterByLetter } from "@/app/components/FilterByLetter";
 import { CarouselPro } from "@/app/components/CarouselPro";
 import { CarouselBasic } from "@/app/components/CarouselBasic";
-import { CardCompanyPremium } from "@/app/components/CardCompanyPremium";
+import { CarouselPremium } from "@/app/components/CarouselPremium";
 import type { Company } from "@/app/types";
 
 interface HomePageProps {
-  data: Company[];
+  companies: Company[];
 }
 
-export default function HomePage({ data }: HomePageProps) {
+export default function HomePage({ companies }: HomePageProps) {
   return (
-    <div className="px-3 pl-10">
+    <div className="px-3 pl-10 pb-10">
       <SearchBar />
       <div className="my-4"></div>
       <FilterByLetter />
       <hr className="my-4 border-[#2D2D2D]" />
 
-      <div className="text-center space-y-4">
-        <h1 className="font-bold text-3xl text-white">
+      <div className="w-[90%] mx-auto text-center space-y-4 my-16">
+        <h1 className="font-bold text-3xl text-white mb-16">
           Empresas más relevantes
         </h1>
-        {data.map((company, i) => (
-          <div key={company.id} className="max-w-[800px]">
-            <CardCompanyPremium 
-              name={company.name} 
-              slug={company.slug} 
-              id={company.id}
-              cover={company.cover}
-              tags={company.tags}
-              sectors={company.sectors}
-              logoLight={company.logoLight}
-              reel="t4eGUyO4s54"
-            />
-          </div>
-        ))}
+        <CarouselPremium 
+          slides={companies}
+        />
       </div>
 
       <div className="w-[90%] mx-auto space-y-4">

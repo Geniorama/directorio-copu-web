@@ -6,7 +6,7 @@ import { companies } from "../data/companies";
 export default function Home() {
   return (
     <HomePage 
-      data={companies}
+      companies={companies}
     />
   )
 }

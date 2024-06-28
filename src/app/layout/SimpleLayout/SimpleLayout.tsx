@@ -15,7 +15,7 @@ export default function SimpleLayout(props: SimpleLayoutProps) {
           <aside className="w-[13%] h-[calc(100vh_-_115px)]">
             <Sidebar />
           </aside>
-          <div className="w-[87%]">
+          <div className="w-[87%] max-h-[88vh] overflow-y-scroll">
             {props.children}
           </div>
         </main>

@@ -21,16 +21,20 @@ export default function CardCompanyPremium({
 }: Company) {
   const [openModal, setOpenModal] = useState(false);
 
-  const handleToggleModal = () => setOpenModal(!openModal)
+  const handleToggleModal = () => setOpenModal(!openModal);
 
+  const firstSectorName = sectors && sectors[1].name
   return (
     <>
       {/* Modal Reel */}
       {reel && openModal && (
-        <div className="fixed z-[2000] bg-[rgba(0,0,0)] left-0 top-0 w-full h-screen overflow-hidden max-h-screen grid place-items-center">
+        <div className="fixed z-[2000] bg-[rgba(0,0,0)] left-0 top-0 w-full h-screen overflow-hidden max-h-screen grid place-items-center p-4">
           <div className="w-full max-w-[900px]">
             <div className="text-right mb-2">
-              <button onClick={handleToggleModal} className="w-[50px] h-[50px] bg-[#32323B] inline-grid place-items-center rounded-full">
+              <button
+                onClick={handleToggleModal}
+                className="w-[50px] h-[50px] bg-[#32323B] inline-grid place-items-center rounded-full"
+              >
                 <img src={IconClose.src} alt="" />
               </button>
             </div>
@@ -38,19 +42,22 @@ export default function CardCompanyPremium({
               <YouTubeVideo videoId={reel} />
             </div>
 
-            <div className="text-[#C7C7DF] flex justify-between items-center">
-              <div className="text-left">
+            <div className="text-[#C7C7DF] lg:flex justify-between items-center">
+              <div className="lg:text-left mb-10 lg:mb-0">
                 <h3 className="text-4xl font-bold">Bito Inc</h3>
                 <h5 className="text-xl">Creative Acelerator</h5>
                 <p className="text-sm">UX/UI, Product Design, Branding</p>
               </div>
 
               <div className=" space-x-4">
-                <Link className="bg-secondary-color-light p-5 px-10 rounded-full min-w-52 inline-block" href={slug}>
+                <Link
+                  href={`/empresas/${slug}`}
+                  className="bg-primary-color font-bold lg:font-normal text-secondary-color lg:text-[#C7C7DF] lg:bg-secondary-color-light p-5 px-10 rounded-full min-w-40 lg:min-w-52 inline-block"
+                >
                   Ir al perfil
                 </Link>
 
-                <button className="bg-secondary-color-light p-5 px-10 rounded-full min-w-52">
+                <button className="bg-secondary-color-light p-5 px-10 rounded-full min-w-40 lg:min-w-52 font-bold lg:font-normal">
                   Volver
                 </button>
               </div>
@@ -86,7 +93,7 @@ export default function CardCompanyPremium({
           <div className="text-left text-[#C7C7DF]">
             <h2 className="text-4xl font-bold">{name}</h2>
             <h5 className="text-xl">
-              {sectors?.map((sector) => sector.name).join(", ")}
+              {firstSectorName}
             </h5>
             <p className="text-sm">
               {tags?.map((tag) => tag.title).join(", ")}
@@ -95,13 +102,15 @@ export default function CardCompanyPremium({
 
           <div className="w-44 space-y-2">
             <Button href={`/empresas/${slug}`}>Ir al perfil</Button>
-            <Button
-              icon={<img src={IconPlay.src} alt="play video" />}
-              color="secondary"
-              onClick={handleToggleModal}
-            >
-              Reproducir Reel
-            </Button>
+            {reel && (
+              <Button
+                icon={<img src={IconPlay.src} alt="play video" />}
+                color="secondary"
+                onClick={handleToggleModal}
+              >
+                Reproducir Reel
+              </Button>
+            )}
           </div>
         </div>
       </div>
