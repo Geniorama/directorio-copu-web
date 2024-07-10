@@ -13,12 +13,18 @@ export default function CarouselPro() {
       <Swiper
         modules={[Navigation]}
         spaceBetween={20}
-        slidesPerView={4}
+        slidesPerView={1.2}
         onSwiper={(swiper) => console.log(swiper)}
         loop
+        // centeredSlides
         navigation={{
           prevEl: ".custom-swiper-prev",
           nextEl: ".custom-swiper-next",
+        }}
+        breakpoints={{
+          480: {
+            slidesPerView: 4
+          }
         }}
       >
         {[1, 2, 3, 4, 5].map((item, i) => (
@@ -40,10 +46,10 @@ export default function CarouselPro() {
         ))}
       </Swiper>
 
-      <button className="hover:bg-[#2D2D33] grid place-items-center custom-swiper-prev w-[40px] h-[40px] rounded-full bg-[#18181B] absolute left-[-60px] top-[calc(50%-20px)] z-5 active:bg-white">
+      <button className="hidden lg:grid hover:bg-[#2D2D33] place-items-center custom-swiper-prev w-[40px] h-[40px] rounded-full bg-[#18181B] absolute left-[-60px] top-[calc(50%-20px)] z-5 active:bg-white">
         <img className="w-3" src={ArrowLeft.src} alt="" />
       </button>
-      <button className="hover:bg-[#2D2D33] grid place-items-center custom-swiper-next w-[40px] h-[40px] rounded-full bg-[#18181B] absolute right-[-60px] top-[calc(50%-20px)] z-50 active:bg-white">
+      <button className="hidden lg:grid hover:bg-[#2D2D33] place-items-center custom-swiper-next w-[40px] h-[40px] rounded-full bg-[#18181B] absolute right-[-60px] top-[calc(50%-20px)] z-50 active:bg-white">
         <img className="w-3" src={ArrowRight.src} alt="" />
       </button>
     </div>

@@ -8,6 +8,7 @@ import WpIcon from '../../../../../public/img/wp-icon.svg';
 import MenuIcon from '../../../../../public/img/menu-icon.svg';
 import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { Sidebar } from '../Sidebar';
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false)
@@ -31,7 +32,7 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-secondary-color-light text-text-light p-3">
+    <header className="fixed w-full lg:relative z-50 bg-secondary-color-light text-text-light p-3">
         <div className='flex justify-between items-center'>
             <Link className='text-lg flex gap-2 items-center' href={'/'}>
                 <span>Directorio de</span>
@@ -61,7 +62,9 @@ export default function Header() {
 
         {openMenu && (
             <div className='h-screen'>
-                <h1 onClick={handleMenu}>Close menu</h1>
+                <Sidebar 
+                    handleMenu={handleMenu}
+                />
             </div>
         )}
     </header>

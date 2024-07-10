@@ -12,13 +12,13 @@ interface HomePageProps {
 
 export default function HomePage({ companies }: HomePageProps) {
   return (
-    <div className="px-3 pl-10 pb-10">
+    <div className="px-3 lg:pl-10 pb-10">
       <SearchBar />
       <div className="my-4"></div>
       <FilterByLetter />
       <hr className="my-4 border-[#2D2D2D]" />
 
-      <div className="w-[90%] mx-auto text-center space-y-4 my-16">
+      <div className="lg:w-[90%] mx-auto text-center space-y-4 my-16">
         <h1 className="font-bold text-3xl text-white mb-16">
           Empresas más relevantes
         </h1>
@@ -27,7 +27,7 @@ export default function HomePage({ companies }: HomePageProps) {
         />
       </div>
 
-      <div className="w-[90%] mx-auto space-y-4">
+      <div className="lg:w-[90%] mx-auto space-y-4">
         <h5 className="text-[#C7C7DF]">También puede interesarte</h5>
         <CarouselPro />
       </div>

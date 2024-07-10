@@ -11,11 +11,11 @@ export default function SimpleLayout(props: SimpleLayoutProps) {
   return (
     <>
       <Header />
-        <main className="min-h-[calc(100vh_-_110px)] flex pt-3 pb-1">
-          <aside className="w-[13%] h-[calc(100vh_-_115px)]">
+        <main className="lg:min-h-[calc(100vh_-_110px)] flex pt-3 pb-1">
+          <aside className="hidden lg:block w-[13%] h-[calc(100vh_-_115px)]">
             <Sidebar />
           </aside>
-          <div className="w-[87%] max-h-[88vh] overflow-y-scroll">
+          <div className="mt-14 lg:mt-0 w-screen overflow-x-hidden lg:w-[87%] lg:max-h-[88vh] lg:overflow-y-scroll">
             {props.children}
           </div>
         </main>

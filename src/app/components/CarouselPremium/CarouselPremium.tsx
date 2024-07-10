@@ -1,24 +1,24 @@
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, EffectCoverflow } from "swiper/modules"
-import { CardCompanyPremium } from "../CardCompanyPremium"
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, EffectCoverflow } from "swiper/modules";
+import { CardCompanyPremium } from "../CardCompanyPremium";
 import type { Company } from "@/app/types";
 import "swiper/css";
-import 'swiper/css/effect-coverflow';
+import "swiper/css/effect-coverflow";
 
 interface CarouselPremiumProps {
-  slides?: Company[]
+  slides?: Company[];
 }
 
-export default function CarouselPremium({slides}: CarouselPremiumProps) {
+export default function CarouselPremium({ slides }: CarouselPremiumProps) {
   return (
     <div className="w-full relative max-w-full">
       <Swiper
         modules={[EffectCoverflow, Navigation]}
         centeredSlides={true}
-        slidesPerView={3}
+        slidesPerView={1}
         // spaceBetween={-80}
         loop
-        effect={'coverflow'}
+        effect={"coverflow"}
         grabCursor={true}
         coverflowEffect={{
           rotate: 50,
@@ -27,7 +27,12 @@ export default function CarouselPremium({slides}: CarouselPremiumProps) {
           modifier: 1,
           slideShadows: true,
         }}
-        >
+        breakpoints={{
+          480: {
+            slidesPerView: 3,
+          },
+        }}
+      >
         {slides?.map((company, i) => (
           <SwiperSlide key={i}>
             <CardCompanyPremium
@@ -42,5 +47,5 @@ export default function CarouselPremium({slides}: CarouselPremiumProps) {
         ))}
       </Swiper>
     </div>
-  )
+  );
 }
