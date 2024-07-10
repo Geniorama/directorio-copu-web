@@ -1,7 +1,6 @@
 "use client";
 
 import { CardPlan } from "@/app/components/CardPlan";
-import { useEffect, useState } from "react";
 
 const plans = [
   {
@@ -45,13 +44,16 @@ const plans = [
     title: "Premium",
     description:
       "Para empresas que busquen mostrar su trabajo y sus credenciales.",
-    price: 1200000,
+    price: 2000000,
     sufixPrice: "COP/Año + IVA",
     link: "#",
     features: [
       "Visualización de nombre y logo",
       "Visualización de NIT",
       "Listado de directivos o contactos del área de ventas (Hasta cuatro contactos con nombres, teléfonos, correos electrónicos y botón a Whatsapp)",
+      "Listado de clientes relevantes",
+      "Premios y reconocimientos",
+      "Visualización de certificaciones",
       "Dirección y geolocalización en Google Maps",
       "Sitio web",
       "Descripción de la empresa. (Texto de 700 caracteres para que cuentes sobre los servicios de tu empresa, el tipo de compañía y otra información relevante)",
@@ -76,48 +78,20 @@ interface PlansPageProps {
 }
 
 export default function PlansPage({ handlePlan }: PlansPageProps) {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    function detectMobile() {
-      console.log(window.innerWidth);
-      if (screen.width <= 900) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    }
-
-    if (document.readyState === "complete") {
-      detectMobile();
-    } else {
-      window.addEventListener("load", detectMobile);
-    }
-
-    window.addEventListener("resize", detectMobile);
-
-    return () => {
-      window.removeEventListener("resize", detectMobile);
-      window.removeEventListener("load", detectMobile);
-    };
-  }, [isMobile, setIsMobile]);
   return (
     <div className="container mx-auto py-10 px-3">
-      <div className="flex flex-col lg:grid lg:grid-cols-4 gap-6 items-center py-6 px-12 lg:px-0">
-        <div className="lg:pr-16 order-1">
+      <div className="py-6 px-12 lg:px-0">
+        <div className="max-w-[450px] mx-auto text-center mb-20">
           <h1 className=" text-7xl font-bold text-primary-color">Planes</h1>
           <p className="text-sm">
             Conoce los planes que tenemos para que tu empresa haga parte del
             directorio más grande de las industrias creativas de la región.
           </p>
         </div>
-        {plans.map(
-          (
-            { color, title, description, price, sufixPrice, link, features },
-            i
-          ) => (
+
+        <div className="flex-col-reverse flex lg:flex-row gap-10 lg:gap-20">
+        {plans.map(({ color, title, description, price, sufixPrice, link, features },i) => (
             <div
-              style={{ order: isMobile ? -i + plans.length : i + 1 }}
               key={i}
             >
               <CardPlan
@@ -133,6 +107,8 @@ export default function PlansPage({ handlePlan }: PlansPageProps) {
             </div>
           )
         )}
+
+        </div>
       </div>
     </div>
   );
