@@ -25,7 +25,7 @@ export default function SingleCompanyPage({ section, handleTab }:SingleCompanyPa
             categories={['UX/UI',  'Product Design', 'Branding']}
         />
         
-        <div className="flex justify-center items-center gap-3 mt-10 mb-7">
+        <div className="flex justify-center items-center gap-3 mt-10 mb-7 flex-wrap">
           <ButtonTab 
             active={section === 'inicio'}
             onClick={() => handleTab('inicio')}>

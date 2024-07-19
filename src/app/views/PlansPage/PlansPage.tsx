@@ -43,7 +43,7 @@ const plans = [
   {
     title: "Premium",
     description:
-      "Para empresas que busquen mostrar su trabajo y sus credenciales.",
+      "Para empresas que quieran todos mostrar todos sus servicios y oferta de valor en múltiples formatos.",
     price: 2000000,
     sufixPrice: "COP/Año + IVA",
     link: "#",

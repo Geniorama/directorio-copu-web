@@ -10,12 +10,12 @@ import CloseIcon from '../../../../../public/img/btn-close.svg'
 import useIsMobile from '@/app/hooks/useIsMobile'
 
 type SidebarProps = {
-  handleMenu?: () => void
+  handleSidebar?: () => void
 }
 
 
 
-export default function Sidebar({handleMenu}:SidebarProps) {
+export default function Sidebar({handleSidebar}:SidebarProps) {
   const isMobile = useIsMobile()
   
   return (
@@ -26,7 +26,7 @@ export default function Sidebar({handleMenu}:SidebarProps) {
                 <span>Filtrar</span>
             </button>
 
-            <button onClick={handleMenu} className='transition w-[35px] h-[35px] flex items-center justify-center rounded-full hover:bg-secondary-color-hover'>
+            <button onClick={handleSidebar} className='transition w-[35px] h-[35px] flex items-center justify-center rounded-full hover:bg-secondary-color-hover'>
                 <img src={`${isMobile ? CloseIcon.src : IconCollapse.src}`} alt="" />
             </button>
         </div>

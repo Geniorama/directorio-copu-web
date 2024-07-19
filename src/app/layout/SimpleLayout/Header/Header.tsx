@@ -9,9 +9,11 @@ import MenuIcon from '../../../../../public/img/menu-icon.svg';
 import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { Sidebar } from '../Sidebar';
+import CloseIcon from '../../../../../public/img/btn-close.svg';
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false)
+  const [openSidebar, setOpenSidebar] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -31,9 +33,13 @@ export default function Header() {
     setOpenMenu(!openMenu)
   }
 
+  function handleSidebar(){
+    setOpenSidebar(!openSidebar)
+  }
+
   return (
-    <header className="fixed w-full lg:relative z-50 bg-secondary-color-light text-text-light p-3">
-        <div className='flex justify-between items-center'>
+    <header className="fixed w-full lg:relative z-50 bg-secondary-color-light text-text-light py-5">
+        <div className='flex justify-between items-center px-4'>
             <Link className='text-lg flex gap-2 items-center' href={'/'}>
                 <span>Directorio de</span>
                 <img src={LogoCopu.src} alt="Logo Copu" />
@@ -42,6 +48,14 @@ export default function Header() {
             <button id='button-open-menu' onClick={handleMenu} className='lg:hidden'>
                 <img src={MenuIcon.src} alt="" />
             </button>
+
+            {openMenu && 
+                (
+                <button id='button-close-menu' onClick={handleMenu} className='lg:hidden'>
+                    <img src={CloseIcon.src} alt="" />
+                </button>
+                )
+            }
 
             <nav className='text-xs hidden lg:flex gap-20 items-center'>
                 <ul className='flex gap-20 items-center'>
@@ -60,11 +74,22 @@ export default function Header() {
             </nav>
         </div>
 
-        {openMenu && (
+        {openSidebar && (
             <div className='h-screen'>
                 <Sidebar 
-                    handleMenu={handleMenu}
+                    handleSidebar={handleSidebar}
                 />
+            </div>
+        )}
+
+        {openMenu && (
+            <div className='h-screen mt-5'>
+               <ul className='text-[#D7D7D7] font-light text-lg'>
+                    <li className='border-t border-t-[#696969] py-6 px-4'><Link href={"/que-es"}>Qué es el directorio</Link></li>
+                    <li className='border-t border-t-[#696969] py-6 px-4'><Link href={"/que-es"}>Planes</Link></li>
+                    <li className='border-t border-t-[#696969] py-6 px-4'><Link href={"/que-es"}>Contacto</Link></li>
+                    <li className='border-y border-y-[#696969] py-6 px-4'><Link href={"/que-es"}>Web Copu</Link></li>
+               </ul>
             </div>
         )}
     </header>

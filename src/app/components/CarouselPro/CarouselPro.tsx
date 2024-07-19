@@ -4,6 +4,7 @@ import ExampleImage from "../../../../public/img/cover-card-related_enjoy.png";
 import { Navigation } from "swiper/modules";
 import ArrowLeft from "../../../../public/img/arr-left.svg";
 import ArrowRight from "../../../../public/img/arr-right.svg";
+import { CardCompanyOuterInfo } from "../CardCompanyOuterInfo";
 
 import "swiper/css";
 
@@ -29,19 +30,39 @@ export default function CarouselPro() {
       >
         {[1, 2, 3, 4, 5].map((item, i) => (
           <SwiperSlide key={i}>
-            <CardCompanyPro
-              id={i}
-              name="Geniorama"
-              sectors={[
-                { id: "1", name: "Web Development", slug: "/web-development" },
-                { id: "2", name: "Software", slug: "/software" }
-              ]}
-              cover={ExampleImage.src}
-              slug="/empresas/geniorama"
-              countries={[{ id: "co", name: "Colombia", code: "CO" }]}
-              tags={[{ id: "agency", title: "Agency", slug: "/agency" }]}
-              plan={{ id: "pro", name: "Pro", price: 900 }}
-            />
+            <>
+              <div className=" hidden lg:block">
+                <CardCompanyPro
+                  id={i}
+                  name="Geniorama"
+                  sectors={[
+                    { id: "1", name: "Web Development", slug: "/web-development" },
+                    { id: "2", name: "Software", slug: "/software" }
+                  ]}
+                  cover={ExampleImage.src}
+                  slug="/empresas/geniorama"
+                  countries={[{ id: "co", name: "Colombia", code: "CO" }]}
+                  tags={[{ id: "agency", title: "Agency", slug: "/agency" }]}
+                  plan={{ id: "pro", name: "Pro", price: 900 }}
+                />
+              </div>
+
+              <div className=" lg:hidden">
+                <CardCompanyOuterInfo
+                  id={i}
+                  name="Geniorama"
+                  sectors={[
+                    { id: "1", name: "Web Development", slug: "/web-development" },
+                    { id: "2", name: "Software", slug: "/software" }
+                  ]}
+                  cover={ExampleImage.src}
+                  slug="/empresas/geniorama"
+                  countries={[{ id: "co", name: "Colombia", code: "CO" }]}
+                  tags={[{ id: "agency", title: "Agency", slug: "/agency" }]}
+                  plan={{ id: "pro", name: "Pro", price: 900 }}
+                />
+              </div>
+            </>
           </SwiperSlide>
         ))}
       </Swiper>

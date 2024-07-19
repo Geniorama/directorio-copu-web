@@ -5,6 +5,29 @@ import { TitleWidget } from '@/app/utils/TitleWidget'
 import Icon from '../../../../../public/img/group.svg'
 import { useState } from 'react'
 
+
+const companyTypes = [
+  {
+    title: 'Multinacional',
+    slug: 'multinacional'
+  },
+
+  {
+    title: 'Mediana',
+    slug: 'mediana'
+  },
+
+  {
+    title: 'Estudio',
+    slug: 'estudio'
+  },
+
+  {
+    title: 'Empresa personal',
+    slug: 'empresa-personal'
+  }
+]
+
 export default function WidgetTipoEmpresa() {
   const [typeCompany, setTypeCompany] = useState<string[]>([])
 
@@ -30,10 +53,9 @@ export default function WidgetTipoEmpresa() {
         />
 
         <div className='text-xs mt-3'>
-            <button onClick={() => addType('Multinacionales')} className={`transition text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes('Multinacionales') ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light hover:bg-secondary-color-hover hover:border-secondary-color-hover'}`}>Multinacionales</button>
-            <button onClick={() => addType('Medianas')} className={`transition text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes('Medianas') ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light hover:bg-secondary-color-hover hover:border-secondary-color-hover'}`}>Medianas</button>
-            <button onClick={() => addType('Estudios')} className={`transition text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes('Estudios') ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light hover:bg-secondary-color-hover hover:border-secondary-color-hover'}`}>Estudios</button>
-            <button onClick={() => addType('Empresas personales')} className={`transition text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes('Empresas personales') ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light hover:bg-secondary-color-hover hover:border-secondary-color-hover'}`}>Empresas personales</button>
+            {companyTypes.map((companyType, i) => (
+              <button key={i} onClick={() => addType(companyType.title)} className={`transition text-left w-full border p-3 rounded-full mb-2 outline-none ${typeCompany.includes(companyType.title) ? 'bg-primary-color text-secondary-color font-bold border-primary-color' : 'bg-secondary-color-light hover:bg-secondary-color-hover hover:border-secondary-color-hover'}`}>{companyType.title}</button>
+            ))}
         </div>
     </div>
   )
