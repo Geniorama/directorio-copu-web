@@ -4,10 +4,14 @@ import { Navigation } from "swiper/modules";
 import ArrowLeft from "../../../../public/img/arr-left.svg";
 import ArrowRight from "../../../../public/img/arr-right.svg";
 import LogoExample from "../../../../public/img/logo-media-monks.png";
-7;
+import type { Company } from "@/app/types";
 import "swiper/css";
 
-export default function CarouselBasic() {
+type CarouselBasicProps = {
+  slides: Company[]
+}
+
+export default function CarouselBasic({slides}:CarouselBasicProps) {
   return (
     <div className="relative">
       <Swiper
@@ -24,9 +28,9 @@ export default function CarouselBasic() {
           }
         }}
         >
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((company, i) => (
+        {slides.map((company, i) => (
           <SwiperSlide key={i}>
-            <CardCompanyBasic cover={LogoExample.src} />
+            <CardCompanyBasic slug={`/empresas/${company.slug}`} hoverBgColor={company.background} cover={company.logoLight} />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -22,8 +22,7 @@ export default function CardCompanyPremium({
   const [openModal, setOpenModal] = useState(false);
 
   const handleToggleModal = () => setOpenModal(!openModal);
-
-  const firstSectorName = sectors && sectors[1].name
+  const firstSectorName = sectors && sectors.length >= 1 && sectors[0].name
   return (
     <>
       {/* Modal Reel */}
@@ -96,7 +95,7 @@ export default function CardCompanyPremium({
               {firstSectorName}
             </h5>
             <p className="text-sm">
-              {tags?.map((tag) => tag.title).join(", ")}
+              {tags?.map((tag) => tag.name).join(", ")}
             </p>
           </div>
 

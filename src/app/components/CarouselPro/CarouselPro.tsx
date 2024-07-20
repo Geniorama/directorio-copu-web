@@ -5,10 +5,15 @@ import { Navigation } from "swiper/modules";
 import ArrowLeft from "../../../../public/img/arr-left.svg";
 import ArrowRight from "../../../../public/img/arr-right.svg";
 import { CardCompanyOuterInfo } from "../CardCompanyOuterInfo";
+import type { Company } from "@/app/types";
 
 import "swiper/css";
 
-export default function CarouselPro() {
+interface CarouselProProps {
+  slides?: Company[];
+}
+
+export default function CarouselPro({slides}: CarouselProProps) {
   return (
     <div className="relative">
       <Swiper
@@ -28,38 +33,30 @@ export default function CarouselPro() {
           }
         }}
       >
-        {[1, 2, 3, 4, 5].map((item, i) => (
+        {slides && slides.map((item, i) => (
           <SwiperSlide key={i}>
             <>
               <div className=" hidden lg:block">
                 <CardCompanyPro
                   id={i}
-                  name="Geniorama"
-                  sectors={[
-                    { id: "1", name: "Web Development", slug: "/web-development" },
-                    { id: "2", name: "Software", slug: "/software" }
-                  ]}
-                  cover={ExampleImage.src}
-                  slug="/empresas/geniorama"
-                  countries={[{ id: "co", name: "Colombia", code: "CO" }]}
-                  tags={[{ id: "agency", title: "Agency", slug: "/agency" }]}
-                  plan={{ id: "pro", name: "Pro", price: 900 }}
+                  name={item.name}
+                  sectors={item.sectors}
+                  cover={item.cover}
+                  slug={item.slug}
+                  tags={item.tags}
+                  plan={item.plan}
                 />
               </div>
 
               <div className=" lg:hidden">
                 <CardCompanyOuterInfo
                   id={i}
-                  name="Geniorama"
-                  sectors={[
-                    { id: "1", name: "Web Development", slug: "/web-development" },
-                    { id: "2", name: "Software", slug: "/software" }
-                  ]}
-                  cover={ExampleImage.src}
-                  slug="/empresas/geniorama"
-                  countries={[{ id: "co", name: "Colombia", code: "CO" }]}
-                  tags={[{ id: "agency", title: "Agency", slug: "/agency" }]}
-                  plan={{ id: "pro", name: "Pro", price: 900 }}
+                  name={item.name}
+                  sectors={item.sectors}
+                  cover={item.cover}
+                  slug={item.slug}
+                  tags={item.tags}
+                  plan={item.plan}
                 />
               </div>
             </>

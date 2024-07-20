@@ -15,9 +15,9 @@ export default function RootLayout({
   
   return (
     <html lang="en">
-      <body>
+      <body className=" lg:overflow-hidden">
         <SimpleLayout>
-          {children}
+            {children}
         </SimpleLayout>
       </body>
     </html>

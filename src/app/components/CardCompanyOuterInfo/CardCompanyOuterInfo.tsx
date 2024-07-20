@@ -13,7 +13,7 @@ export default function CardCompanyOuterInfo({name, sectors, slug, tags, cover}:
                 <h2 className="font-bold text-2xl leading-5">{name}</h2>
                 <p className="text-sm" >{sectors?.map((item) => item.name).join(', ')}</p>
                 <p className="text-xs">
-                    {tags?.map((item) => item.title).join(', ')}
+                    {tags?.map((item) => item.name).join(', ')}
                 </p>
             </div>
 
@@ -22,7 +22,7 @@ export default function CardCompanyOuterInfo({name, sectors, slug, tags, cover}:
                     Ir al perfil
                 </Button>
 
-                <Button color="secondary" href={slug}>
+                <Button color="secondary" href={`/empresas/${slug}`}>
                     Reproducir Reel
                 </Button>
             </div>

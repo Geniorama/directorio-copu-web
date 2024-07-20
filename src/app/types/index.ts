@@ -6,12 +6,12 @@ export type Country = {
 
 export type Tag = {
     id: string,
-    title: string,
+    name: string,
     slug: string,
 }
 
 export type Plan = {
-    id: string,
+    id_plan: string,
     name: string,
     price?: number,
     sufixPrice?: string,
@@ -36,7 +36,6 @@ export type Company = {
     tags?: Tag[],
     plan?: Plan,
     sectors?: Sector[],
-    primaryColor?: string,
-    secondaryColor?: string,
+    background?: string,
     reel?: string,
 }

@@ -13,15 +13,13 @@ type SidebarProps = {
   handleSidebar?: () => void
 }
 
-
-
 export default function Sidebar({handleSidebar}:SidebarProps) {
   const isMobile = useIsMobile()
   
   return (
     <div className='bg-secondary-color-light p-3 h-full'>
         <div className='flex gap-2 justify-between'>
-            <button className='flex items-center gap-2'>
+            <button className='flex items-center text-2xl gap-2'>
                 <img src={IconFilter.src} alt="" />
                 <span>Filtrar</span>
             </button>

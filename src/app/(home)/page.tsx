@@ -1,24 +1,28 @@
+import { getClient } from "../lib/apollo-client";
 import { HomePage } from "../views/HomePage";
+import { gql } from "@apollo/client";
+import { GetCompaniesBasic, GetCompaniesPremium, GetCompaniesPro } from "../api/queries";
 
-async function fetchCompanies(){
-  const response = await fetch('http://localhost:1337/api/companies',{
-    cache: "no-store"
-  })
-  const data = await response.json();
+async function loadData(){
+  const basic = await getClient().query(GetCompaniesBasic);
+  const pro = await getClient().query(GetCompaniesPro)
+  const premium = await getClient().query(GetCompaniesPremium);
 
-  return data
+  return {
+    companiesBasic: basic.data.companies.data,
+    companiesPro: pro.data.companies.data,
+    companiesPremium: premium.data.companies.data
+  }
 }
 
-
-
 export default async function Home() {
-  const data = await fetchCompanies()
-  console.log(data)
-  return (
+  const {companiesBasic, companiesPro, companiesPremium} = await loadData()
+  
+  return(
     <HomePage 
-      companies={data.data}
+      companiesPro={companiesPro} 
+      companiesBasic={companiesBasic}
+      companiesPremium={companiesPremium} 
     />
   )
 }
-
-
