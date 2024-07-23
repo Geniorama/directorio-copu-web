@@ -19,6 +19,7 @@ import {
   setInitialCountries,
   removeCountry
 } from "@/lib/features/searchSlice";
+import { transformDataCompanies, transformDataSectors, transformDataCountries } from "@/app/utils/formatters";
 
 interface HomePageProps {
   companiesBasic: Company[];
@@ -54,53 +55,7 @@ export default function HomePage({
 
   const dispatch = useAppDispatch();
 
-  const transformData = (data: any[]): Company[] => {
-    const dataFormat = data.map((item) => ({
-      id: item.id,
-      name: item.attributes.name,
-      slug: item.attributes.slug,
-      plan: item.attributes.plan.data.attributes,
-      background: item.attributes.background,
-      reel: item.attributes.youtubeReelId,
-      logoLight:
-        "http://localhost:1337" +
-        item.attributes.logoLight?.data.attributes.url,
-      cover:
-        "http://localhost:1337" + item.attributes.cover?.data.attributes.url,
-      sectors: item.attributes.categories.data.map((cat: any) => ({
-        name: cat.attributes.name,
-        slug: cat.attributes.slug,
-      })),
-      tags: item.attributes.tags.data.map((tag: any) => ({
-        name: tag.attributes.name,
-        slug: tag.attributes.slug,
-      })),
-      countries: item.attributes.countries.data.map((country: any) => ({
-        name: country.attributes.name,
-        slug: country.attributes.slug,
-      })),
-    }));
-
-    return dataFormat;
-  };
-
-  const transformDataSectors = (data: any[]): Sector[] => {
-    const dataFormat = data.map((sector) => ({
-      id: sector.attributes.slug,
-      name: sector.attributes.name,
-      slug: sector.attributes.slug,
-    }));
-
-    return dataFormat;
-  };
-
-  const transformDataCountries = (data: any[]): Country[] => {
-    return data.map((country) => ({
-      id: country.attributes.slug,
-      name: country.attributes.name,
-      slug: country.attributes.slug, // Asegúrate de que cada país tenga un slug
-    }));
-  };
+  
 
   const handleToggleModal = () => setOpenModal(!openModal);
   const handleOpenModal = (reel: string, url: string) => {
@@ -112,9 +67,9 @@ export default function HomePage({
   };
 
   useEffect(() => {
-    setPremiumCompanies(transformData(companiesPremium));
-    setProCompanies(transformData(companiesPro));
-    setBasicCompanies(transformData(companiesBasic));
+    setPremiumCompanies(transformDataCompanies(companiesPremium));
+    setProCompanies(transformDataCompanies(companiesPro));
+    setBasicCompanies(transformDataCompanies(companiesBasic));
   }, [companiesBasic, companiesPremium, companiesPro]);
 
   useEffect(() => {
@@ -126,6 +81,7 @@ export default function HomePage({
     if (!companies) return [];
 
     return companies.filter((company) => {
+      // Filter by words in search 
       const matchesSearchValue =
         company.name.toLowerCase().includes(searchValue.toLowerCase()) ||
         company.sectors?.some((sector) =>
@@ -135,6 +91,7 @@ export default function HomePage({
           tag.name.toLowerCase().includes(searchValue.toLowerCase())
         );
 
+      // Filters by sector
       const matchesSectorsFilter =
         selectedSectors.length === 0 ||
         company.sectors?.some((sector) =>
@@ -142,7 +99,8 @@ export default function HomePage({
             (filterSector) => filterSector.slug === sector.slug
           )
         );
-
+      
+      // Filter by country
       const matchesCountryFilter =
         !selectedCountry ||
         company.countries?.some(

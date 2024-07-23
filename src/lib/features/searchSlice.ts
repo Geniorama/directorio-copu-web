@@ -33,6 +33,10 @@ export const searchSlice = createSlice({
       state.value = action.payload;
     },
 
+    resetSearch: (state) => {
+      state.value = ""
+    },
+
     filterSector: (state, action: PayloadAction<Sector>) => {
       if (state.selectedSectors.some(sector => sector.slug === action.payload.slug)) {
         state.selectedSectors = state.selectedSectors.filter(sector => sector.slug !== action.payload.slug);
@@ -77,5 +81,5 @@ export const searchSlice = createSlice({
 });
 
 
-export const {filterSearch, filterSector, filterCountry, removeSector, setInitialSectors, resetSectors, setInitialCountries, setCountry, removeCountry} = searchSlice.actions
+export const {filterSearch, filterSector, filterCountry, removeSector, setInitialSectors, resetSectors, setInitialCountries, setCountry, removeCountry, resetSearch} = searchSlice.actions
 export default searchSlice.reducer
