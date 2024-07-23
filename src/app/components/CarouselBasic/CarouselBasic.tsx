@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import ArrowLeft from "../../../../public/img/arr-left.svg";
 import ArrowRight from "../../../../public/img/arr-right.svg";
-import LogoExample from "../../../../public/img/logo-media-monks.png";
 import type { Company } from "@/app/types";
 import "swiper/css";
 

@@ -29,10 +29,11 @@ export default function CardPlan({color, name, description, sufixPrice, features
           ¿Que podrá mostrar tu empresa con este plan?
         </p>
         <ul className=" list-disc pl-5 leading-5">
-          {features?.map((feature, i) => (
-            <li key={i}>{feature}</li>
+          {features && features.split('-').map((item:string, i:number) => (
+            <li className=" first:hidden" key={i}>{item}</li>
           ))}
         </ul>
+
       </div>
     </div>
   );

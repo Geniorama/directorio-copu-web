@@ -7,6 +7,16 @@ export const sectors:Sector[] = [
         slug: "agencias-de-publicidad"
        },
        {
+        id: "11111",
+        name: "Marketing digital",
+        slug: "marketing-digital"
+       },
+       {
+        id: "22212222",
+        name: "Branding",
+        slug: "branding"
+       },
+       {
         id: "2",
         name: "Agencias BTL",
         slug: "agencias-btl"

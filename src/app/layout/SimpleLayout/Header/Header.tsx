@@ -10,7 +10,8 @@ import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { Sidebar } from "../Sidebar";
 import CloseIcon from "../../../../../public/img/btn-close.svg";
-import IconFilter from "../../../../../public/img/tune.svg";
+import IconFilterBlack from "../../../../../public/img/tune-black.svg";
+import { menuHeader } from "@/app/data/menu";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -110,17 +111,13 @@ export default function Header() {
       {openMenu && !openSidebar && (
         <div className="h-screen mt-5">
           <ul className="text-[#D7D7D7] font-light text-lg">
-            <li className="border-t border-t-[#696969] py-6 px-4">
-              <Link href={"/que-es"}>Qué es el directorio</Link>
-            </li>
-            <li className="border-t border-t-[#696969] py-6 px-4">
-              <Link href={"/que-es"}>Planes</Link>
-            </li>
-            <li className="border-t border-t-[#696969] py-6 px-4">
-              <Link href={"/que-es"}>Contacto</Link>
-            </li>
+            {menuHeader.map((menuItem, i)=>(
+              <li key={i} className="border-t border-t-[#696969] py-6 px-4">
+                <Link href={menuItem.slug}>{menuItem.title}</Link>
+              </li>
+            ))}
             <li className="border-y border-y-[#696969] py-6 px-4">
-              <Link href={"/que-es"}>Web Copu</Link>
+              <Link target="_blank" href={"http://copu.media/"}>Web Copu</Link>
             </li>
           </ul>
         </div>
@@ -132,7 +129,7 @@ export default function Header() {
             onClick={handleSidebar}
             className=" bg-primary-color w-[50px]  h-[50px] rounded-full flex justify-center items-center"
           >
-            <img src={IconFilter.src} alt="" />
+            <img src={IconFilterBlack.src} alt="" />
           </button>
         </div>
       )}

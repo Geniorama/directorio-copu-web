@@ -3,20 +3,27 @@
 import { useState, useEffect, useRef } from "react";
 import React from "react";
 import ArrowUpWhite from '../../../../public/img/arrow_drop_down.svg'
+import type { Country } from "@/app/types";
 
 interface SelectProps {
-  options: { code: string; name: string }[];
+  options: Country[];
+  selectedCountry: Country | null;
+  onSelect: (country: Country) => void;
 }
 
-export default function Select(props: SelectProps) {
+export default function Select({ options, selectedCountry, onSelect }: SelectProps) {
   const [value, setValue] = useState("");
   const [openList, setOpenList] = useState(false);
-  const [filteredOptions, setFilteredOptions] = useState(props.options);
+  const [filteredOptions, setFilteredOptions] = useState(options);
   const selectRef = useRef<HTMLDivElement>(null);
 
   function handleClick(e: React.MouseEvent<HTMLLIElement>) {
     const text = e.currentTarget.innerText;
-    setValue(text);
+    const selectedCountry = options.find(option => option.name === text)
+    if (selectedCountry) {
+      setValue(text);
+      onSelect(selectedCountry);
+    }
     setOpenList(false);
   }
 
@@ -28,18 +35,18 @@ export default function Select(props: SelectProps) {
     const text = e.target.value;
     setValue(text);
 
-    const filtered = props.options.filter((option) =>
+    const filtered = options.filter((option) =>
       option.name.toLowerCase().includes(text.toLowerCase())
     );
     setFilteredOptions(filtered);
   }
 
   function isValidCountry(name: string) {
-    return props.options.some((option) => option.name === name);
+    return options.some((option) => option.name === name);
   }
 
   useEffect(() => {
-    setFilteredOptions(props.options);
+    setFilteredOptions(options);
 
     // Click outside
     function handleClickOutside(event: MouseEvent) {
@@ -55,7 +62,12 @@ export default function Select(props: SelectProps) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [props.options, selectRef]);
+  }, [options, selectRef]);
+
+  // Sync input value with selectedCountry prop
+  useEffect(() => {
+    setValue(selectedCountry ? selectedCountry.name : "");
+  }, [selectedCountry]);
 
   return (
     <div className="text-xs relative" ref={selectRef}>
@@ -81,7 +93,7 @@ export default function Select(props: SelectProps) {
         <ul className="bg-[#080809] max-h-[200px] overflow-y-scroll custom-scroll mt-1 absolute w-full">
           {filteredOptions.map((option) => (
             <li
-              key={option.code}
+              key={option.slug}
               onClick={(e) => handleClick(e)}
               className="p-3 hover:bg-secondary-color border-b border-[#2D2D2D] cursor-pointer option"
             >

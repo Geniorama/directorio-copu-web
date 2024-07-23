@@ -1,16 +1,17 @@
-"use client"
-
 import { PlansPage } from "@/app/views/PlansPage"
+import { getClient } from "@/lib/apollo-client"
+import { GetPlans } from "@/app/api/queries"
 
-export default function Plans() {
-  
-  function handlePlan(route:string){
-    window.open(route)
-  }
+async function loadData() {
+  const {data} = await getClient().query(GetPlans)
+  return data.plans.data
+}
 
+export default async function Plans() {
+  const plans = await loadData()
   return (
     <PlansPage
-      handlePlan={handlePlan}
+      data={plans}
     />
   )
 }

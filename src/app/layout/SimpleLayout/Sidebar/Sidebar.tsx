@@ -7,7 +7,7 @@ import WidgetSectores from './WidgetSectores'
 import WidgetUbicacion from './WidgetUbicacion'
 import WidgetTipoEmpresa from './WidgetTipoEmpresa'
 import CloseIcon from '../../../../../public/img/btn-close.svg'
-import useIsMobile from '@/app/hooks/useIsMobile'
+import useIsMobile from '@/lib/hooks/useIsMobile'
 
 type SidebarProps = {
   handleSidebar?: () => void

@@ -14,7 +14,7 @@ export default function Button({children, href, icon, target, color, onClick}:Bu
    const colors = color === 'secondary' ? 'bg-white hover:bg-[#848484]' : 'bg-primary-color hover:bg-primary-color-hover'
 
   return (
-    <Link onClick={onClick} target={target} className={`justify-center ${colors} whitespace-nowrap px-3 py-1 rounded-full text-text-dark font-bold flex gap-1 items-center transition`} href={href ? href : '#'}>
+    <Link onClick={onClick} target={target} className={`justify-center ${colors} text-center whitespace-nowrap px-4 py-1 rounded-full text-text-dark font-bold flex gap-1 items-center transition`} href={href ? href : '#'}>
         {icon && (
             <span>
                 {icon}

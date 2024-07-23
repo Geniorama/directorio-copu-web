@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 export const GetCompaniesBasic = {
   query: gql`
     query GetCompaniesBasic {
-      companies(filters: { plan: { id_plan: { eq: "basic" } } }) {
+      companies(filters: { plan: { slug: { eq: "basico" } } }) {
         data {
           id
           attributes {
@@ -14,7 +14,15 @@ export const GetCompaniesBasic = {
               data {
                 attributes {
                   title
-                  id_plan
+                  slug
+                }
+              }
+            }
+            countries {
+              data {
+                attributes {
+                  name
+                  slug
                 }
               }
             }
@@ -51,7 +59,7 @@ export const GetCompaniesBasic = {
 export const GetCompaniesPro = {
   query: gql`
     query GetCompaniesPro {
-      companies(filters: { plan: { id_plan: { eq: "pro" } } }) {
+      companies(filters: { plan: { slug: { eq: "pro" } } }) {
         data {
           id
           attributes {
@@ -61,7 +69,15 @@ export const GetCompaniesPro = {
               data {
                 attributes {
                   title
-                  id_plan
+                  slug
+                }
+              }
+            }
+            countries {
+              data {
+                attributes {
+                  name
+                  slug
                 }
               }
             }
@@ -98,17 +114,26 @@ export const GetCompaniesPro = {
 export const GetCompaniesPremium = {
   query: gql`
     query GetCompaniesPremium {
-      companies(filters: { plan: { id_plan: { eq: "premium" } } }) {
+      companies(filters: { plan: { slug: { eq: "premium" } } }) {
         data {
           id
           attributes {
             name
             slug
+            youtubeReelId
             plan {
               data {
                 attributes {
                   title
-                  id_plan
+                  slug
+                }
+              }
+            }
+            countries {
+              data {
+                attributes {
+                  name
+                  slug
                 }
               }
             }
@@ -135,6 +160,55 @@ export const GetCompaniesPremium = {
                 }
               }
             }
+          }
+        }
+      }
+    }
+  `,
+};
+
+export const GetPlans = {
+  query: gql`
+    query GetPlans {
+      plans {
+        data {
+          attributes {
+            title
+            slug
+            description
+            features
+            price
+            link
+          }
+        }
+      }
+    }
+  `,
+};
+
+export const GetCountries = {
+  query: gql`
+    query GetCountries {
+      countries {
+        data {
+          attributes {
+            name
+            slug
+          }
+        }
+      }
+    }
+  `,
+};
+
+export const GetSectors = {
+  query: gql`
+    query GetSectors {
+      categories {
+        data {
+          attributes {
+            name
+            slug
           }
         }
       }

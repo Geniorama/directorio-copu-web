@@ -1,6 +1,6 @@
 export type Country = {
     id: string | number,
-    code: string,
+    slug: string,
     name: string,
 }
 
@@ -11,12 +11,14 @@ export type Tag = {
 }
 
 export type Plan = {
-    id_plan: string,
+    id: string | number,
+    slug: string,
     name: string,
     price?: number,
+    link?: string,
     sufixPrice?: string,
     description?: string,
-    features?: string[]
+    features?: string
 }
 
 export type Sector = {

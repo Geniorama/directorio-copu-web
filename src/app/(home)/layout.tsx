@@ -1,6 +1,8 @@
+
 import type { Metadata } from "next";
 import "../globals.css";
 import { SimpleLayout } from "../layout/SimpleLayout";
+import StoreProvider from "../StoreProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className=" lg:overflow-hidden">
-        <SimpleLayout>
-            {children}
-        </SimpleLayout>
+        <StoreProvider>
+          <SimpleLayout>
+              {children}
+          </SimpleLayout>
+        </StoreProvider>
       </body>
     </html>
   );

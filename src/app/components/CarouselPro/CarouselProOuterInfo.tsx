@@ -1,18 +1,19 @@
-import { CardCompanyPro } from "../CardCompanyPro";
 import { Swiper, SwiperSlide } from "swiper/react";
-import ExampleImage from "../../../../public/img/cover-card-related_enjoy.png";
 import { Navigation } from "swiper/modules";
 import ArrowLeft from "../../../../public/img/arr-left.svg";
 import ArrowRight from "../../../../public/img/arr-right.svg";
+import { CardCompanyOuterInfo } from "../CardCompanyOuterInfo";
 import type { Company } from "@/app/types";
 
 import "swiper/css";
 
-interface CarouselProProps {
+interface CarouselProOuterInfoProps {
   slides?: Company[];
 }
 
-export default function CarouselPro({ slides }: CarouselProProps) {
+export default function CarouselProOuterInfo({
+  slides,
+}: CarouselProOuterInfoProps) {
   return (
     <div className="relative">
       <Swiper
@@ -35,7 +36,7 @@ export default function CarouselPro({ slides }: CarouselProProps) {
         {slides &&
           slides.map((item, i) => (
             <SwiperSlide key={i}>
-              <CardCompanyPro
+              <CardCompanyOuterInfo
                 id={i}
                 name={item.name}
                 sectors={item.sectors}

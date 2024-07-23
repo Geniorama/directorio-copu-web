@@ -7,9 +7,10 @@ import "swiper/css/effect-coverflow";
 
 interface CarouselPremiumProps {
   slides?: Company[];
+  handleOpen: (reel: string, url: string) => void
 }
 
-export default function CarouselPremium({ slides }: CarouselPremiumProps) {
+export default function CarouselPremium({ slides, handleOpen }: CarouselPremiumProps) {
   return (
     <div className="w-full relative max-w-full">
       <Swiper
@@ -42,6 +43,8 @@ export default function CarouselPremium({ slides }: CarouselPremiumProps) {
               cover={company.cover}
               tags={company.tags}
               sectors={company.sectors}
+              reel={company.reel}
+              handleOpen={handleOpen}
             />
           </SwiperSlide>
         ))}
