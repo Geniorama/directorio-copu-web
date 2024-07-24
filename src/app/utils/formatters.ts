@@ -39,6 +39,52 @@ export const transformDataCompanies = (data: any[]): Company[] => {
   return dataFormat;
 };
 
+export const transformDataCompany = (item: any): Company => {
+  const base_media_url = "http://localhost:1337"
+
+  const dataFormat = {
+    id: item?.attributes?.slug || '',
+    name: item?.attributes?.name || '',
+    slug: item?.attributes?.slug || '',
+    slogan: item?.attributes.slogan,
+    description: item?.attributes.description,
+    plan: item?.attributes?.plan?.data?.attributes || null,
+    background: item?.attributes?.background || '',
+    reel: item?.attributes?.youtubeReelId || '',
+    socialMedia: item.attributes.socialMedia,
+    webSite: item.attributes.webSite,
+    emails: item.attributes.emails,
+    phones: item.attributes.phones,
+    nit: item.attributes.nit,
+    clients: item?.attributes?.clients?.data?.map((client: any) => ({
+      name: client.attributes.alternativeText,
+      url: base_media_url + client.attributes.url
+    })),
+    work: item?.attributes?.work?.data?.map((item: any) => ({
+      name: item.attributes.alternativeText,
+      url: base_media_url + item.attributes.url
+    })),
+    logoLight: item?.attributes?.logoLight?.data?.attributes?.url ? base_media_url + item.attributes.logoLight.data.attributes.url : '',
+    logoDark: item?.attributes?.logoDark?.data?.attributes?.url ? base_media_url + item.attributes.logoDark.data.attributes.url : '',
+    cover: item?.attributes?.cover ? base_media_url + item.attributes.cover?.data?.attributes?.url : '',
+    sectors: item?.attributes?.categories?.data?.map((cat: any) => ({
+      name: cat?.attributes?.name || '',
+      slug: cat?.attributes?.slug || '',
+    })) || [],
+    tags: item?.attributes?.tags?.data?.map((tag: any) => ({
+      name: tag?.attributes?.name || '',
+      slug: tag?.attributes?.slug || '',
+    })) || [],
+    countries: item?.attributes?.countries?.data?.map((country: any) => ({
+      name: country?.attributes?.name || '',
+      slug: country?.attributes?.slug || '',
+    })) || [],
+  }
+
+  return dataFormat;
+};
+
+
 export const transformDataSectors = (data: any[]): Sector[] => {
   const dataFormat = data.map((sector) => ({
     id: sector.attributes.slug,

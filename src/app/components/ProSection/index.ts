@@ -1,0 +1,7 @@
+export { default as DescriptionCompany } from './DescriptionCompany/DescriptionCompany'
+export { default as ReelCompany } from './ReelCompany/ReelCompany'
+export { default as CarouselClientsCompany } from './CarouselClientsCompany/CarouselClientsCompany'
+export { default as WorkCompany } from './WorkCompany/WorkCompany'
+export { default as SocialMediaCompany } from './SocialMediaCompany/SocialMediaCompany'
+export { default as SpecialitiesCompany} from './SpecialitiesCompany/SpecialitiesCompany'
+export { default as ContactInfoCompany } from './ContactInfoCompany/ContactInfoCompany'
