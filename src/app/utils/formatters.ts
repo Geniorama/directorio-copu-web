@@ -1,5 +1,7 @@
 import type { Company, Sector, Country } from "../types";
 
+const base_media_url = process.env.NEXT_PUBLIC_MEDIA_URL
+
 export function limitText(text?: string, limit?: number) {
   if (text && limit && text.length > limit) {
     return text.substring(0, limit) + "...";
@@ -10,7 +12,7 @@ export function limitText(text?: string, limit?: number) {
 
 
 export const transformDataCompanies = (data: any[]): Company[] => {
-  const base_media_url = "http://localhost:1337"
+ 
 
 
   const dataFormat = data.map((item) => ({
@@ -40,7 +42,6 @@ export const transformDataCompanies = (data: any[]): Company[] => {
 };
 
 export const transformDataCompany = (item: any): Company => {
-  const base_media_url = "http://localhost:1337"
 
   const dataFormat = {
     id: item?.attributes?.slug || '',
