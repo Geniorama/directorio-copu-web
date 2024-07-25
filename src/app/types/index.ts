@@ -49,4 +49,10 @@ export type Company = {
     webSite?: string,
     emails?: [{email?: string}],
     phones?: [{phoneNumber?: string, link?: string}]
+    type?: Type
+}
+
+export type Type = {
+    title?: string,
+    slug?: string
 }

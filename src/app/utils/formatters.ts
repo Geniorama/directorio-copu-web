@@ -1,4 +1,4 @@
-import type { Company, Sector, Country } from "../types";
+import type { Company, Sector, Country, Type } from "../types";
 
 const base_media_url = process.env.NEXT_PUBLIC_MEDIA_URL
 
@@ -36,6 +36,10 @@ export const transformDataCompanies = (data: any[]): Company[] => {
       name: country.attributes.name,
       slug: country.attributes.slug,
     })),
+    type: {
+      title: item.attributes.type.data?.attributes.title,
+      slug: item.attributes.type.data?.attributes.slug
+    }
   }));
 
   return dataFormat;
@@ -102,4 +106,12 @@ export const transformDataCountries = (data: any[]): Country[] => {
     name: country.attributes.name,
     slug: country.attributes.slug,
   }));
+};
+
+export const transformDataTypes = (data: any[]): Type[] => {
+  return data.map((type) => ({
+    title: type.attributes.title,
+    slug: type.attributes.slug,
+  }));
+
 };

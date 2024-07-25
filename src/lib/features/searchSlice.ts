@@ -1,28 +1,28 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { Sector, Country } from "@/app/types";
-
+import type { Sector, Country, Type } from "@/app/types";
 
 interface SearchState {
   value: string;
   selectedSectors: Sector[];
   allSectors: Sector[];
-  types: any[];
+  allTypes: Type[];
+  selectedTypes: Type[];
   selectedCountries: Country[];
   selectedCountry: Country | null;
   allCountries: Country[];
   results: number;
 }
 
-
-const initialState:SearchState = {
+const initialState: SearchState = {
   value: "",
   selectedSectors: [],
   allSectors: [],
-  types: [],
+  allTypes: [],
+  selectedTypes: [],
   selectedCountries: [],
   selectedCountry: null,
   allCountries: [],
-  results: 0
+  results: 0,
 };
 
 export const searchSlice = createSlice({
@@ -34,19 +34,27 @@ export const searchSlice = createSlice({
     },
 
     resetSearch: (state) => {
-      state.value = ""
+      state.value = "";
     },
 
     filterSector: (state, action: PayloadAction<Sector>) => {
-      if (state.selectedSectors.some(sector => sector.slug === action.payload.slug)) {
-        state.selectedSectors = state.selectedSectors.filter(sector => sector.slug !== action.payload.slug);
+      if (
+        state.selectedSectors.some(
+          (sector) => sector.slug === action.payload.slug
+        )
+      ) {
+        state.selectedSectors = state.selectedSectors.filter(
+          (sector) => sector.slug !== action.payload.slug
+        );
       } else {
         state.selectedSectors.push(action.payload);
       }
     },
 
     removeSector: (state, action: PayloadAction<Sector>) => {
-      state.selectedSectors = state.selectedSectors.filter(sector => sector.slug !== action.payload.slug);
+      state.selectedSectors = state.selectedSectors.filter(
+        (sector) => sector.slug !== action.payload.slug
+      );
     },
 
     setInitialSectors: (state, action: PayloadAction<Sector[]>) => {
@@ -58,8 +66,14 @@ export const searchSlice = createSlice({
     },
 
     filterCountry: (state, action: PayloadAction<Country>) => {
-      if (state.selectedCountries.some(country => country.slug === action.payload.slug)) {
-          state.selectedCountries = state.selectedCountries.filter(country => country.slug !== action.payload.slug);
+      if (
+        state.selectedCountries.some(
+          (country) => country.slug === action.payload.slug
+        )
+      ) {
+        state.selectedCountries = state.selectedCountries.filter(
+          (country) => country.slug !== action.payload.slug
+        );
       } else {
         state.selectedCountries.push(action.payload);
       }
@@ -77,9 +91,45 @@ export const searchSlice = createSlice({
       state.selectedCountry = null;
     },
 
+    setInitialTypes: (state, action: PayloadAction<Type[]>) => {
+      state.allTypes = action.payload;
+    },
+
+    filterType: (state, action: PayloadAction<Type>) => {
+      if (
+        state.selectedTypes.some(
+          (type) => type.slug === action.payload.slug
+        )
+      ) {
+        state.selectedTypes = state.selectedTypes.filter(
+          (type) => type.slug !== action.payload.slug
+        );
+      } else {
+        state.selectedTypes.push(action.payload);
+      }
+    },
+
+    removeType: (state, action: PayloadAction<Type>) => {
+      state.selectedTypes = state.selectedTypes.filter(
+        (type) => type.slug !== action.payload.slug
+      );
+    },
   },
 });
 
-
-export const {filterSearch, filterSector, filterCountry, removeSector, setInitialSectors, resetSectors, setInitialCountries, setCountry, removeCountry, resetSearch} = searchSlice.actions
-export default searchSlice.reducer
+export const {
+  filterSearch,
+  filterSector,
+  filterCountry,
+  filterType,
+  removeType,
+  removeSector,
+  setInitialSectors,
+  resetSectors,
+  setInitialCountries,
+  setCountry,
+  removeCountry,
+  resetSearch,
+  setInitialTypes
+} = searchSlice.actions;
+export default searchSlice.reducer;

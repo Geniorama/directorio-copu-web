@@ -9,7 +9,7 @@ import { CarouselPremium } from "@/app/components/CarouselPremium";
 import { GridCompanyBasic } from "@/app/components/GridCompanyBasic";
 import { CarouselProOuterInfo } from "@/app/components/CarouselPro";
 import { ModalReel } from "@/app/components/ModalReel";
-import type { Company, Sector, Country } from "@/app/types";
+import type { Company, Sector, Country, Type } from "@/app/types";
 import { useState, useEffect } from "react";
 import { Tag } from "@/app/utils/Tag";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks/hooks";
@@ -17,9 +17,16 @@ import {
   removeSector,
   setInitialSectors,
   setInitialCountries,
-  removeCountry
+  removeCountry,
+  setInitialTypes,
+  removeType,
 } from "@/lib/features/searchSlice";
-import { transformDataCompanies, transformDataSectors, transformDataCountries } from "@/app/utils/formatters";
+import {
+  transformDataCompanies,
+  transformDataSectors,
+  transformDataCountries,
+  transformDataTypes,
+} from "@/app/utils/formatters";
 
 interface HomePageProps {
   companiesBasic: Company[];
@@ -27,6 +34,7 @@ interface HomePageProps {
   companiesPremium: Company[];
   sectors: Sector[];
   countries: Country[];
+  types: Type[];
 }
 
 export default function HomePage({
@@ -35,6 +43,7 @@ export default function HomePage({
   companiesPremium,
   sectors,
   countries,
+  types,
 }: HomePageProps) {
   const [premiumCompanies, setPremiumCompanies] = useState<Company[]>();
   const [proCompanies, setProCompanies] = useState<Company[]>();
@@ -46,16 +55,12 @@ export default function HomePage({
   });
 
   const searchValue = useAppSelector((state) => state.searchReducer.value);
-  const selectedSectors = useAppSelector(
-    (state) => state.searchReducer.selectedSectors
-  );
-  const selectedCountry = useAppSelector(
-    (state) => state.searchReducer.selectedCountry
-  );
+  const selectedSectors = useAppSelector((state) => state.searchReducer.selectedSectors);
+  const selectedCountry = useAppSelector((state) => state.searchReducer.selectedCountry);
+  const selectedTypes = useAppSelector(state => state.searchReducer.selectedTypes);
+  
 
   const dispatch = useAppDispatch();
-
-  
 
   const handleToggleModal = () => setOpenModal(!openModal);
   const handleOpenModal = (reel: string, url: string) => {
@@ -75,13 +80,14 @@ export default function HomePage({
   useEffect(() => {
     dispatch(setInitialSectors(transformDataSectors(sectors)));
     dispatch(setInitialCountries(transformDataCountries(countries)));
-  }, [dispatch, sectors, countries]);
+    dispatch(setInitialTypes(transformDataTypes(types)));
+  }, [dispatch, sectors, countries, types]);
 
   const filterCompanies = (companies?: Company[]) => {
     if (!companies) return [];
 
     return companies.filter((company) => {
-      // Filter by words in search 
+      // Filter by words in search
       const matchesSearchValue =
         company.name.toLowerCase().includes(searchValue.toLowerCase()) ||
         company.sectors?.some((sector) =>
@@ -99,7 +105,14 @@ export default function HomePage({
             (filterSector) => filterSector.slug === sector.slug
           )
         );
-      
+
+      // Filter by types
+      const matchesTypesFilter =
+        selectedTypes.length === 0 ||
+        selectedTypes.some(
+          (filterType) => filterType.slug === company.type?.slug
+        );
+
       // Filter by country
       const matchesCountryFilter =
         !selectedCountry ||
@@ -107,7 +120,7 @@ export default function HomePage({
           (country) => country.slug === selectedCountry.slug
         );
 
-      return matchesSearchValue && matchesSectorsFilter && matchesCountryFilter;
+      return matchesSearchValue && matchesSectorsFilter && matchesCountryFilter && matchesTypesFilter;
     });
   };
 
@@ -143,12 +156,21 @@ export default function HomePage({
           ))}
 
         {selectedCountry && (
-          <Tag 
-            text={selectedCountry.name} 
-            filter="location" 
-            handleClose={() => dispatch(removeCountry())}  
+          <Tag
+            text={selectedCountry.name}
+            filter="location"
+            handleClose={() => dispatch(removeCountry())}
           />
         )}
+
+        {selectedTypes && selectedTypes.length > 0 && selectedTypes.map(type => (
+          <Tag
+            key={type.slug}
+            text={type.title}
+            filter="type"
+            handleClose={() => dispatch(removeType(type))}
+          />
+        ))}
       </div>
 
       {/**

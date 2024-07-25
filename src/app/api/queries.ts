@@ -49,6 +49,14 @@ export const GetCompaniesBasic = {
                 }
               }
             }
+            type {
+              data {
+                attributes {
+                  title
+                  slug
+                }
+              }
+            }
           }
         }
       }
@@ -100,6 +108,14 @@ export const GetCompaniesPro = {
               data {
                 attributes {
                   name
+                  slug
+                }
+              }
+            }
+            type {
+              data {
+                attributes {
+                  title
                   slug
                 }
               }
@@ -160,6 +176,14 @@ export const GetCompaniesPremium = {
                 }
               }
             }
+            type {
+              data {
+                attributes {
+                  title
+                  slug
+                }
+              }
+            }
           }
         }
       }
@@ -208,6 +232,21 @@ export const GetSectors = {
         data {
           attributes {
             name
+            slug
+          }
+        }
+      }
+    }
+  `,
+};
+
+export const GetTypes = {
+  query: gql`
+    query GetTypes {
+      types {
+        data {
+          attributes {
+            title
             slug
           }
         }
