@@ -1,7 +1,5 @@
-import React from 'react'
-
 export default function Loading() {
   return (
-    <div>loader</div>
+    <div>loading</div>
   )
 }
