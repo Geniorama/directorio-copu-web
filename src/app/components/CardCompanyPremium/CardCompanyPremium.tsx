@@ -63,7 +63,7 @@ export default function CardCompanyPremium({
             </p>
           </div>
 
-          <div className="w-44 space-y-2">
+          <div className="w-44 space-y-2 relative z-50">
             <Button href={`/empresas/${slug}`}>Ir al perfil</Button>
             {reel && (
               <Button
