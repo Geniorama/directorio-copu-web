@@ -1,14 +1,17 @@
 import IconClose from '../../../../public/img/btn-close.svg'
 import { YouTubeVideo } from '@/app/utils/YouTubeVideo'
 import Link from 'next/link'
+import type { Company } from '@/app/types'
 
 type ModalReelProps = {
-    reel: string,
+    name: Company['name']
+    reel: Company['reel'],
+    slogan?: Company['slogan']
     url: string,
     handleClose: () => void
 }
 
-export default function ModalReel({reel, handleClose, url}:ModalReelProps) {
+export default function ModalReel({reel, handleClose, url, name, slogan}:ModalReelProps) {
   return (
     <div>
       <div className="fixed z-[2000] w-screen bg-[rgba(0,0,0)] left-0 top-0 h-screen overflow-hidden max-h-screen grid place-items-center p-4">
@@ -27,8 +30,8 @@ export default function ModalReel({reel, handleClose, url}:ModalReelProps) {
 
             <div className="text-[#C7C7DF] lg:flex justify-between items-center">
               <div className="lg:text-left mb-10 lg:mb-0">
-                <h3 className="text-4xl font-bold">Bito Inc</h3>
-                <h5 className="text-xl">Creative Acelerator</h5>
+                <h3 className="text-4xl font-bold">{name}</h3>
+                <h5 className="text-xl">{slogan}</h5>
                 <p className="text-sm">UX/UI, Product Design, Branding</p>
               </div>
 

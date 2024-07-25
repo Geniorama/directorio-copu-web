@@ -4,12 +4,13 @@ import IconPlay from "../../../../public/img/btn-play.svg";
 
 
 type CardCompanyPremiumProps = Company & {
-  handleOpen: (reel: string, url: string) => void;
+  handleOpen: (reel: string, url: string, name: string, slogan?: string) => void;
 }
 
 export default function CardCompanyPremium({
   name,
   logoLight,
+  logoDark,
   cover,
   slug,
   reel,
@@ -35,13 +36,20 @@ export default function CardCompanyPremium({
           {/* Layer opacity */}
         </div>
         <div className="flex justify-end text-right relative">
-          {logoLight && (
+          {logoLight ? (
             <img
-              className="w-40 max-h-[50px] object-cover"
+              className="w-auto max-h-[50px] object-contain"
               src={logoLight}
               alt=""
             />
-          )}
+          ) : logoDark ?  (
+            <img
+              className="w-auto max-h-[50px] object-contain"
+              src={logoDark}
+              alt=""
+            />
+          ) : null}
+
         </div>
 
         <div className="flex justify-between items-end relative">
@@ -61,7 +69,7 @@ export default function CardCompanyPremium({
               <Button
                 icon={<img src={IconPlay.src} alt="play video" />}
                 color="secondary"
-                onClick={()=>handleOpen(reel, `/empresas/${slug}`)}
+                onClick={()=>handleOpen(reel, `/empresas/${slug}`, name)}
               >
                 Reproducir Reel
               </Button>

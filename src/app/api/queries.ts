@@ -18,6 +18,20 @@ export const GetCompaniesBasic = {
                 }
               }
             }
+            logoLight {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            logoDark {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
             countries {
               data {
                 attributes {
@@ -78,6 +92,20 @@ export const GetCompaniesPro = {
                 attributes {
                   title
                   slug
+                }
+              }
+            }
+            logoLight {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            logoDark {
+              data {
+                attributes {
+                  url
                 }
               }
             }
@@ -142,6 +170,20 @@ export const GetCompaniesPremium = {
                 attributes {
                   title
                   slug
+                }
+              }
+            }
+            logoLight {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            logoDark {
+              data {
+                attributes {
+                  url
                 }
               }
             }

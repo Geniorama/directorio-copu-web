@@ -12,9 +12,6 @@ export function limitText(text?: string, limit?: number) {
 
 
 export const transformDataCompanies = (data: any[]): Company[] => {
- 
-
-
   const dataFormat = data.map((item) => ({
     id: item.id,
     name: item.attributes.name,
@@ -22,7 +19,8 @@ export const transformDataCompanies = (data: any[]): Company[] => {
     plan: item.attributes.plan.data.attributes,
     background: item.attributes.background,
     reel: item.attributes.youtubeReelId,
-    logoLight: base_media_url + item.attributes.logoLight?.data.attributes.url,
+    logoLight: item.attributes.logoLight.data && base_media_url + item.attributes.logoLight?.data?.attributes.url,
+    logoDark: item.attributes.logoDark.data && base_media_url + item.attributes.logoDark?.data?.attributes.url,
     cover: base_media_url + item.attributes.cover?.data.attributes.url,
     sectors: item.attributes.categories.data.map((cat: any) => ({
       name: cat.attributes.name,

@@ -49,9 +49,11 @@ export default function HomePage({
   const [proCompanies, setProCompanies] = useState<Company[]>();
   const [basicCompanies, setBasicCompanies] = useState<Company[]>();
   const [openModal, setOpenModal] = useState(false);
-  const [dataModal, setDataModal] = useState({
+  const [dataModal, setDataModal] = useState<{reel: string, url: string, name: string, slogan?: string}>({
     reel: "",
     url: "",
+    name: "",
+    slogan: ""
   });
 
   const searchValue = useAppSelector((state) => state.searchReducer.value);
@@ -63,14 +65,17 @@ export default function HomePage({
   const dispatch = useAppDispatch();
 
   const handleToggleModal = () => setOpenModal(!openModal);
-  const handleOpenModal = (reel: string, url: string) => {
+  const handleOpenModal = (reel: string, url: string, name: string, slogan?: string) => {
     setDataModal({
-      reel: reel,
-      url: url,
+      reel,
+      url,
+      name,
+      slogan
     });
     setOpenModal(true);
   };
 
+  console.log(companiesPro)
   useEffect(() => {
     setPremiumCompanies(transformDataCompanies(companiesPremium));
     setProCompanies(transformDataCompanies(companiesPro));
@@ -136,6 +141,8 @@ export default function HomePage({
           reel={dataModal.reel}
           url={dataModal.url}
           handleClose={handleToggleModal}
+          name={dataModal.name}
+          slogan={dataModal.slogan}
         />
       )}
 
