@@ -13,6 +13,7 @@ import type { Company, Sector, Country, Type } from "@/app/types";
 import { useState, useEffect } from "react";
 import { Tag } from "@/app/utils/Tag";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks/hooks";
+import { NotFound } from "@/app/components/NotFound";
 import {
   removeSector,
   setInitialSectors,
@@ -49,33 +50,48 @@ export default function HomePage({
   const [proCompanies, setProCompanies] = useState<Company[]>();
   const [basicCompanies, setBasicCompanies] = useState<Company[]>();
   const [openModal, setOpenModal] = useState(false);
-  const [dataModal, setDataModal] = useState<{reel: string, url: string, name: string, slogan?: string}>({
+  const [dataModal, setDataModal] = useState<{
+    reel: string;
+    url: string;
+    name: string;
+    slogan?: string;
+  }>({
     reel: "",
     url: "",
     name: "",
-    slogan: ""
+    slogan: "",
   });
 
   const searchValue = useAppSelector((state) => state.searchReducer.value);
-  const selectedSectors = useAppSelector((state) => state.searchReducer.selectedSectors);
-  const selectedCountry = useAppSelector((state) => state.searchReducer.selectedCountry);
-  const selectedTypes = useAppSelector(state => state.searchReducer.selectedTypes);
-  
+  const selectedSectors = useAppSelector(
+    (state) => state.searchReducer.selectedSectors
+  );
+  const selectedCountry = useAppSelector(
+    (state) => state.searchReducer.selectedCountry
+  );
+  const selectedTypes = useAppSelector(
+    (state) => state.searchReducer.selectedTypes
+  );
 
   const dispatch = useAppDispatch();
 
   const handleToggleModal = () => setOpenModal(!openModal);
-  const handleOpenModal = (reel: string, url: string, name: string, slogan?: string) => {
+  const handleOpenModal = (
+    reel: string,
+    url: string,
+    name: string,
+    slogan?: string
+  ) => {
     setDataModal({
       reel,
       url,
       name,
-      slogan
+      slogan,
     });
     setOpenModal(true);
   };
 
-  console.log(companiesPro)
+  console.log(companiesPro);
   useEffect(() => {
     setPremiumCompanies(transformDataCompanies(companiesPremium));
     setProCompanies(transformDataCompanies(companiesPro));
@@ -125,13 +141,23 @@ export default function HomePage({
           (country) => country.slug === selectedCountry.slug
         );
 
-      return matchesSearchValue && matchesSectorsFilter && matchesCountryFilter && matchesTypesFilter;
+      return (
+        matchesSearchValue &&
+        matchesSectorsFilter &&
+        matchesCountryFilter &&
+        matchesTypesFilter
+      );
     });
   };
 
   const filteredPremiumCompanies = filterCompanies(premiumCompanies);
   const filteredProCompanies = filterCompanies(proCompanies);
   const filteredBasicCompanies = filterCompanies(basicCompanies);
+
+  const noResultsFound =
+    filteredPremiumCompanies.length === 0 &&
+    filteredProCompanies.length === 0 &&
+    filteredBasicCompanies.length === 0;
 
   return (
     <div className="px-3 lg:pl-10 pb-10">
@@ -170,65 +196,73 @@ export default function HomePage({
           />
         )}
 
-        {selectedTypes && selectedTypes.length > 0 && selectedTypes.map(type => (
-          <Tag
-            key={type.slug}
-            text={type.title}
-            filter="type"
-            handleClose={() => dispatch(removeType(type))}
-          />
-        ))}
+        {selectedTypes &&
+          selectedTypes.length > 0 &&
+          selectedTypes.map((type) => (
+            <Tag
+              key={type.slug}
+              text={type.title}
+              filter="type"
+              handleClose={() => dispatch(removeType(type))}
+            />
+          ))}
       </div>
 
-      {/**
-       * PREMIUM LEVEL
-       */}
-      {filteredPremiumCompanies && filteredPremiumCompanies.length > 0 && (
-        <div className="lg:w-[90%] mx-auto text-center space-y-4 my-16">
-          <h1 className="font-bold text-3xl text-white mb-16">
-            Empresas más relevantes
-          </h1>
-          <CarouselPremium
-            handleOpen={handleOpenModal}
-            slides={filteredPremiumCompanies}
-          />
-        </div>
-      )}
+      {noResultsFound ? (
+        <NotFound />
+      ) : (
+        <>
+          {/**
+           * PREMIUM LEVEL
+           */}
+          {filteredPremiumCompanies && filteredPremiumCompanies.length > 0 && (
+            <div className="lg:w-[90%] mx-auto text-center space-y-4 my-16">
+              <h1 className="font-bold text-3xl text-white mb-16">
+                Empresas más relevantes
+              </h1>
+              <CarouselPremium
+                handleOpen={handleOpenModal}
+                slides={filteredPremiumCompanies}
+              />
+            </div>
+          )}
 
-      {/**
-       * PRO LEVEL
-       */}
-      {filteredProCompanies && filteredProCompanies.length > 0 && (
-        <div className="lg:w-[90%] mx-auto space-y-4">
-          <h5 className="text-[#C7C7DF]">También puede interesarte</h5>
+          {/**
+           * PRO LEVEL
+           */}
+          {filteredProCompanies && filteredProCompanies.length > 0 && (
+            <div className="lg:w-[90%] mx-auto space-y-4">
+              <h5 className="text-[#C7C7DF]">También puede interesarte</h5>
 
-          <div className=" hidden lg:block">
-            <CarouselPro slides={filteredProCompanies} />
-          </div>
+              <div className=" hidden lg:block">
+                <CarouselPro slides={filteredProCompanies} />
+              </div>
 
-          <div className=" lg:hidden">
-            <CarouselProOuterInfo slides={filteredProCompanies} />
-          </div>
-        </div>
-      )}
+              <div className=" lg:hidden">
+                <CarouselProOuterInfo slides={filteredProCompanies} />
+              </div>
+            </div>
+          )}
 
-      {/**
-       * BASIC LEVEL
-       */}
-      {filteredBasicCompanies && filteredBasicCompanies.length > 0 && (
-        <div className="mt-10 lg:w-[90%] mx-auto space-y-4">
-          <h5 className="text-[#C7C7DF]">
-            Otras empresas que pueden interesarte
-          </h5>
+          {/**
+           * BASIC LEVEL
+           */}
+          {filteredBasicCompanies && filteredBasicCompanies.length > 0 && (
+            <div className="mt-10 lg:w-[90%] mx-auto space-y-4">
+              <h5 className="text-[#C7C7DF]">
+                Otras empresas que pueden interesarte
+              </h5>
 
-          <div className=" hidden lg:block">
-            <CarouselBasic slides={filteredBasicCompanies} />
-          </div>
+              <div className=" hidden lg:block">
+                <CarouselBasic slides={filteredBasicCompanies} />
+              </div>
 
-          <div className=" lg:hidden">
-            <GridCompanyBasic items={filteredBasicCompanies} />
-          </div>
-        </div>
+              <div className=" lg:hidden">
+                <GridCompanyBasic items={filteredBasicCompanies} />
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
