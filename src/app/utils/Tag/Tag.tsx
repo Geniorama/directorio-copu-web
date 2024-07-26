@@ -15,14 +15,14 @@ export default function Tag({text, filter, handleClose}: TagProps) {
 
 
   return (
-    <div className="inline-flex gap-3 items-center border p-2 px-4 rounded-full">
+    <div className="inline-flex gap-1 items-center border p-2 px-4 rounded-full">
         {icon && (
-            <span aria-label={text} title={text}>
-                <img className="w-[15px]" src={icon.src} alt="" />
+            <span className=" block w-[20px] overflow-hidden text-center" aria-label={text} title={text}>
+                <img className="w-[15px] mx-auto" src={icon.src} alt="" />
             </span>
         )}
         <span className="text-xs leading-5">{limitText(text, 20)}</span>
-        <button onClick={handleClose}>
+        <button className="ml-2" onClick={handleClose}>
             <img className="w-[10px]" src={IconClose.src} alt="" />
         </button>
     </div>

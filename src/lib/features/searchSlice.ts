@@ -114,6 +114,12 @@ export const searchSlice = createSlice({
         (type) => type.slug !== action.payload.slug
       );
     },
+
+    resetFilters: (state) => {
+      state.selectedTypes = []
+      state.selectedSectors = []
+      state.selectedCountry = null
+    }
   },
 });
 
@@ -130,6 +136,7 @@ export const {
   setCountry,
   removeCountry,
   resetSearch,
-  setInitialTypes
+  setInitialTypes,
+  resetFilters
 } = searchSlice.actions;
 export default searchSlice.reducer;

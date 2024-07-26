@@ -91,7 +91,6 @@ export default function HomePage({
     setOpenModal(true);
   };
 
-  console.log(companiesPro);
   useEffect(() => {
     setPremiumCompanies(transformDataCompanies(companiesPremium));
     setProCompanies(transformDataCompanies(companiesPro));
@@ -177,7 +176,7 @@ export default function HomePage({
       <FilterByLetter />
       <hr className="my-4 border-[#2D2D2D]" />
 
-      <div className="flex items-center gap-3 mb-5">
+      <div className="flex items-center gap-2 mb-5 flex-wrap">
         {selectedSectors.length > 0 &&
           selectedSectors.map((sector) => (
             <Tag

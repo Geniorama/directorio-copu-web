@@ -8,6 +8,8 @@ import WidgetUbicacion from './WidgetUbicacion'
 import WidgetTipoEmpresa from './WidgetTipoEmpresa'
 import CloseIcon from '../../../../../public/img/btn-close.svg'
 import useIsMobile from '@/lib/hooks/useIsMobile'
+import { useAppSelector, useAppDispatch } from '@/lib/hooks/hooks'
+import { resetFilters } from '@/lib/features/searchSlice'
 
 type SidebarProps = {
   handleSidebar?: () => void
@@ -15,11 +17,17 @@ type SidebarProps = {
 
 export default function Sidebar({handleSidebar}:SidebarProps) {
   const isMobile = useIsMobile()
+  const selectedSectors = useAppSelector(state => state.searchReducer.selectedSectors)
+  const selectedTypes = useAppSelector(state => state.searchReducer.selectedTypes)
+  const selectedCountry = useAppSelector(state => state.searchReducer.selectedCountry)
+
+  const dispatch = useAppDispatch()
+  const activeSomeFilters = selectedSectors.length > 0 || selectedTypes.length > 0 || selectedCountry !== null
   
   return (
     <div className='bg-secondary-color-light p-3 h-full'>
         <div className='flex gap-2 justify-between'>
-            <button className='flex items-center text-2xl gap-2'>
+            <button className='flex items-center text-2xl lg:text-lg  gap-2'>
                 <img src={IconFilter.src} alt="" />
                 <span>Filtrar</span>
             </button>
@@ -34,6 +42,17 @@ export default function Sidebar({handleSidebar}:SidebarProps) {
         <WidgetUbicacion />
         <hr className='border-1 my-5 border-[#2D2D2D]' />
         <WidgetTipoEmpresa />
+
+        <hr className='border-1 my-5 border-[#2D2D2D] block lg:hidden' />
+
+        <div className='flex gap-3 lg:hidden'>
+          <button onClick={() => dispatch(resetFilters())} disabled={!activeSomeFilters} className=' bg-[#2D2D33] text-white font-light px-6 py-4 rounded-full w-1/2 disabled:text-black'>
+            Restaurar
+          </button>
+          <button onClick={handleSidebar} className=' bg-primary-color text-text-dark font-bold px-6 py-4 rounded-full w-1/2 disabled:bg-[#2D2D33]'>
+            {!activeSomeFilters ? "Cerrar" : "Aplicar"}
+          </button>
+        </div>
     </div>
   )
 }
