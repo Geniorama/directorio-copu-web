@@ -3,8 +3,7 @@
 import React from "react";
 import IconSearch from "../../../../public/img/search.svg";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks/hooks";
-import { filterSearch } from "@/lib/features/searchSlice";
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 type SearchBarProps = {
   placeholder?: string;
@@ -15,15 +14,20 @@ export default function SearchBar({placeholder, backgroundColor}: SearchBarProps
   const searchValue = useAppSelector((state) => state.searchReducer.value);
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(filterSearch(e.target.value));
+    if(pathname === "/"){
+      const inputValue = (e.target as HTMLInputElement).value;
+      router.push(`/?s=${inputValue}`);
+    }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+  const handleKeyDown = (e:React.KeyboardEvent<HTMLInputElement>) => {
+    if (pathname !== "/" && e.key === 'Enter') {
       e.preventDefault();
-      router.push(`/?s=${searchValue}`);
+      const inputValue = (e.target as HTMLInputElement).value;
+      router.push(`/?s=${inputValue}`);
     }
   };
 
@@ -33,7 +37,7 @@ export default function SearchBar({placeholder, backgroundColor}: SearchBarProps
       <input
         defaultValue={searchValue}
         onChange={(e) => handleChange(e)}
-        onKeyDown={handleKeyDown}
+        onKeyDown={(e) => handleKeyDown(e)}
         className="bg-transparent w-full outline-none text-lg"
         type="search"
         placeholder={placeholder}
