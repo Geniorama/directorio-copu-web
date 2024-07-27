@@ -46,7 +46,6 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
     );
   }
 
-  console.log(dataCompany)
   function handleTab(name: string) {
     setSection(name);
   }
@@ -57,6 +56,7 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
         <HeadingCompany
           cover={dataCompany.cover && dataCompany.cover}
           imgProfile={dataCompany.logoLight ? dataCompany.logoLight : dataCompany.logoDark ? dataCompany.logoDark : ""}
+          bgImageProfileColor={dataCompany.logoLight ? "bg-[#000000]" : "bg-[#D9D9D9]"}
           name={dataCompany.name}
           slogan={dataCompany.slogan}
           categories={dataCompany.sectors?.map((sector) => sector.name)}

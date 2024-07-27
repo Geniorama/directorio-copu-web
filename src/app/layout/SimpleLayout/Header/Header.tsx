@@ -7,11 +7,12 @@ import { Button } from "@/app/utils/Button";
 import WpIcon from "../../../../../public/img/wp-icon.svg";
 import MenuIcon from "../../../../../public/img/menu-icon.svg";
 import { useState, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { Sidebar } from "../Sidebar";
 import CloseIcon from "../../../../../public/img/btn-close.svg";
 import IconFilterBlack from "../../../../../public/img/tune-black.svg";
 import { menuHeader } from "@/app/data/menu";
+import { SearchBar } from "@/app/components/SearchBar";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -38,6 +39,7 @@ export default function Header() {
   function handleSidebar() {
     setOpenSidebar(!openSidebar);
   }
+
 
   return (
     <header className="fixed w-full lg:relative z-50 bg-secondary-color-light text-text-light py-5">
@@ -67,8 +69,16 @@ export default function Header() {
           </button>
         )}
 
-        <nav className="text-xs hidden lg:flex gap-20 items-center">
-          <ul className="flex gap-20 items-center">
+        <nav className="text-xs hidden lg:flex gap-16 items-center">
+          <ul className="flex gap-16 items-center">
+            {pathname !== "/" && (
+              <li>
+                <SearchBar 
+                  placeholder="Buscar"
+                  backgroundColor="bg-[#3C3C45]"
+                />
+              </li>
+            )}
             <li>
               <Link
                 href={"/que-es"}

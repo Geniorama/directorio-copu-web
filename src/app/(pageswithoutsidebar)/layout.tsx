@@ -1,5 +1,6 @@
 import LayoutWithoutSidebar from "../layout/LayoutWithoutSidebar/LayoutWithoutSidebar"
 import './../globals.css'
+import StoreProvider from "../StoreProvider"
 
 export const metadata = {
   title: 'Next.js',
@@ -10,9 +11,11 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
     <html lang="en">
       <body className="custom-scroll">
-        <LayoutWithoutSidebar>
-          {children}
-        </LayoutWithoutSidebar>
+        <StoreProvider>
+          <LayoutWithoutSidebar>
+            {children}
+          </LayoutWithoutSidebar>
+        </StoreProvider>
       </body>
     </html>
   )
