@@ -11,7 +11,7 @@ import { CarouselProOuterInfo } from "@/app/components/CarouselPro";
 import { ModalReel } from "@/app/components/ModalReel";
 import type { Company, Sector, Country, Type } from "@/app/types";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 import { Tag } from "@/app/utils/Tag";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks/hooks";
 import { NotFound } from "@/app/components/NotFound";
@@ -23,7 +23,6 @@ import {
   removeCountry,
   setInitialTypes,
   removeType,
-  filterSearch,
 } from "@/lib/features/searchSlice";
 import {
   transformDataCompanies,
@@ -67,7 +66,6 @@ export default function HomePage({
   });
 
   const isMobile = useIsMobile()
-  const searchParams = useSearchParams()
 
   const searchValue = useAppSelector((state) => state.searchReducer.value);
   const selectedSectors = useAppSelector(
@@ -82,12 +80,7 @@ export default function HomePage({
 
   const dispatch = useAppDispatch();
 
-  if(searchParams.get('s')){
-    const paramSearch = searchParams.get('s')
-    if(paramSearch){
-      dispatch(filterSearch(paramSearch))
-    }
-  }
+  
 
   const handleToggleModal = () => setOpenModal(!openModal);
   const handleOpenModal = (
@@ -116,6 +109,7 @@ export default function HomePage({
     dispatch(setInitialCountries(transformDataCountries(countries)));
     dispatch(setInitialTypes(transformDataTypes(types)));
   }, [dispatch, sectors, countries, types]);
+
 
   const filterCompanies = (companies?: Company[]) => {
     if (!companies) return [];
