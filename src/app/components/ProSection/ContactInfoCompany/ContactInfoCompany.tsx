@@ -1,85 +1,112 @@
 import Link from "next/link";
 import type { Company } from "@/app/types";
+import { simplifyURL } from "@/app/utils/formatters";
 
 type ContactInfoCompanyProps = {
-    webSite?: Company['webSite']
-    emails?: Company['emails']
-    phones?: Company['phones']
-    countries?: Company['countries']
-    nit?: Company['nit']
-}
+  webSite?: Company["webSite"];
+  emails?: Company["emails"];
+  phones?: Company["phones"];
+  countries?: Company["countries"];
+  nit?: Company["nit"];
+  sectors?: Company["sectors"];
+};
 
-export default function ContactInfoCompany({webSite, emails, phones, countries, nit}: ContactInfoCompanyProps) {
+export default function ContactInfoCompany({
+  webSite,
+  emails,
+  phones,
+  countries,
+  nit,
+  sectors,
+}: ContactInfoCompanyProps) {
   return (
     <div className="grid grid-cols-2 max-w-[315px] mx-auto">
       {/* Content left */}
       <div>
-        <div>
-          <h5 className="text-[#D9D7D7] font-bold text-sm">Sitio web</h5>
-          <Link
-            className="text-[#C7C7DF] text-xs underline leading-7"
-            href={webSite ? webSite : "#"}
-            target="_blank"
-          >
-            {webSite}
-          </Link>
-        </div>
+        {webSite && (
+          <div>
+            <h5 className="text-[#D9D7D7] font-bold text-sm">Sitio web</h5>
+            <Link
+              className="text-[#C7C7DF] text-xs underline leading-7"
+              href={webSite ? webSite : "#"}
+              target="_blank"
+            >
+              {simplifyURL(webSite)}
+            </Link>
+          </div>
+        )}
 
-        <div className="mt-10">
-          <h5 className="text-[#D9D7D7] font-bold text-sm">Celular</h5>
-          <ul>
-            {phones && phones.length > 0 && phones.map((phone, i) => (
-              <li key={i}>
-                <Link
-                  className="text-[#C7C7DF] text-xs underline leading-7"
-                  href={phone.link ? phone.link : '#'}
-                  target="_blank"
-                >
-                  {phone.phoneNumber}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {phones && phones.length > 0 && (
+          <div className="mt-10">
+            <h5 className="text-[#D9D7D7] font-bold text-sm">Celular</h5>
+            <ul>
+              {phones.map((phone, i) => (
+                <li key={i}>
+                  <Link
+                    className="text-[#C7C7DF] text-xs underline leading-7"
+                    href={phone.link ? phone.link : "#"}
+                    target="_blank"
+                  >
+                    {phone.phoneNumber}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
-        <div className="mt-10">
-          <h5 className="text-[#D9D7D7] font-bold text-sm">NIT</h5>
-          <p className="text-[#C7C7DF] text-xs leading-7">{nit}</p>
-        </div>
+        {nit && (
+          <div className="mt-10">
+            <h5 className="text-[#D9D7D7] font-bold text-sm">NIT</h5>
+            <p className="text-[#C7C7DF] text-xs leading-7">{nit}</p>
+          </div>
+        )}
       </div>
 
       {/* Content right */}
       <div>
-        <div>
-          <h5 className="text-[#D9D7D7] font-bold text-sm">Sector</h5>
-          <p className="text-[#C7C7DF] text-xs leading-7">
-            Servicios de diseño
-          </p>
-        </div>
+        {sectors && sectors.length > 0 && (
+          <div>
+            <h5 className="text-[#D9D7D7] font-bold text-sm">
+              {sectors.length > 1 ? "Sectores" : "Sector"}
+            </h5>
+            <p className="text-[#C7C7DF] text-xs leading-7">
+              {sectors.map((sector) => sector.name).join(", ")}
+            </p>
+          </div>
+        )}
 
-        <div className="mt-10">
-          <h5 className="text-[#D9D7D7] font-bold text-sm">Correos</h5>
-          <ul>
-            {emails && emails.length > 0 && emails.map((email, i) => (
+        {emails && emails.length > 0 && (
+          <div className="mt-10">
+            <h5 className="text-[#D9D7D7] font-bold text-sm">
+              {emails.length > 1 ? "Correos" : "Correo"}
+            </h5>
+            <ul>
+              {emails.map((email, i) => (
                 <li key={i}>
-                    <Link
+                  <Link
                     className="text-[#C7C7DF] text-xs underline leading-7"
                     href={`mailto:${email.email}`}
                     target="_blank"
-                    >
+                  >
                     {email.email}
-                    </Link>
+                  </Link>
                 </li>
-            ))}
-          </ul>
-        </div>
+              ))}
+            </ul>
+          </div>
+        )}
 
-        <div className="mt-10">
-          <h5 className="text-[#D9D7D7] font-bold text-sm">Sede</h5>
-          {countries && countries.length > 0 && countries.map(country => (
-            <p key={country.slug} className="text-[#C7C7DF] text-xs leading-7">{country.name}</p>
-          ))}
-        </div>
+        {countries && countries.length > 0 && (
+          <div className="mt-10">
+            <h5 className="text-[#D9D7D7] font-bold text-sm">
+              {countries.length > 1 ? "Sedes" : "Sede"}
+            </h5>
+            <p className="text-[#C7C7DF] text-xs leading-7">
+              {countries.map((country) => country.name).join(", ")}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

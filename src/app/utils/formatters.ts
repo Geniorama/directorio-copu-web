@@ -67,8 +67,8 @@ export const transformDataCompany = (item: any): Company => {
       name: item.attributes.alternativeText,
       url: base_media_url + item.attributes.url
     })),
-    logoLight: item?.attributes?.logoLight?.data?.attributes?.url ? base_media_url + item.attributes.logoLight.data.attributes.url : '',
-    logoDark: item?.attributes?.logoDark?.data?.attributes?.url ? base_media_url + item.attributes.logoDark.data.attributes.url : '',
+    logoLight: item.attributes.logoLight.data && item.attributes.logoLight.data.attributes.url ? base_media_url + item.attributes.logoLight.data.attributes.url : null,
+    logoDark: item?.attributes?.logoDark?.data?.attributes?.url ? base_media_url + item.attributes.logoDark.data.attributes.url : null,
     cover: item?.attributes?.cover ? base_media_url + item.attributes.cover?.data?.attributes?.url : '',
     sectors: item?.attributes?.categories?.data?.map((cat: any) => ({
       name: cat?.attributes?.name || '',
@@ -113,3 +113,13 @@ export const transformDataTypes = (data: any[]): Type[] => {
   }));
 
 };
+
+export const simplifyURL = (url: string) => {
+  // Eliminar el esquema (http:// o https://)
+  let simplifiedURL = url.replace(/(^\w+:|^)\/\//, '');
+
+  // Eliminar la barra final si existe
+  simplifiedURL = simplifiedURL.replace(/\/$/, '');
+
+  return simplifiedURL;
+}

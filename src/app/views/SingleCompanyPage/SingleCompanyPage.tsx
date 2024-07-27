@@ -46,6 +46,7 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
     );
   }
 
+  console.log(dataCompany)
   function handleTab(name: string) {
     setSection(name);
   }
@@ -55,13 +56,7 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
       <div>
         <HeadingCompany
           cover={dataCompany.cover && dataCompany.cover}
-          imgProfile={
-            dataCompany.logoLight && dataCompany.logoLight !== ""
-              ? dataCompany.logoLight
-              : dataCompany.logoDark
-              ? dataCompany.logoDark
-              : ""
-          }
+          imgProfile={dataCompany.logoLight ? dataCompany.logoLight : dataCompany.logoDark ? dataCompany.logoDark : ""}
           name={dataCompany.name}
           slogan={dataCompany.slogan}
           categories={dataCompany.sectors?.map((sector) => sector.name)}
@@ -126,6 +121,7 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
               phones={dataCompany.phones}
               countries={dataCompany.countries}
               nit={dataCompany.nit}
+              sectors={dataCompany.sectors}
             />
           )}
           {section === "personas" && <TabPersonas />}

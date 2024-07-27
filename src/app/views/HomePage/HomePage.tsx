@@ -28,6 +28,7 @@ import {
   transformDataCountries,
   transformDataTypes,
 } from "@/app/utils/formatters";
+import { CardCompanyPremium } from "@/app/components/CardCompanyPremium";
 
 interface HomePageProps {
   companiesBasic: Company[];
@@ -158,6 +159,11 @@ export default function HomePage({
     filteredProCompanies.length === 0 &&
     filteredBasicCompanies.length === 0;
 
+  const totalResults =
+    filteredPremiumCompanies.length +
+    filteredProCompanies.length +
+    filteredBasicCompanies.length;
+
   return (
     <div className="px-3 lg:pl-10 pb-10">
       {/* Modal Reel */}
@@ -205,6 +211,12 @@ export default function HomePage({
               handleClose={() => dispatch(removeType(type))}
             />
           ))}
+
+        {!noResultsFound && totalResults && (
+          <span className="ml-2 mt-2 lg:mt-0 text-sm font-light lg:inline-block block w-full lg:w-auto">
+            {totalResults} {totalResults === 1 ? "Resultado" : "Resultados"}
+          </span>
+        )}
       </div>
 
       {noResultsFound ? (
@@ -219,10 +231,27 @@ export default function HomePage({
               <h1 className="font-bold text-3xl text-white mb-16">
                 Empresas más relevantes
               </h1>
-              <CarouselPremium
-                handleOpen={handleOpenModal}
-                slides={filteredPremiumCompanies}
-              />
+              {filteredPremiumCompanies.length === 1 ? (
+                <div className="w-full max-w-[741px]">
+                  <CardCompanyPremium
+                    id={filteredPremiumCompanies[0].id}
+                    name={filteredPremiumCompanies[0].name}
+                    slug={filteredPremiumCompanies[0].slug}
+                    cover={filteredPremiumCompanies[0].cover}
+                    sectors={filteredPremiumCompanies[0].sectors}
+                    tags={filteredPremiumCompanies[0].tags}
+                    logoDark={filteredPremiumCompanies[0].logoDark}
+                    logoLight={filteredPremiumCompanies[0].logoLight}
+                    reel={filteredPremiumCompanies[0].reel}
+                    handleOpen={handleOpenModal}
+                  />
+                </div>
+              ) : (
+                <CarouselPremium
+                  handleOpen={handleOpenModal}
+                  slides={filteredPremiumCompanies}
+                />
+              )}
             </div>
           )}
 

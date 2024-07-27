@@ -10,7 +10,6 @@ interface SearchState {
   selectedCountries: Country[];
   selectedCountry: Country | null;
   allCountries: Country[];
-  results: number;
 }
 
 const initialState: SearchState = {
@@ -22,7 +21,6 @@ const initialState: SearchState = {
   selectedCountries: [],
   selectedCountry: null,
   allCountries: [],
-  results: 0,
 };
 
 export const searchSlice = createSlice({

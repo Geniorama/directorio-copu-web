@@ -3,6 +3,7 @@
 import { CardPlan } from "@/app/components/CardPlan";
 import type { Plan } from "@/app/types";
 import { useState, useEffect } from "react";
+import LoadingAnimated from "@/app/utils/Icons/LoadingAnimated";
 
 type PlansPageProps = {
   data: Plan[];
@@ -45,10 +46,25 @@ function handlePlan(route: string) {
 
 export default function PlansPage({ data }: PlansPageProps) {
   const [plans, setPlans] = useState<Plan[]>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setPlans(transformData(data));
   }, [data]);
+
+  useEffect(() => {
+    if(plans){
+      setTimeout(() => setLoading(false), 1000)
+    }
+  }, [plans])
+
+  if (loading) {
+    return (
+      <div className=" flex justify-center items-center h-[87vh] w-full text-center transition">
+        <LoadingAnimated />
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto pt-16 py-10 px-3">
