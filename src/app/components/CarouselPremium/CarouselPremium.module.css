@@ -1,0 +1,15 @@
+.SwiperSlide{
+    width: 600px;
+}
+
+@media screen and (max-width: 1440px) {
+    .SwiperSlide{
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .SwiperSlide{
+        width: 100%;
+    }
+}

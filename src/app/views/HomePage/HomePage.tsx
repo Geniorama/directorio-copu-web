@@ -11,7 +11,7 @@ import { CarouselProOuterInfo } from "@/app/components/CarouselPro";
 import { ModalReel } from "@/app/components/ModalReel";
 import type { Company, Sector, Country, Type } from "@/app/types";
 import { useState, useEffect } from "react";
-import { useSearchParams, usePathname } from "next/navigation";
+import { CardCompanyOuterInfo } from "@/app/components/CardCompanyOuterInfo";
 import { Tag } from "@/app/utils/Tag";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks/hooks";
 import { NotFound } from "@/app/components/NotFound";
@@ -228,7 +228,7 @@ export default function HomePage({
         )}
       </div>
 
-      {noResultsFound ? (
+      {noResultsFound && searchValue !== "" ? (
         <NotFound />
       ) : (
         <>
@@ -241,20 +241,36 @@ export default function HomePage({
                 Empresas más relevantes
               </h1>
               {filteredPremiumCompanies.length === 1 ? (
-                <div className="w-full max-w-[741px]">
-                  <CardCompanyPremium
-                    id={filteredPremiumCompanies[0].id}
-                    name={filteredPremiumCompanies[0].name}
-                    slug={filteredPremiumCompanies[0].slug}
-                    cover={filteredPremiumCompanies[0].cover}
-                    sectors={filteredPremiumCompanies[0].sectors}
-                    tags={filteredPremiumCompanies[0].tags}
-                    logoDark={filteredPremiumCompanies[0].logoDark}
-                    logoLight={filteredPremiumCompanies[0].logoLight}
-                    reel={filteredPremiumCompanies[0].reel}
-                    handleOpen={handleOpenModal}
-                  />
-                </div>
+                <>
+                  <div className="w-full max-w-[741px] hidden lg:block">
+                    <CardCompanyPremium
+                      id={filteredPremiumCompanies[0].id}
+                      name={filteredPremiumCompanies[0].name}
+                      slug={filteredPremiumCompanies[0].slug}
+                      cover={filteredPremiumCompanies[0].cover}
+                      sectors={filteredPremiumCompanies[0].sectors}
+                      tags={filteredPremiumCompanies[0].tags}
+                      logoDark={filteredPremiumCompanies[0].logoDark}
+                      logoLight={filteredPremiumCompanies[0].logoLight}
+                      reel={filteredPremiumCompanies[0].reel}
+                      handleOpen={handleOpenModal}
+                    />
+                  </div>
+
+                  <div className=" lg:hidden">
+                    <CardCompanyOuterInfo 
+                      id={filteredPremiumCompanies[0].id}
+                      name={filteredPremiumCompanies[0].name}
+                      slug={filteredPremiumCompanies[0].slug}
+                      cover={filteredPremiumCompanies[0].cover}
+                      sectors={filteredPremiumCompanies[0].sectors}
+                      tags={filteredPremiumCompanies[0].tags}
+                      logoDark={filteredPremiumCompanies[0].logoDark}
+                      logoLight={filteredPremiumCompanies[0].logoLight}
+                      reel={filteredPremiumCompanies[0].reel}
+                    />
+                  </div>
+                </>
               ) : (
                 <CarouselPremium
                   handleOpen={handleOpenModal}
