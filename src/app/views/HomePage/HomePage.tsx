@@ -237,7 +237,7 @@ export default function HomePage({
            */}
           {filteredPremiumCompanies && filteredPremiumCompanies.length > 0 && (
             <div className="lg:w-[90%] mx-auto text-center space-y-4 my-16">
-              <h1 className="font-bold text-3xl text-white mb-16">
+              <h1 className="font-bold text-xl lg:text-3xl text-white mb-5 lg:mb-16">
                 Empresas más relevantes
               </h1>
               {filteredPremiumCompanies.length === 1 ? (

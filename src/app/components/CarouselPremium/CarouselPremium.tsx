@@ -1,3 +1,5 @@
+"use client"
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectCoverflow } from "swiper/modules";
 import { CardCompanyPremium } from "../CardCompanyPremium";
@@ -21,7 +23,7 @@ export default function CarouselPremium({ slides, handleOpen }: CarouselPremiumP
         style={{width: '100%'}}
         modules={[EffectCoverflow, Navigation]}
         loop
-        effect="coverflow"
+        effect={"coverflow"}
         slidesPerView= {1.2}
         navigation={{
           prevEl: '#prevButtonPremium',

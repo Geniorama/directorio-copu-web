@@ -19,7 +19,7 @@ export default function CarouselProOuterInfo({
       <Swiper
         modules={[Navigation]}
         spaceBetween={20}
-        slidesPerView={1.2}
+        slidesPerView={slides && slides.length > 1 ? 1.2 : 1}
         onSwiper={(swiper) => console.log(swiper)}
         loop
         // centeredSlides
