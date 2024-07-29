@@ -19,9 +19,9 @@ export const transformDataCompanies = (data: any[]): Company[] => {
     plan: item.attributes.plan.data.attributes,
     background: item.attributes.background,
     reel: item.attributes.youtubeReelId,
-    logoLight: item.attributes.logoLight.data && base_media_url + item.attributes.logoLight?.data?.attributes.url,
-    logoDark: item.attributes.logoDark.data && base_media_url + item.attributes.logoDark?.data?.attributes.url,
-    cover: base_media_url + item.attributes.cover?.data.attributes.url,
+    logoLight: item.attributes.logoLight.data && item.attributes.logoLight?.data?.attributes.url,
+    logoDark: item.attributes.logoDark.data && item.attributes.logoDark?.data?.attributes.url,
+    cover: item.attributes.cover?.data.attributes.url,
     sectors: item.attributes.categories.data.map((cat: any) => ({
       name: cat.attributes.name,
       slug: cat.attributes.slug,
@@ -61,15 +61,15 @@ export const transformDataCompany = (item: any): Company => {
     nit: item.attributes.nit,
     clients: item?.attributes?.clients?.data?.map((client: any) => ({
       name: client.attributes.alternativeText,
-      url: base_media_url + client.attributes.url
+      url: client.attributes.url
     })),
     work: item?.attributes?.work?.data?.map((item: any) => ({
       name: item.attributes.alternativeText,
-      url: base_media_url + item.attributes.url
+      url: item.attributes.url
     })),
-    logoLight: item.attributes.logoLight.data && item.attributes.logoLight.data.attributes.url ? base_media_url + item.attributes.logoLight.data.attributes.url : null,
-    logoDark: item?.attributes?.logoDark?.data?.attributes?.url ? base_media_url + item.attributes.logoDark.data.attributes.url : null,
-    cover: item?.attributes?.cover ? base_media_url + item.attributes.cover?.data?.attributes?.url : '',
+    logoLight: item.attributes.logoLight.data && item.attributes.logoLight.data.attributes.url ? item.attributes.logoLight.data.attributes.url : null,
+    logoDark: item?.attributes?.logoDark?.data?.attributes?.url ? item.attributes.logoDark.data.attributes.url : null,
+    cover: item?.attributes?.cover ? item.attributes.cover?.data?.attributes?.url : '',
     sectors: item?.attributes?.categories?.data?.map((cat: any) => ({
       name: cat?.attributes?.name || '',
       slug: cat?.attributes?.slug || '',

@@ -1,5 +1,5 @@
-
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "../globals.css";
 import { SimpleLayout } from "../layout/SimpleLayout";
 import StoreProvider from "../StoreProvider";
@@ -14,15 +14,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
   return (
     <html lang="es">
       <body className=" lg:overflow-hidden">
-        <StoreProvider>
-          <SimpleLayout>
-              {children}
-          </SimpleLayout>
-        </StoreProvider>
+        <Suspense>
+          <StoreProvider>
+            <SimpleLayout>{children}</SimpleLayout>
+          </StoreProvider>
+        </Suspense>
       </body>
     </html>
   );
