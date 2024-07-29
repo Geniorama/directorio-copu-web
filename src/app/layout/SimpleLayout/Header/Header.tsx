@@ -40,7 +40,6 @@ export default function Header() {
     setOpenSidebar(!openSidebar);
   }
 
-
   return (
     <header className="fixed w-full lg:relative z-50 bg-secondary-color-light text-text-light py-5">
       <div className="flex justify-between items-center px-4">
@@ -73,7 +72,7 @@ export default function Header() {
           <ul className="flex gap-16 items-center">
             {pathname !== "/" && (
               <li>
-                <SearchBar 
+                <SearchBar
                   placeholder="Buscar"
                   backgroundColor="bg-[#3C3C45]"
                 />
@@ -100,10 +99,7 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Button
-                icon={<img src={WpIcon.src} alt="whatsapp" />}
-                href="/contacto"
-              >
+              <Button icon={<img src={WpIcon.src} alt="whatsapp" />} href="#">
                 Contacto
               </Button>
             </li>
@@ -121,19 +117,23 @@ export default function Header() {
       {openMenu && !openSidebar && (
         <div className="h-screen mt-5">
           <ul className="text-[#D7D7D7] font-light text-lg">
-            {menuHeader.map((menuItem, i)=>(
+            {menuHeader.map((menuItem, i) => (
               <li key={i} className="border-t border-t-[#696969] py-6 px-4">
-                <Link href={menuItem.slug}>{menuItem.title}</Link>
+                <Link onClick={handleMenu} href={menuItem.slug}>
+                  {menuItem.title}
+                </Link>
               </li>
             ))}
             <li className="border-y border-y-[#696969] py-6 px-4">
-              <Link target="_blank" href={"http://copu.media/"}>Web Copu</Link>
+              <Link target="_blank" href={"http://copu.media/"}>
+                Web Copu
+              </Link>
             </li>
           </ul>
         </div>
       )}
 
-      {!openMenu && (
+      {!openMenu && pathname === "/" && (
         <div className=" fixed bottom-3 right-3 lg:hidden">
           <button
             onClick={handleSidebar}
