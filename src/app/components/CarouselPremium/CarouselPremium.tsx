@@ -73,6 +73,7 @@ export default function CarouselPremium({ slides, handleOpen }: CarouselPremiumP
                   reel={company.reel}
                   logoLight={company.logoLight}
                   logoDark={company.logoDark}
+                  handleOpen={handleOpen}
                 />
               </div>
             </>

@@ -268,6 +268,7 @@ export default function HomePage({
                       logoDark={filteredPremiumCompanies[0].logoDark}
                       logoLight={filteredPremiumCompanies[0].logoLight}
                       reel={filteredPremiumCompanies[0].reel}
+                      handleOpen={handleOpenModal}
                     />
                   </div>
                 </>
