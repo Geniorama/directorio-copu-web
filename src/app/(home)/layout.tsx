@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className=" lg:overflow-hidden">
+      <body className={`lg:overflow-hidden font-sans`}>
         <Suspense>
           <StoreProvider>
             <SimpleLayout>{children}</SimpleLayout>

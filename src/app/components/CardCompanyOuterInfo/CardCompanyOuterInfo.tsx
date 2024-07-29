@@ -3,7 +3,7 @@ import type { Company } from "@/app/types";
 import IconPlay from "../../../../public/img/btn-play.svg";
 
 type CardCompanyOuterInfoProps = Company & {
-    handleOpen: (reel: string, url: string, name: string, slogan?: string) => void;
+    handleOpen?: (reel: string, url: string, name: string, slogan?: string) => void;
 }
 
 export default function CardCompanyOuterInfo({
@@ -21,8 +21,8 @@ export default function CardCompanyOuterInfo({
 }: CardCompanyOuterInfoProps) {
   return (
     <div>
-      <div className=" rounded-lg overflow-hidden">
-        <img src={cover} alt="" />
+      <div className=" rounded-lg overflow-hidden w-full aspect-video">
+        <img className="w-full h-full object-cover" src={cover} alt="" />
       </div>
 
       <div className="py-4 text-left">
@@ -37,7 +37,7 @@ export default function CardCompanyOuterInfo({
         <div className="inline-flex mt-4 space-x-3">
           <Button href={`/empresas/${slug}`}>Ir al perfil</Button>
 
-          {reel && (
+          {reel && handleOpen && (
             <Button 
               icon={<img src={IconPlay.src} alt="play video" />}
               color="secondary"

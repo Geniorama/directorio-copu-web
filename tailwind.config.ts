@@ -23,9 +23,14 @@ const config: Config = {
         "secondary-color-hover": "#2D2D33"
       }
     },
-    fontFamily:{
-      'body': ['"Poppins"', '"Helvetica"']
-    }
+    fontFamily: {
+      sans: ['Poppins', 'sans-serif'],
+    },
+    fontWeight: {
+      light: '300',
+      medium: '500',
+      bold: '700',
+    },
   },
   plugins: [],
 };

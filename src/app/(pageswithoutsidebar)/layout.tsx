@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="custom-scroll">
+      <body className="custom-scroll font-sans">
         <Suspense>
           <StoreProvider>
             <LayoutWithoutSidebar>{children}</LayoutWithoutSidebar>
