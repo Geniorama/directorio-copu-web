@@ -34,8 +34,8 @@ export default function CarouselClientsCompany({clients}: CarouselClientsCompany
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
               navigation={{
-                prevEl: prevRef.current,
-                nextEl: nextRef.current,
+                prevEl: "#prevSlideClients",
+                nextEl: "#nextSlideClients",
               }}
               scrollbar={{ draggable: true }}
               breakpoints={{
@@ -61,12 +61,14 @@ export default function CarouselClientsCompany({clients}: CarouselClientsCompany
 
             {/* Botones personalizados */}
             <button
+              id="prevSlideClients"
               ref={prevRef}
               className=" custom-prev-button bg-secondary-color-light w-[40px] h-[40px] rounded-full inline-flex justify-center items-center absolute left-0 top-[30%] z-20 hover:bg-secondary-color-hover active:bg-white"
             >
               <img src={ArrowLeft.src} alt="" />
             </button>
             <button
+              id="nextSlideClients"
               ref={nextRef}
               className=" custom-next-button bg-secondary-color-light w-[40px] h-[40px] rounded-full inline-flex justify-center items-center absolute right-0 top-[30%] z-20 hover:bg-secondary-color-hover active:bg-white"
             >
