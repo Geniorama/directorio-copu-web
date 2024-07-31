@@ -124,6 +124,7 @@ export default function HomePage({
         company.tags?.some((tag) =>
           tag.name.toLowerCase().includes(searchValue.toLowerCase())
         );
+        
 
       // Filters by sector
       const matchesSectorsFilter =
@@ -254,6 +255,7 @@ export default function HomePage({
                       logoLight={filteredPremiumCompanies[0].logoLight}
                       reel={filteredPremiumCompanies[0].reel}
                       handleOpen={handleOpenModal}
+                      exactlyMatch={searchValue.toLowerCase() === filteredPremiumCompanies[0].name.toLowerCase()}
                     />
                   </div>
 
@@ -269,6 +271,7 @@ export default function HomePage({
                       logoLight={filteredPremiumCompanies[0].logoLight}
                       reel={filteredPremiumCompanies[0].reel}
                       handleOpen={handleOpenModal}
+                      exactlyMatch={searchValue.toLowerCase() === filteredPremiumCompanies[0].name.toLowerCase()}
                     />
                   </div>
                 </>

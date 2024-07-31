@@ -5,6 +5,7 @@ import IconPlay from "../../../../public/img/btn-play.svg";
 
 type CardCompanyPremiumProps = Company & {
   handleOpen: (reel: string, url: string, name: string, slogan?: string) => void;
+  exactlyMatch: boolean
 }
 
 export default function CardCompanyPremium({
@@ -16,6 +17,7 @@ export default function CardCompanyPremium({
   reel,
   tags,
   sectors,
+  exactlyMatch,
   handleOpen
 }: CardCompanyPremiumProps) {
   
@@ -24,7 +26,7 @@ export default function CardCompanyPremium({
     <>
       <div
         style={{ backgroundImage: `url(${cover})` }}
-        className="relative flex flex-col justify-between p-6 bg-cover bg-no-repeat w-full aspect-video rounded-3xl overflow-hidden"
+        className={`relative flex flex-col justify-between p-6 bg-cover bg-no-repeat w-full aspect-video rounded-3xl overflow-hidden ${exactlyMatch && 'border-primary-color border-2'}`}
       >
         <div
           style={{

@@ -4,6 +4,7 @@ import IconPlay from "../../../../public/img/btn-play.svg";
 
 type CardCompanyOuterInfoProps = Company & {
     handleOpen?: (reel: string, url: string, name: string, slogan?: string) => void;
+    exactlyMatch: boolean
 }
 
 export default function CardCompanyOuterInfo({
@@ -17,11 +18,12 @@ export default function CardCompanyOuterInfo({
   reel,
   logoDark,
   logoLight,
-  slogan
+  slogan,
+  exactlyMatch
 }: CardCompanyOuterInfoProps) {
   return (
     <div>
-      <div className=" rounded-lg overflow-hidden w-full aspect-video">
+      <div className={` rounded-lg overflow-hidden w-full aspect-video ${exactlyMatch && ' border-2 border-primary-color'}`}>
         <img className="w-full h-full object-cover" src={cover} alt="" />
       </div>
 
