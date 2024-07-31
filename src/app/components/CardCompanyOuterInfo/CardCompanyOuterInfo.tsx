@@ -4,7 +4,7 @@ import IconPlay from "../../../../public/img/btn-play.svg";
 
 type CardCompanyOuterInfoProps = Company & {
     handleOpen?: (reel: string, url: string, name: string, slogan?: string) => void;
-    exactlyMatch: boolean
+    exactlyMatch?: boolean
 }
 
 export default function CardCompanyOuterInfo({
