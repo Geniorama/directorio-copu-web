@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use } from "react";
+import { useState } from "react";
 import IconFilter from "../../../../../public/img/tune.svg";
 import IconCollapse from "../../../../../public/img/vertical_align_bottom.svg";
 import WidgetSectores from "./WidgetSectores";
@@ -16,6 +16,7 @@ type SidebarProps = {
 };
 
 export default function Sidebar({ handleSidebar }: SidebarProps) {
+  const [displaySidebar, setDisplaySidebar] = useState(true)
   const isMobile = useIsMobile();
   const selectedSectors = useAppSelector(
     (state) => state.searchReducer.selectedSectors
@@ -36,8 +37,12 @@ export default function Sidebar({ handleSidebar }: SidebarProps) {
   const countFilters =
     selectedSectors.length + selectedTypes.length + (selectedCountry ? 1 : 0);
 
+  const handleToggleSidebar = () => {
+    setDisplaySidebar(!displaySidebar)
+  }
+
   return (
-    <div className="bg-secondary-color-light p-3 h-full">
+    <div className={`p-3 h-full transition ${displaySidebar ? 'bg-secondary-color-light p-3 w-full' : 'w-[160px]'}`}>
       <div className="flex gap-2 justify-between">
         <button className="flex items-center text-2xl lg:text-lg  gap-2">
           <img src={IconFilter.src} alt="" />
@@ -49,37 +54,53 @@ export default function Sidebar({ handleSidebar }: SidebarProps) {
           )}
         </button>
 
-        <button
-          onClick={handleSidebar}
-          className="transition w-[35px] h-[35px] flex items-center justify-center rounded-full hover:bg-secondary-color-hover"
-        >
-          <img src={`${isMobile ? CloseIcon.src : IconCollapse.src}`} alt="" />
-        </button>
-      </div>
-      <hr className="border-1 mt-3 mb-5 border-[#2D2D2D]" />
-      <WidgetSectores />
-      <hr className="border-1 my-5 border-[#2D2D2D]" />
-      <WidgetUbicacion />
-      <hr className="border-1 my-5 border-[#2D2D2D]" />
-      <WidgetTipoEmpresa />
+        <div className=" hidden lg:block">
+          <button
+            onClick={handleToggleSidebar}
+            className={`w-[35px] h-[35px] flex items-center justify-center rounded-full hover:bg-secondary-color-hover ${!displaySidebar && 'rotate-180'}`}
+          >
+            <img src={IconCollapse.src} alt="" />
+          </button>
+        </div>
 
-      <hr className="border-1 my-5 border-[#2D2D2D] block lg:hidden" />
-
-      <div className="flex gap-3 lg:hidden">
-        <button
-          onClick={() => dispatch(resetFilters())}
-          disabled={!activeSomeFilters}
-          className=" bg-[#2D2D33] text-white font-light px-6 py-4 rounded-full w-1/2 disabled:text-black"
-        >
-          Restaurar
-        </button>
-        <button
-          onClick={handleSidebar}
-          className=" bg-primary-color text-text-dark font-bold px-6 py-4 rounded-full w-1/2 disabled:bg-[#2D2D33]"
-        >
-          {!activeSomeFilters ? "Cerrar" : "Aplicar"}
-        </button>
+        <div className=" lg:hidden">
+          <button
+            onClick={handleSidebar}
+            className={`w-[35px] h-[35px] flex items-center justify-center rounded-full hover:bg-secondary-color-hover`}
+          >
+            <img src={CloseIcon.src} alt="" />
+          </button>
+        </div>
       </div>
+      {displaySidebar && (
+        <>
+          <hr className="border-1 mt-3 mb-5 border-[#2D2D2D]" />
+          <WidgetSectores />
+          <hr className="border-1 my-5 border-[#2D2D2D]" />
+          <WidgetUbicacion />
+          <hr className="border-1 my-5 border-[#2D2D2D]" />
+          <WidgetTipoEmpresa />
+    
+          <hr className="border-1 my-5 border-[#2D2D2D] block lg:hidden" />
+    
+          <div className="flex gap-3 lg:hidden">
+            <button
+              onClick={() => dispatch(resetFilters())}
+              disabled={!activeSomeFilters}
+              className=" bg-[#2D2D33] text-white font-light px-6 py-4 rounded-full w-1/2 disabled:text-black"
+            >
+              Restaurar
+            </button>
+            <button
+              onClick={handleSidebar}
+              className=" bg-primary-color text-text-dark font-bold px-6 py-4 rounded-full w-1/2 disabled:bg-[#2D2D33]"
+            >
+              {!activeSomeFilters ? "Cerrar" : "Aplicar"}
+            </button>
+          </div>
+        </>
+      )}
+      
     </div>
   );
 }
