@@ -1,237 +1,231 @@
 import { gql } from "@apollo/client";
 
-export const GetCompaniesBasic = {
-  query: gql`
-    query GetCompaniesBasic {
-      companies(filters: { plan: { slug: { eq: "basico" } } }) {
-        data {
-          id
-          attributes {
-            name
-            slug
-            background
-            plan {
-              data {
-                attributes {
-                  title
-                  slug
-                }
+export const GetCompaniesBasic = gql`
+  query GetCompaniesBasic {
+    companies(filters: { plan: { slug: { eq: "basico" } } }) {
+      data {
+        id
+        attributes {
+          name
+          slug
+          background
+          plan {
+            data {
+              attributes {
+                title
+                slug
               }
             }
-            logoLight {
-              data {
-                attributes {
-                  url
-                }
+          }
+          logoLight {
+            data {
+              attributes {
+                url
               }
             }
-            logoDark {
-              data {
-                attributes {
-                  url
-                }
+          }
+          logoDark {
+            data {
+              attributes {
+                url
               }
             }
-            countries {
-              data {
-                attributes {
-                  name
-                  slug
-                }
+          }
+          countries {
+            data {
+              attributes {
+                name
+                slug
               }
             }
-            logoLight {
-              data {
-                attributes {
-                  url
-                }
+          }
+          logoLight {
+            data {
+              attributes {
+                url
               }
             }
-            categories {
-              data {
-                attributes {
-                  name
-                  slug
-                }
+          }
+          categories {
+            data {
+              attributes {
+                name
+                slug
               }
             }
-            tags {
-              data {
-                attributes {
-                  name
-                  slug
-                }
+          }
+          tags {
+            data {
+              attributes {
+                name
+                slug
               }
             }
-            type {
-              data {
-                attributes {
-                  title
-                  slug
-                }
+          }
+          type {
+            data {
+              attributes {
+                title
+                slug
               }
             }
           }
         }
       }
     }
-  `,
-};
+  }
+`;
 
-export const GetCompaniesPro = {
-  query: gql`
-    query GetCompaniesPro {
-      companies(filters: { plan: { slug: { eq: "pro" } } }) {
-        data {
-          id
-          attributes {
-            name
-            slug
-            plan {
-              data {
-                attributes {
-                  title
-                  slug
-                }
+export const GetCompaniesPro = gql`
+  query GetCompaniesPro {
+    companies(filters: { plan: { slug: { eq: "pro" } } }) {
+      data {
+        id
+        attributes {
+          name
+          slug
+          plan {
+            data {
+              attributes {
+                title
+                slug
               }
             }
-            logoLight {
-              data {
-                attributes {
-                  url
-                }
+          }
+          logoLight {
+            data {
+              attributes {
+                url
               }
             }
-            logoDark {
-              data {
-                attributes {
-                  url
-                }
+          }
+          logoDark {
+            data {
+              attributes {
+                url
               }
             }
-            countries {
-              data {
-                attributes {
-                  name
-                  slug
-                }
+          }
+          countries {
+            data {
+              attributes {
+                name
+                slug
               }
             }
-            cover {
-              data {
-                attributes {
-                  url
-                }
+          }
+          cover {
+            data {
+              attributes {
+                url
               }
             }
-            categories {
-              data {
-                attributes {
-                  name
-                  slug
-                }
+          }
+          categories {
+            data {
+              attributes {
+                name
+                slug
               }
             }
-            tags {
-              data {
-                attributes {
-                  name
-                  slug
-                }
+          }
+          tags {
+            data {
+              attributes {
+                name
+                slug
               }
             }
-            type {
-              data {
-                attributes {
-                  title
-                  slug
-                }
+          }
+          type {
+            data {
+              attributes {
+                title
+                slug
               }
             }
           }
         }
       }
     }
-  `,
-};
+  }
+`;
 
-export const GetCompaniesPremium = {
-  query: gql`
-    query GetCompaniesPremium {
-      companies(filters: { plan: { slug: { eq: "premium" } } }) {
-        data {
-          id
-          attributes {
-            name
-            slug
-            youtubeReelId
-            plan {
-              data {
-                attributes {
-                  title
-                  slug
-                }
+export const GetCompaniesPremium = gql`
+  query GetCompaniesPremium {
+    companies(filters: { plan: { slug: { eq: "premium" } } }) {
+      data {
+        id
+        attributes {
+          name
+          slug
+          youtubeReelId
+          plan {
+            data {
+              attributes {
+                title
+                slug
               }
             }
-            logoLight {
-              data {
-                attributes {
-                  url
-                }
+          }
+          logoLight {
+            data {
+              attributes {
+                url
               }
             }
-            logoDark {
-              data {
-                attributes {
-                  url
-                }
+          }
+          logoDark {
+            data {
+              attributes {
+                url
               }
             }
-            countries {
-              data {
-                attributes {
-                  name
-                  slug
-                }
+          }
+          countries {
+            data {
+              attributes {
+                name
+                slug
               }
             }
-            cover {
-              data {
-                attributes {
-                  url
-                }
+          }
+          cover {
+            data {
+              attributes {
+                url
               }
             }
-            categories {
-              data {
-                attributes {
-                  name
-                  slug
-                }
+          }
+          categories {
+            data {
+              attributes {
+                name
+                slug
               }
             }
-            tags {
-              data {
-                attributes {
-                  name
-                  slug
-                }
+          }
+          tags {
+            data {
+              attributes {
+                name
+                slug
               }
             }
-            type {
-              data {
-                attributes {
-                  title
-                  slug
-                }
+          }
+          type {
+            data {
+              attributes {
+                title
+                slug
               }
             }
           }
         }
       }
     }
-  `,
-};
+  }
+`;
 
 export const GetPlans = {
   query: gql`
@@ -252,50 +246,44 @@ export const GetPlans = {
   `,
 };
 
-export const GetCountries = {
-  query: gql`
-    query GetCountries {
-      countries {
-        data {
-          attributes {
-            name
-            slug
-          }
+export const GetCountries = gql`
+  query GetCountries {
+    countries {
+      data {
+        attributes {
+          name
+          slug
         }
       }
     }
-  `,
-};
+  }
+`;
 
-export const GetSectors = {
-  query: gql`
-    query GetSectors {
-      categories {
-        data {
-          attributes {
-            name
-            slug
-          }
+export const GetSectors = gql`
+  query GetSectors {
+    categories {
+      data {
+        attributes {
+          name
+          slug
         }
       }
     }
-  `,
-};
+  }
+`;
 
-export const GetTypes = {
-  query: gql`
-    query GetTypes {
-      types {
-        data {
-          attributes {
-            title
-            slug
-          }
+export const GetTypes = gql`
+  query GetTypes {
+    types {
+      data {
+        attributes {
+          title
+          slug
         }
       }
     }
-  `,
-};
+  }
+`;
 
 export const GetCompanyBySlug = gql`
   query GetCompanyBySlug($slug: String!) {

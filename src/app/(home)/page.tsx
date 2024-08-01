@@ -9,13 +9,37 @@ import {
   GetTypes,
 } from "@/app/api/queries";
 
+const contexDefault = {
+  fetchOptions:{
+    next: { revalidate: 5 }
+  }
+}
+
 async function loadData() {
-  const basic = await getClient().query(GetCompaniesBasic);
-  const pro = await getClient().query(GetCompaniesPro);
-  const premium = await getClient().query(GetCompaniesPremium);
-  const sectors = await getClient().query(GetSectors);
-  const countries = await getClient().query(GetCountries);
-  const types = await getClient().query(GetTypes);
+  const basic = await getClient().query({
+    query: GetCompaniesBasic,
+    context: contexDefault
+  });
+  const pro = await getClient().query({
+    query: GetCompaniesPro,
+    context: contexDefault
+  });
+  const premium = await getClient().query({
+    query: GetCompaniesPremium,
+    context: contexDefault
+  });
+  const sectors = await getClient().query({
+    query: GetSectors,
+    context: contexDefault
+  });
+  const countries = await getClient().query({
+    query: GetCountries,
+    context: contexDefault
+  });
+  const types = await getClient().query({
+    query: GetTypes,
+    context: contexDefault
+  });
 
   return {
     companiesBasic: basic.data.companies.data,
