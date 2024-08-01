@@ -1,5 +1,14 @@
+.Swiper{
+    padding: 30px 0;
+    width: 100%;
+}
+
 .SwiperSlide{
     width: 600px;
+}
+
+.SwiperSlideActive{
+    transform: scale(3);
 }
 
 @media screen and (max-width: 1440px) {

@@ -4,7 +4,7 @@ import IconPlay from "../../../../public/img/btn-play.svg";
 
 
 type CardCompanyPremiumProps = Company & {
-  handleOpen: (reel: string, url: string, name: string, slogan?: string) => void;
+  handleOpen: (reel: string, url: string, name: string, slogan?: string) => void,
   exactlyMatch?: boolean
 }
 
