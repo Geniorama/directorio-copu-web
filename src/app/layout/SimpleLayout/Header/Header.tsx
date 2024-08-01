@@ -12,7 +12,6 @@ import { Sidebar } from "../Sidebar";
 import CloseIcon from "../../../../../public/img/btn-close.svg";
 import IconFilterBlack from "../../../../../public/img/tune-black.svg";
 import { menuHeader } from "@/app/data/menu";
-import { SearchBar } from "@/app/components/SearchBar";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -70,14 +69,6 @@ export default function Header() {
 
         <nav className="text-xs hidden lg:flex gap-16 items-center">
           <ul className="flex gap-16 items-center">
-            {pathname !== "/" && (
-              <li>
-                <SearchBar
-                  placeholder="Buscar"
-                  backgroundColor="bg-[#3C3C45]"
-                />
-              </li>
-            )}
             <li>
               <Link
                 href={"/que-es"}

@@ -1,6 +1,5 @@
 import LayoutWithoutSidebar from "../layout/LayoutWithoutSidebar/LayoutWithoutSidebar";
 import "./../globals.css";
-import StoreProvider from "../StoreProvider";
 import { Suspense } from "react";
 
 export const metadata = {
@@ -17,9 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="custom-scroll font-sans">
         <Suspense>
-          <StoreProvider>
-            <LayoutWithoutSidebar>{children}</LayoutWithoutSidebar>
-          </StoreProvider>
+          <LayoutWithoutSidebar>{children}</LayoutWithoutSidebar>
         </Suspense>
       </body>
     </html>
