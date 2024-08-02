@@ -34,6 +34,10 @@ export const transformDataCompanies = (data: any[]): Company[] => {
       name: country.attributes.name,
       slug: country.attributes.slug,
     })),
+    cities: item.attributes.cities.data.map((city: any) => ({
+      name: city.attributes.name,
+      slug: city.attributes.slug
+    })),
     type: {
       title: item.attributes.type.data?.attributes.title,
       slug: item.attributes.type.data?.attributes.slug
@@ -82,6 +86,10 @@ export const transformDataCompany = (item: any): Company => {
       name: country?.attributes?.name || '',
       slug: country?.attributes?.slug || '',
     })) || [],
+    cities: item.attributes.cities.data.map((city: any) => ({
+      name: city.attributes.name,
+      slug: city.attributes.slug
+    })),
   }
 
   return dataFormat;

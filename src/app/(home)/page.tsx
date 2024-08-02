@@ -6,7 +6,7 @@ import {
   GetCompaniesPro,
   GetSectors,
   GetCountries,
-  GetTypes,
+  GetTypes
 } from "@/app/api/queries";
 
 const contexDefault = {
@@ -52,6 +52,7 @@ async function loadData() {
 }
 
 export default async function Home() {
+  
   const {
     companiesBasic,
     companiesPro,

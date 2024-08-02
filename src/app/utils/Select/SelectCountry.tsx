@@ -11,7 +11,7 @@ interface SelectProps {
   onSelect: (country: Country) => void;
 }
 
-export default function Select({ options, selectedCountry, onSelect }: SelectProps) {
+export default function SelectCountry({ options, selectedCountry, onSelect }: SelectProps) {
   const [value, setValue] = useState("");
   const [openList, setOpenList] = useState(false);
   const [filteredOptions, setFilteredOptions] = useState(options);
@@ -90,7 +90,7 @@ export default function Select({ options, selectedCountry, onSelect }: SelectPro
         </span>
       </div>
       {openList && filteredOptions && filteredOptions.length > 0 && (
-        <ul className="bg-[#080809] max-h-[200px] overflow-y-scroll custom-scroll mt-1 absolute w-full">
+        <ul className="bg-[#080809] max-h-[200px] overflow-y-scroll custom-scroll mt-1 absolute w-full z-30">
           {filteredOptions.map((option) => (
             <li
               key={option.slug}

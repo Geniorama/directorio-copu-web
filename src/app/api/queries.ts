@@ -39,6 +39,14 @@ export const GetCompaniesBasic = gql`
               }
             }
           }
+          cities {
+            data {
+              attributes {
+                name
+                slug
+              }
+            }
+          }
           logoLight {
             data {
               attributes {
@@ -107,6 +115,14 @@ export const GetCompaniesPro = gql`
             }
           }
           countries {
+            data {
+              attributes {
+                name
+                slug
+              }
+            }
+          }
+          cities {
             data {
               attributes {
                 name
@@ -183,6 +199,14 @@ export const GetCompaniesPremium = gql`
             }
           }
           countries {
+            data {
+              attributes {
+                name
+                slug
+              }
+            }
+          }
+          cities {
             data {
               attributes {
                 name
@@ -382,4 +406,17 @@ export const GetCompanyBySlug = gql`
       }
     }
   }
+`;
+
+export const GetCitiesByCountrySlug = gql`
+query GetCitiesByCountry($countrySlug: String!) {
+  cities(filters:{country:{slug:{eq:$countrySlug}}}){
+    data{
+      attributes{
+        name
+        slug
+      }
+    }
+  }
+}
 `;

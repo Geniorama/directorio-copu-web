@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { Sector, Country, Type } from "@/app/types";
+import type { Sector, Country, Type, City } from "@/app/types";
 
 interface SearchState {
   value: string;
@@ -10,6 +10,7 @@ interface SearchState {
   selectedCountries: Country[];
   selectedCountry: Country | null;
   allCountries: Country[];
+  selectedCity: City | null;
 }
 
 const initialState: SearchState = {
@@ -21,6 +22,7 @@ const initialState: SearchState = {
   selectedCountries: [],
   selectedCountry: null,
   allCountries: [],
+  selectedCity: null
 };
 
 export const searchSlice = createSlice({
@@ -85,8 +87,16 @@ export const searchSlice = createSlice({
       state.selectedCountry = action.payload;
     },
 
+    setCity(state, action: PayloadAction<City>){
+      state.selectedCity = action.payload;
+    },
+
     removeCountry: (state) => {
       state.selectedCountry = null;
+    },
+
+    removeCity:(state) => {
+      state.selectedCity = null
     },
 
     setInitialTypes: (state, action: PayloadAction<Type[]>) => {
@@ -135,6 +145,8 @@ export const {
   removeCountry,
   resetSearch,
   setInitialTypes,
-  resetFilters
+  resetFilters,
+  setCity,
+  removeCity
 } = searchSlice.actions;
 export default searchSlice.reducer;

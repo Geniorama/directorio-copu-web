@@ -2,6 +2,13 @@ export type Country = {
     id: string | number,
     slug: string,
     name: string,
+    cities?: City[]
+}
+
+export type City = {
+    slug: string,
+    name: string,
+    country: Country
 }
 
 export type Tag = {
@@ -37,6 +44,7 @@ export type Company = {
     logoDark?: string,
     cover?: string,
     countries?: Country[],
+    cities?: City[],
     tags?: Tag[],
     plan?: Plan,
     nit?: string,

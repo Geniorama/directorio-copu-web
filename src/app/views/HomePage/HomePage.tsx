@@ -23,6 +23,7 @@ import {
   removeCountry,
   setInitialTypes,
   removeType,
+  removeCity,
 } from "@/lib/features/searchSlice";
 import {
   transformDataCompanies,
@@ -65,7 +66,7 @@ export default function HomePage({
     slogan: "",
   });
 
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
 
   const searchValue = useAppSelector((state) => state.searchReducer.value);
   const selectedSectors = useAppSelector(
@@ -78,9 +79,11 @@ export default function HomePage({
     (state) => state.searchReducer.selectedTypes
   );
 
-  const dispatch = useAppDispatch();
+  const selectedCity = useAppSelector(
+    (state) => state.searchReducer.selectedCity
+  );
 
-  
+  const dispatch = useAppDispatch();
 
   const handleToggleModal = () => setOpenModal(!openModal);
   const handleOpenModal = (
@@ -110,7 +113,6 @@ export default function HomePage({
     dispatch(setInitialTypes(transformDataTypes(types)));
   }, [dispatch, sectors, countries, types]);
 
-
   const filterCompanies = (companies?: Company[]) => {
     if (!companies) return [];
 
@@ -124,7 +126,6 @@ export default function HomePage({
         company.tags?.some((tag) =>
           tag.name.toLowerCase().includes(searchValue.toLowerCase())
         );
-        
 
       // Filters by sector
       const matchesSectorsFilter =
@@ -149,11 +150,22 @@ export default function HomePage({
           (country) => country.slug === selectedCountry.slug
         );
 
+      // Filter by city
+      const matchesCityFilter =
+      !selectedCity ||
+      company.cities?.some(
+        (city) => city.slug === selectedCity.slug
+      );
+
+      console.log("Company:", company.cities);
+      // console.log("Matches City Filter:", matchesCityFilter);
+
       return (
         matchesSearchValue &&
         matchesSectorsFilter &&
         matchesCountryFilter &&
-        matchesTypesFilter
+        matchesTypesFilter &&
+        matchesCityFilter
       );
     });
   };
@@ -185,8 +197,12 @@ export default function HomePage({
         />
       )}
 
-      <SearchBar 
-        placeholder={isMobile ? 'Buscar...': 'Busca las empresas más relevantes del sector creativo'}
+      <SearchBar
+        placeholder={
+          isMobile
+            ? "Buscar..."
+            : "Busca las empresas más relevantes del sector creativo"
+        }
       />
       <div className="my-4"></div>
       <FilterByLetter />
@@ -208,6 +224,14 @@ export default function HomePage({
             text={selectedCountry.name}
             filter="location"
             handleClose={() => dispatch(removeCountry())}
+          />
+        )}
+
+        {selectedCity && (
+          <Tag
+            text={selectedCity.name}
+            filter="location"
+            handleClose={() => dispatch(removeCity())}
           />
         )}
 
@@ -255,12 +279,15 @@ export default function HomePage({
                       logoLight={filteredPremiumCompanies[0].logoLight}
                       reel={filteredPremiumCompanies[0].reel}
                       handleOpen={handleOpenModal}
-                      exactlyMatch={searchValue.toLowerCase() === filteredPremiumCompanies[0].name.toLowerCase()}
+                      exactlyMatch={
+                        searchValue.toLowerCase() ===
+                        filteredPremiumCompanies[0].name.toLowerCase()
+                      }
                     />
                   </div>
 
                   <div className=" lg:hidden">
-                    <CardCompanyOuterInfo 
+                    <CardCompanyOuterInfo
                       id={filteredPremiumCompanies[0].id}
                       name={filteredPremiumCompanies[0].name}
                       slug={filteredPremiumCompanies[0].slug}
@@ -271,7 +298,10 @@ export default function HomePage({
                       logoLight={filteredPremiumCompanies[0].logoLight}
                       reel={filteredPremiumCompanies[0].reel}
                       handleOpen={handleOpenModal}
-                      exactlyMatch={searchValue.toLowerCase() === filteredPremiumCompanies[0].name.toLowerCase()}
+                      exactlyMatch={
+                        searchValue.toLowerCase() ===
+                        filteredPremiumCompanies[0].name.toLowerCase()
+                      }
                     />
                   </div>
                 </>
