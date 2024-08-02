@@ -86,7 +86,7 @@ export const transformDataCompany = (item: any): Company => {
       name: country?.attributes?.name || '',
       slug: country?.attributes?.slug || '',
     })) || [],
-    cities: item.attributes.cities.data.map((city: any) => ({
+    cities: item.attributes.cities?.data.map((city: any) => ({
       name: city.attributes.name,
       slug: city.attributes.slug
     })),
