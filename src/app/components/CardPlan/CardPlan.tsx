@@ -5,7 +5,7 @@ import { formatCurrency } from "@/app/helpers";
 
 type CardPlanProps = Plan & {
     color?: string;
-    handlePlan?: MouseEventHandler<HTMLButtonElement>;
+    handlePlan: MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function CardPlan({color, name, description, sufixPrice, features, price, handlePlan}:CardPlanProps) {

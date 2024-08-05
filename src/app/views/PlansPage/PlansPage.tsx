@@ -65,7 +65,6 @@ export default function PlansPage({ data }: PlansPageProps) {
       </div>
     );
   }
-
   return (
     <div className="container mx-auto pt-16 py-10 px-3">
       <div className="py-6 px-5 lg:px-0">
@@ -101,7 +100,7 @@ export default function PlansPage({ data }: PlansPageProps) {
                       features={features}
                       color={colors[i].code}
                       sufixPrice={sufixPrice}
-                      handlePlan={() => handlePlan(link ? link : "#")}
+                      handlePlan={() => handlePlan(link ? link : '')}
                     />
                   </div>
                 );

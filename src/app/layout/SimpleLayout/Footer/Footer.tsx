@@ -48,7 +48,7 @@ const socialMedia = [
 
   {
     name: "Mail",
-    link: "mailto:info@copu.media",
+    link: "mailto:directorio@copu.media",
     image: MailIcon,
   },
 
@@ -109,7 +109,8 @@ export default function Footer() {
       <div className="md:flex gap-20 md:w-1/3 justify-end">
         <Link
           className=" underline md:no-underline pt-5 block md:pt-0 hover:underline"
-          href={"/contacto"}
+          href={"https://wa.link/afu43n"}
+          target="_blank"
         >
           Contacto
         </Link>
