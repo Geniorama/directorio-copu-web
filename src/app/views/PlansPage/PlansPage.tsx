@@ -40,6 +40,15 @@ const transformData = (data: any[]): Plan[] => {
   return dataFormat;
 };
 
+const sortData = (data: Plan[]): Plan[] => {
+  return data.sort((a, b) => {
+    if (a.price === undefined) return 1;
+    if (b.price === undefined) return -1;
+    return a.price - b.price;
+  });
+};
+
+
 function handlePlan(route: string) {
   window.open(route);
 }
@@ -49,7 +58,9 @@ export default function PlansPage({ data }: PlansPageProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setPlans(transformData(data));
+    const transformedData = transformData(data);
+    const sortedData = sortData(transformedData);
+    setPlans(sortedData);
   }, [data]);
 
   useEffect(() => {
