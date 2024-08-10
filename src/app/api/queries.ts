@@ -323,6 +323,7 @@ export const GetCompanyBySlug = gql`
           youtubeReelId
           webSite
           specialities
+          map
           nit
           emails {
             email

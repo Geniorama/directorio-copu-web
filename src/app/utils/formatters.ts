@@ -91,7 +91,8 @@ export const transformDataCompany = (item: any): Company => {
       name: city.attributes.name,
       slug: city.attributes.slug
     })),
-    specialities: item.attributes.specialities
+    specialities: item.attributes.specialities,
+    map: item.attributes.map
   }
 
   return dataFormat;

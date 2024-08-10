@@ -58,7 +58,8 @@ export type Company = {
     emails?: [{email?: string}],
     phones?: [{phoneNumber?: string, link?: string}],
     type?: Type,
-    specialities?: string
+    specialities?: string,
+    map?: string
 }
 
 export type Type = {
