@@ -92,6 +92,7 @@ export const GetCompaniesPro = gql`
         attributes {
           name
           slug
+          specialities
           plan {
             data {
               attributes {
@@ -176,6 +177,7 @@ export const GetCompaniesPremium = gql`
           name
           slug
           youtubeReelId
+          specialities
           plan {
             data {
               attributes {
@@ -320,6 +322,7 @@ export const GetCompanyBySlug = gql`
           description
           youtubeReelId
           webSite
+          specialities
           nit
           emails {
             email

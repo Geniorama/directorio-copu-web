@@ -8,7 +8,7 @@ interface LayoutProps {
 
 export default function Layout(props: LayoutProps) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body>
         <StoreProvider>
           <CompanyLayout>{props.children}</CompanyLayout>

@@ -41,7 +41,8 @@ export const transformDataCompanies = (data: any[]): Company[] => {
     type: {
       title: item.attributes.type.data?.attributes.title,
       slug: item.attributes.type.data?.attributes.slug
-    }
+    },
+    specialities: item.attributes.specialities
   }));
 
   return dataFormat;
@@ -90,6 +91,7 @@ export const transformDataCompany = (item: any): Company => {
       name: city.attributes.name,
       slug: city.attributes.slug
     })),
+    specialities: item.attributes.specialities
   }
 
   return dataFormat;

@@ -122,6 +122,7 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
               countries={dataCompany.countries}
               nit={dataCompany.nit}
               sectors={dataCompany.sectors}
+              specialities={dataCompany.specialities}
             />
           )}
           {section === "personas" && <TabPersonas />}

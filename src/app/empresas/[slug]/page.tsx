@@ -19,6 +19,8 @@ async function loadData(slug: string) {
 export default async function Company({params}:CompanyProps) {
   const data = await loadData(params.slug)
 
+  console.log(data)
+
   return (
     <SingleCompanyPage
       data={data}

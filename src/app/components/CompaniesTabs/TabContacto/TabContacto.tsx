@@ -20,6 +20,7 @@ type TabContactoProps = {
   countries?: Company["countries"];
   sectors?: Company["sectors"];
   nit?: Company["nit"];
+  specialities?: Company["specialities"]
 };
 
 export default function TabContacto({
@@ -32,6 +33,7 @@ export default function TabContacto({
   countries,
   sectors,
   nit,
+  specialities
 }: TabContactoProps) {
   return (
     <article className="text-center">
@@ -39,7 +41,7 @@ export default function TabContacto({
 
       <SocialMediaCompany socialMedia={socialMedia} />
 
-      <SpecialitiesCompany specialities={tags?.map((tag) => tag.name)} />
+      <SpecialitiesCompany specialities={specialities} />
 
       <ContactInfoCompany
         nit={nit}

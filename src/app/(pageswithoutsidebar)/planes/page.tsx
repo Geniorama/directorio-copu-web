@@ -9,7 +9,6 @@ async function loadData() {
 
 export default async function Plans() {
   const plans = await loadData()
-  console.log(plans)
   return (
     <PlansPage
       data={plans}
