@@ -88,9 +88,9 @@ export default function Footer() {
       <div className="md:w-1/3">
         <p className="flex gap-1 mt-9 md:mt-0">
           <span>Designed by</span>
-          <img src={LogoBito.src} alt="" />
+          <Link href={'https://bitoinc.net/'} target="_blank"><img src={LogoBito.src} alt="" /></Link>
           <span>&</span>
-          <img src={LogoGeniorama.src} alt="" />
+          <Link href={'https://geniorama.co/'} target="_blank"><img src={LogoGeniorama.src} alt="" /></Link>
         </p>
       </div>
 
