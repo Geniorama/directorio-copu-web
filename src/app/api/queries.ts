@@ -328,6 +328,29 @@ export const GetCompanyBySlug = gql`
           emails {
             email
           }
+          team {
+            name
+            position
+            image {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+          }
+          awards {
+            name
+            image {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+          }
           phones {
             phoneNumber
             link
@@ -413,14 +436,14 @@ export const GetCompanyBySlug = gql`
 `;
 
 export const GetCitiesByCountrySlug = gql`
-query GetCitiesByCountry($countrySlug: String!) {
-  cities(filters:{country:{slug:{eq:$countrySlug}}}){
-    data{
-      attributes{
-        name
-        slug
+  query GetCitiesByCountry($countrySlug: String!) {
+    cities(filters: { country: { slug: { eq: $countrySlug } } }) {
+      data {
+        attributes {
+          name
+          slug
+        }
       }
     }
   }
-}
 `;

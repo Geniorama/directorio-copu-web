@@ -34,7 +34,7 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
 
   useEffect(() => {
     if (dataCompany) {
-      setTimeout(() => setLoading(false), 3000)
+      setTimeout(() => setLoading(false), 3000);
     }
   }, [dataCompany]);
 
@@ -55,8 +55,16 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
       <div>
         <HeadingCompany
           cover={dataCompany.cover && dataCompany.cover}
-          imgProfile={dataCompany.logoLight ? dataCompany.logoLight : dataCompany.logoDark ? dataCompany.logoDark : ""}
-          bgImageProfileColor={dataCompany.logoLight ? "bg-[#000000]" : "bg-[#D9D9D9]"}
+          imgProfile={
+            dataCompany.logoLight
+              ? dataCompany.logoLight
+              : dataCompany.logoDark
+              ? dataCompany.logoDark
+              : ""
+          }
+          bgImageProfileColor={
+            dataCompany.logoLight ? "bg-[#000000]" : "bg-[#D9D9D9]"
+          }
           name={dataCompany.name}
           slogan={dataCompany.slogan}
           categories={dataCompany.sectors?.map((sector) => sector.name)}
@@ -80,18 +88,22 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
 
           {plan && plan.slug === "premium" && (
             <>
-              <ButtonTab
-                active={section === "personas"}
-                onClick={() => handleTab("personas")}
-              >
-                Personas
-              </ButtonTab>
-              <ButtonTab
-                active={section === "premios"}
-                onClick={() => handleTab("premios")}
-              >
-                Premios
-              </ButtonTab>
+              {dataCompany.team && dataCompany.team.length > 0 && (
+                <ButtonTab
+                  active={section === "personas"}
+                  onClick={() => handleTab("personas")}
+                >
+                  Personas
+                </ButtonTab>
+              )}
+              {dataCompany.awards && dataCompany.awards.length > 0 && (
+                <ButtonTab
+                  active={section === "premios"}
+                  onClick={() => handleTab("premios")}
+                >
+                  Premios
+                </ButtonTab>
+              )}
               <ButtonTab
                 active={section === "acreditaciones"}
                 onClick={() => handleTab("acreditaciones")}
@@ -126,8 +138,8 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
               map={dataCompany.map}
             />
           )}
-          {section === "personas" && <TabPersonas />}
-          {section === "premios" && <TabPremios />}
+          {section === "personas" && <TabPersonas team={dataCompany.team} />}
+          {section === "premios" && <TabPremios awards={dataCompany.awards} />}
           {section === "acreditaciones" && <TabAcreditaciones />}
         </div>
 

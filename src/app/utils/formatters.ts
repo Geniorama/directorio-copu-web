@@ -92,7 +92,22 @@ export const transformDataCompany = (item: any): Company => {
       slug: city.attributes.slug
     })),
     specialities: item.attributes.specialities,
-    map: item.attributes.map
+    map: item.attributes.map,
+    team: item.attributes.team?.map((member: any) => ({
+      name: member.name,
+      position: member.position,
+      image: {
+        url: member.image.data.attributes.url,
+        alternativeText: member.image.data.attributes.alternativeText
+      }
+    })),
+    awards: item.attributes.awards?.map((award: any) => ({
+      name: award.name,
+      image: {
+        url: award.image.data.attributes.url,
+        alternativeText: award.image.data.attributes.alternativeText
+      }
+    }))
   }
 
   return dataFormat;

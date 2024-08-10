@@ -34,6 +34,23 @@ export type Sector = {
     slug: string,
 }
 
+export type Member = {
+    name: string,
+    image?: {
+        url: string,
+        alternativeText?: string
+    },
+    position?: string
+}
+
+export type Award = {
+    name: string,
+    image: {
+        url: string,
+        alternativeText?: string
+    },
+}
+
 export type Company = {
     id: string | number,
     name: string,
@@ -59,7 +76,9 @@ export type Company = {
     phones?: [{phoneNumber?: string, link?: string}],
     type?: Type,
     specialities?: string,
-    map?: string
+    map?: string,
+    team?: Member[],
+    awards?: Award[]
 }
 
 export type Type = {
