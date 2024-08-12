@@ -62,7 +62,7 @@ export default function CardCompanyPremium({
               {firstSectorName}
             </h5>
             <p className="text-sm">
-              {tags?.map((tag) => tag.name).join(", ")}
+              {tags?.slice(0,2).map((tag) => tag.name).join(", ")}
             </p>
           </div>
 
