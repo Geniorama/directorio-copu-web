@@ -51,9 +51,9 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
   }
 
   if (dataCompany) {
-    const isNotBasic = () => plan && plan.slug !== "basico"
-    const isPro = () => plan && plan.slug == "pro"
-    const isPremium = () => plan && plan.slug == "premium"
+    const isNotBasic = () => plan && plan.slug !== "basico";
+    const isPro = () => plan && plan.slug == "pro";
+    const isPremium = () => plan && plan.slug == "premium";
 
     return (
       <div>
@@ -134,23 +134,33 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
           {section === "contacto" && (
             <TabContacto
               emails={dataCompany.emails}
-              description={isNotBasic() ?  dataCompany.description : undefined}
+              description={isNotBasic() ? dataCompany.description : undefined}
               socialMedia={isNotBasic() ? dataCompany.socialMedia : undefined}
-              tags={isNotBasic() ? dataCompany.tags: undefined}
-              webSite={isNotBasic() ? dataCompany.webSite: undefined}
-              phones={isNotBasic() ? dataCompany.phones: undefined}
-              countries={isNotBasic() ? dataCompany.countries: undefined}
-              nit={isNotBasic() ? dataCompany.nit: undefined}
-              sectors={isNotBasic() ? dataCompany.sectors: undefined}
-              specialities={isNotBasic() ? dataCompany.specialities: undefined}
-              map={isPremium() ? dataCompany.map: undefined}
+              tags={isNotBasic() ? dataCompany.tags : undefined}
+              webSite={isNotBasic() ? dataCompany.webSite : undefined}
+              phones={isNotBasic() ? dataCompany.phones : undefined}
+              countries={isNotBasic() ? dataCompany.countries : undefined}
+              nit={isNotBasic() ? dataCompany.nit : undefined}
+              sectors={isNotBasic() ? dataCompany.sectors : undefined}
+              specialities={isNotBasic() ? dataCompany.specialities : undefined}
+              map={isPremium() ? dataCompany.map : undefined}
             />
           )}
-          {section === "personas" && <TabPersonas team={dataCompany.team} />}
-          {section === "premios" && <TabPremios awards={dataCompany.awards} />}
-          {section === "acreditaciones" && (
-            <TabAcreditaciones accreditations={dataCompany.accreditations} />
-          )}
+          {section === "personas" &&
+            dataCompany.team &&
+            dataCompany.team.length > 0 && (
+              <TabPersonas team={dataCompany.team} />
+            )}
+          {section === "premios" &&
+            dataCompany.awards &&
+            dataCompany.awards.length > 0 && (
+              <TabPremios awards={dataCompany.awards} />
+            )}
+          {section === "acreditaciones" &&
+            dataCompany.accreditations &&
+            dataCompany.accreditations.length > 0 && (
+              <TabAcreditaciones accreditations={dataCompany.accreditations} />
+            )}
         </div>
 
         <div className="text-center mt-32">
