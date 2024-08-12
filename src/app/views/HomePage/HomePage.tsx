@@ -156,8 +156,6 @@ export default function HomePage({
       company.cities?.some(
         (city) => city.slug === selectedCity.slug
       );
-
-      console.log("Company:", company.cities);
       // console.log("Matches City Filter:", matchesCityFilter);
 
       return (
@@ -278,6 +276,7 @@ export default function HomePage({
                       logoDark={filteredPremiumCompanies[0].logoDark}
                       logoLight={filteredPremiumCompanies[0].logoLight}
                       reel={filteredPremiumCompanies[0].reel}
+                      slogan={filteredPremiumCompanies[0].slogan}
                       handleOpen={handleOpenModal}
                       exactlyMatch={
                         searchValue.toLowerCase() ===
@@ -298,6 +297,7 @@ export default function HomePage({
                       logoLight={filteredPremiumCompanies[0].logoLight}
                       reel={filteredPremiumCompanies[0].reel}
                       handleOpen={handleOpenModal}
+                      slogan={filteredPremiumCompanies[0].slogan}
                       exactlyMatch={
                         searchValue.toLowerCase() ===
                         filteredPremiumCompanies[0].name.toLowerCase()

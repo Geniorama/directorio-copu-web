@@ -68,6 +68,7 @@ export default function CarouselPremium({
                     logoLight={company.logoLight}
                     logoDark={company.logoDark}
                     handleOpen={handleOpen}
+                    slogan={company.slogan}
                   />
                 </div>
 
@@ -83,6 +84,7 @@ export default function CarouselPremium({
                     logoLight={company.logoLight}
                     logoDark={company.logoDark}
                     handleOpen={handleOpen}
+                    slogan={company.slogan}
                   />
                 </div>
               </>

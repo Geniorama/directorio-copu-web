@@ -19,6 +19,7 @@ export const transformDataCompanies = (data: any[]): Company[] => {
     plan: item.attributes.plan.data.attributes,
     background: item.attributes.background,
     reel: item.attributes.youtubeReelId,
+    slogan: item.attributes.slogan,
     logoLight: item.attributes.logoLight.data && item.attributes.logoLight?.data?.attributes.url,
     logoDark: item.attributes.logoDark.data && item.attributes.logoDark?.data?.attributes.url,
     cover: item.attributes.cover?.data.attributes.url,

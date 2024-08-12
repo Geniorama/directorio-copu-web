@@ -18,6 +18,7 @@ export default function CardCompanyPremium({
   tags,
   sectors,
   exactlyMatch,
+  slogan,
   handleOpen
 }: CardCompanyPremiumProps) {
   
@@ -71,7 +72,7 @@ export default function CardCompanyPremium({
               <Button
                 icon={<img src={IconPlay.src} alt="play video" />}
                 color="secondary"
-                onClick={()=>handleOpen(reel, `/empresas/${slug}`, name)}
+                onClick={()=>handleOpen(reel, `/empresas/${slug}`, name, slogan)}
               >
                 Reproducir Reel
               </Button>

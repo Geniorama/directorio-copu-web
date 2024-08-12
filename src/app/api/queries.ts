@@ -178,6 +178,7 @@ export const GetCompaniesPremium = gql`
           slug
           youtubeReelId
           specialities
+          slogan
           plan {
             data {
               attributes {

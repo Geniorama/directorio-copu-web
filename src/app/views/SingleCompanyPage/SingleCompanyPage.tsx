@@ -51,6 +51,10 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
   }
 
   if (dataCompany) {
+    const isNotBasic = () => plan && plan.slug !== "basico"
+    const isPro = () => plan && plan.slug == "pro"
+    const isPremium = () => plan && plan.slug == "premium"
+
     return (
       <div>
         <HeadingCompany
@@ -71,22 +75,23 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
         />
 
         <div className="flex justify-center items-center gap-3 mt-10 mb-7 flex-wrap">
-          <ButtonTab
-            active={section === "inicio"}
-            onClick={() => handleTab("inicio")}
-          >
-            Inicio
-          </ButtonTab>
-          {plan && plan.slug !== "basico" && (
+          {isNotBasic() && (
             <ButtonTab
-              active={section === "contacto"}
-              onClick={() => handleTab("contacto")}
+              active={section === "inicio"}
+              onClick={() => handleTab("inicio")}
             >
-              Contacto
+              Inicio
             </ButtonTab>
           )}
 
-          {plan && plan.slug === "premium" && (
+          <ButtonTab
+            active={section === "contacto"}
+            onClick={() => handleTab("contacto")}
+          >
+            Contacto
+          </ButtonTab>
+
+          {isPremium() && (
             <>
               {dataCompany.team && dataCompany.team.length > 0 && (
                 <ButtonTab
@@ -128,17 +133,17 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
           )}
           {section === "contacto" && (
             <TabContacto
-              description={dataCompany.description}
-              socialMedia={dataCompany.socialMedia}
-              tags={dataCompany.tags}
-              webSite={dataCompany.webSite}
               emails={dataCompany.emails}
-              phones={dataCompany.phones}
-              countries={dataCompany.countries}
-              nit={dataCompany.nit}
-              sectors={dataCompany.sectors}
-              specialities={dataCompany.specialities}
-              map={dataCompany.map}
+              description={isNotBasic() ?  dataCompany.description : undefined}
+              socialMedia={isNotBasic() ? dataCompany.socialMedia : undefined}
+              tags={isNotBasic() ? dataCompany.tags: undefined}
+              webSite={isNotBasic() ? dataCompany.webSite: undefined}
+              phones={isNotBasic() ? dataCompany.phones: undefined}
+              countries={isNotBasic() ? dataCompany.countries: undefined}
+              nit={isNotBasic() ? dataCompany.nit: undefined}
+              sectors={isNotBasic() ? dataCompany.sectors: undefined}
+              specialities={isNotBasic() ? dataCompany.specialities: undefined}
+              map={isPremium() ? dataCompany.map: undefined}
             />
           )}
           {section === "personas" && <TabPersonas team={dataCompany.team} />}
