@@ -8,10 +8,12 @@ type ModalReelProps = {
     reel: Company['reel'],
     slogan?: Company['slogan']
     url: string,
+    sectors?: Company['sectors']
     handleClose: () => void
 }
 
-export default function ModalReel({reel, handleClose, url, name, slogan}:ModalReelProps) {
+export default function ModalReel({reel, handleClose, url, name, slogan, sectors}:ModalReelProps) {
+  console.log(sectors)
   return (
     <div>
       <div className="fixed z-[2000] w-screen bg-[rgba(0,0,0)] left-0 top-0 h-screen overflow-hidden max-h-screen grid place-items-center p-4">
@@ -32,7 +34,11 @@ export default function ModalReel({reel, handleClose, url, name, slogan}:ModalRe
               <div className="lg:text-left mb-10 lg:mb-0">
                 <h3 className="text-4xl font-bold">{name}</h3>
                 <h5 className="text-xl">{slogan}</h5>
-                <p className="text-sm">UX/UI, Product Design, Branding</p>
+                {sectors && sectors.length > 0 && (
+                  <p className="text-sm">
+                    {sectors.map(sector => sector.name).join(', ')}
+                  </p>
+                )}
               </div>
 
               <div className=" space-x-4">

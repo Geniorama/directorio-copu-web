@@ -16,8 +16,9 @@ interface CarouselPremiumProps {
   handleOpen: (
     reel: string,
     url: string,
-    name: string,
-    slogan?: string
+    name: Company['name'],
+    slogan?: Company['slogan'],
+    sectors?: Company['sectors']
   ) => void;
 }
 

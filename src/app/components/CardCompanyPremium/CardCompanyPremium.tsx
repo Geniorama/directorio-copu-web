@@ -4,7 +4,7 @@ import IconPlay from "../../../../public/img/btn-play.svg";
 
 
 type CardCompanyPremiumProps = Company & {
-  handleOpen: (reel: string, url: string, name: string, slogan?: string) => void,
+  handleOpen: (reel: string, url: string, name: string, slogan?: string, sectors?: Company['sectors']) => void,
   exactlyMatch?: boolean
 }
 
@@ -72,7 +72,7 @@ export default function CardCompanyPremium({
               <Button
                 icon={<img src={IconPlay.src} alt="play video" />}
                 color="secondary"
-                onClick={()=>handleOpen(reel, `/empresas/${slug}`, name, slogan)}
+                onClick={()=>handleOpen(reel, `/empresas/${slug}`, name, slogan , sectors)}
               >
                 Reproducir Reel
               </Button>

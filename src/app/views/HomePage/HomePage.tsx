@@ -59,11 +59,13 @@ export default function HomePage({
     url: string;
     name: string;
     slogan?: string;
+    sectors?: Company['sectors']
   }>({
     reel: "",
     url: "",
     name: "",
     slogan: "",
+    sectors:[]
   });
 
   const isMobile = useIsMobile();
@@ -89,14 +91,16 @@ export default function HomePage({
   const handleOpenModal = (
     reel: string,
     url: string,
-    name: string,
-    slogan?: string
+    name: Company['name'],
+    slogan?: Company['slogan'],
+    sectors?: Company['sectors']
   ) => {
     setDataModal({
       reel,
       url,
       name,
       slogan,
+      sectors
     });
     setOpenModal(true);
   };
@@ -156,7 +160,6 @@ export default function HomePage({
       company.cities?.some(
         (city) => city.slug === selectedCity.slug
       );
-      // console.log("Matches City Filter:", matchesCityFilter);
 
       return (
         matchesSearchValue &&
@@ -192,6 +195,7 @@ export default function HomePage({
           handleClose={handleToggleModal}
           name={dataModal.name}
           slogan={dataModal.slogan}
+          sectors={dataModal.sectors}
         />
       )}
 
