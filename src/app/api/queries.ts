@@ -351,6 +351,25 @@ export const GetCompanyBySlug = gql`
               }
             }
           }
+          accreditations {
+            name
+            url
+            document {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+          }
           phones {
             phoneNumber
             link

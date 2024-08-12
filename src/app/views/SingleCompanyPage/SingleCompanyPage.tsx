@@ -104,12 +104,15 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
                   Premios
                 </ButtonTab>
               )}
-              <ButtonTab
-                active={section === "acreditaciones"}
-                onClick={() => handleTab("acreditaciones")}
-              >
-                Acreditaciones
-              </ButtonTab>
+              {dataCompany.accreditations &&
+                dataCompany.accreditations.length > 0 && (
+                  <ButtonTab
+                    active={section === "acreditaciones"}
+                    onClick={() => handleTab("acreditaciones")}
+                  >
+                    Acreditaciones
+                  </ButtonTab>
+                )}
             </>
           )}
         </div>
@@ -140,7 +143,9 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
           )}
           {section === "personas" && <TabPersonas team={dataCompany.team} />}
           {section === "premios" && <TabPremios awards={dataCompany.awards} />}
-          {section === "acreditaciones" && <TabAcreditaciones />}
+          {section === "acreditaciones" && (
+            <TabAcreditaciones accreditations={dataCompany.accreditations} />
+          )}
         </div>
 
         <div className="text-center mt-32">

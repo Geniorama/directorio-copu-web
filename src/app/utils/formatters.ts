@@ -107,6 +107,15 @@ export const transformDataCompany = (item: any): Company => {
         url: award.image.data.attributes.url,
         alternativeText: award.image.data.attributes.alternativeText
       }
+    })),
+    accreditations: item.attributes.accreditations?.map((accreditation: any) => ({
+      name: accreditation.name,
+      documenUrl: accreditation.document.data.attributes.url,
+      url: accreditation.url,
+      image: {
+        url: accreditation.image.data.attributes.url,
+        alternativeText: accreditation.image.data.attributes.alternativeText
+      }
     }))
   }
 

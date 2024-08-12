@@ -51,6 +51,16 @@ export type Award = {
     },
 }
 
+export type Accreditation = {
+    name: string,
+    url?: string,
+    documentUrl?: string,
+    image:{
+        url: string,
+        alternativeText?: string
+    }
+}
+
 export type Company = {
     id: string | number,
     name: string,
@@ -78,7 +88,8 @@ export type Company = {
     specialities?: string,
     map?: string,
     team?: Member[],
-    awards?: Award[]
+    awards?: Award[],
+    accreditations?: Accreditation[]
 }
 
 export type Type = {
