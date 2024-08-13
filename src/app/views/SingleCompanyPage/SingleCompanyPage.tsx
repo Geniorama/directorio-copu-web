@@ -28,6 +28,9 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
     }
 
     if (data.attributes.plan) {
+      if(data.attributes.plan.data.attributes.slug === 'basico'){
+        setSection("contacto")
+      }
       setPlan(data.attributes.plan.data.attributes);
     }
   }, [data]);
@@ -54,6 +57,7 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
     const isNotBasic = () => plan && plan.slug !== "basico";
     const isPro = () => plan && plan.slug == "pro";
     const isPremium = () => plan && plan.slug == "premium";
+    const isBasic = () => plan && plan.slug == "basico";
 
     return (
       <div>
@@ -144,6 +148,7 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
               sectors={isNotBasic() ? dataCompany.sectors : undefined}
               specialities={isNotBasic() ? dataCompany.specialities : undefined}
               map={isPremium() ? dataCompany.map : undefined}
+              contactCols={isBasic() ? 'grid-cols-1' : undefined}
             />
           )}
           {section === "personas" &&

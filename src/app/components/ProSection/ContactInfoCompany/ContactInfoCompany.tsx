@@ -9,6 +9,7 @@ type ContactInfoCompanyProps = {
   countries?: Company["countries"];
   nit?: Company["nit"];
   sectors?: Company["sectors"];
+  cols?: string;
 };
 
 export default function ContactInfoCompany({
@@ -18,50 +19,55 @@ export default function ContactInfoCompany({
   countries,
   nit,
   sectors,
+  cols,
 }: ContactInfoCompanyProps) {
   return (
-    <div className="grid grid-cols-2 max-w-[315px] mx-auto">
+    <div
+      className={`grid ${cols ? cols : "grid-cols-2"} max-w-[315px] mx-auto`}
+    >
       {/* Content left */}
-      <div>
-        {webSite && (
-          <div>
-            <h5 className="text-[#D9D7D7] font-bold text-sm">Sitio web</h5>
-            <Link
-              className="text-[#C7C7DF] text-xs underline leading-7"
-              href={webSite ? webSite : "#"}
-              target="_blank"
-            >
-              {simplifyURL(webSite)}
-            </Link>
-          </div>
-        )}
+      {cols === "grid-cols-2" && (
+        <div>
+          {webSite && (
+            <div>
+              <h5 className="text-[#D9D7D7] font-bold text-sm">Sitio web</h5>
+              <Link
+                className="text-[#C7C7DF] text-xs underline leading-7"
+                href={webSite ? webSite : "#"}
+                target="_blank"
+              >
+                {simplifyURL(webSite)}
+              </Link>
+            </div>
+          )}
 
-        {phones && phones.length > 0 && (
-          <div className="mt-10">
-            <h5 className="text-[#D9D7D7] font-bold text-sm">Celular</h5>
-            <ul>
-              {phones.map((phone, i) => (
-                <li key={i}>
-                  <Link
-                    className="text-[#C7C7DF] text-xs underline leading-7"
-                    href={phone.link ? phone.link : "#"}
-                    target="_blank"
-                  >
-                    {phone.phoneNumber}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+          {phones && phones.length > 0 && (
+            <div className="mt-10">
+              <h5 className="text-[#D9D7D7] font-bold text-sm">Celular</h5>
+              <ul>
+                {phones.map((phone, i) => (
+                  <li key={i}>
+                    <Link
+                      className="text-[#C7C7DF] text-xs underline leading-7"
+                      href={phone.link ? phone.link : "#"}
+                      target="_blank"
+                    >
+                      {phone.phoneNumber}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
-        {nit && (
-          <div className="mt-10">
-            <h5 className="text-[#D9D7D7] font-bold text-sm">NIT</h5>
-            <p className="text-[#C7C7DF] text-xs leading-7">{nit}</p>
-          </div>
-        )}
-      </div>
+          {nit && (
+            <div className="mt-10">
+              <h5 className="text-[#D9D7D7] font-bold text-sm">NIT</h5>
+              <p className="text-[#C7C7DF] text-xs leading-7">{nit}</p>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Content right */}
       <div>

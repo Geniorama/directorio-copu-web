@@ -23,12 +23,12 @@ type TabContactoProps = {
   nit?: Company["nit"];
   specialities?: Company["specialities"];
   map?: Company["map"]
+  contactCols?: string;
 };
 
 export default function TabContacto({
   description,
   socialMedia,
-  tags,
   webSite,
   emails,
   phones,
@@ -36,7 +36,8 @@ export default function TabContacto({
   sectors,
   nit,
   specialities,
-  map
+  map,
+  contactCols
 }: TabContactoProps) {
   return (
     <article className="text-center">
@@ -53,6 +54,7 @@ export default function TabContacto({
         webSite={webSite}
         phones={phones}
         sectors={sectors}
+        cols={contactCols}
       />
 
       <MapCompany 
