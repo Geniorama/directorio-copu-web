@@ -8,8 +8,8 @@ type CompanyProps = {
 
 const contexDefault = {
   fetchOptions: {
-    // next: { revalidate: 5 },
-    cache: 'no-store'
+    next: { revalidate: 10 },
+    // cache: 'no-store'
   },
 };
 
