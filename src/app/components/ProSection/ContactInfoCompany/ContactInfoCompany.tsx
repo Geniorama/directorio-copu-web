@@ -23,7 +23,7 @@ export default function ContactInfoCompany({
 }: ContactInfoCompanyProps) {
   return (
     <div
-      className={`grid ${cols ? cols : "grid-cols-2"} max-w-[315px] mx-auto`}
+      className={`grid ${cols ? cols : "grid-cols-2"} max-w-[315px] mx-auto gap-5`}
     >
       {/* Content left */}
       {cols === "grid-cols-2" && (
