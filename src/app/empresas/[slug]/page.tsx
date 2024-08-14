@@ -6,11 +6,18 @@ type CompanyProps = {
   params: {slug:string}
 }
 
+const contexDefault = {
+  fetchOptions:{
+    next: { revalidate: 5 }
+  }
+}
+
 async function loadData(slug: string) {
    const res = await getClient().query({
     query: GetCompanyBySlug,
     variables: { slug },
-    fetchPolicy: 'no-cache'
+    fetchPolicy: 'no-cache',
+    context: contexDefault
    })
 
    return res.data.companies.data[0]

@@ -37,7 +37,7 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
 
   useEffect(() => {
     if (dataCompany) {
-      setTimeout(() => setLoading(false), 3000);
+      setTimeout(() => setLoading(false), 2000);
     }
   }, [dataCompany]);
 
