@@ -22,7 +22,7 @@ export const transformDataCompanies = (data: any[]): Company[] => {
     slogan: item.attributes.slogan,
     logoLight: item.attributes.logoLight.data && item.attributes.logoLight?.data?.attributes.url,
     logoDark: item.attributes.logoDark.data && item.attributes.logoDark?.data?.attributes.url,
-    cover: item.attributes.cover?.data.attributes.url,
+    cover: item.attributes.cover ? item.attributes.cover?.data?.attributes.url : '',
     sectors: item.attributes.categories.data.map((cat: any) => ({
       name: cat.attributes.name,
       slug: cat.attributes.slug,
