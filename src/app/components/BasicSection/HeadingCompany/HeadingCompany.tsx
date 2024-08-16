@@ -15,7 +15,7 @@ export default function HeadingCompany(props: HeadingCompanyProps) {
         <div>
           <img src={props.cover} className='w-full h-[113px] md:h-[40vh] object-cover rounded-3xl overflow-hidden' alt="" />
         </div>
-        <div className={`${props.imgProfile !== '' ? 'md:mt-[-90px]' : ''} text-center `}>
+        <div className={`${props.imgProfile !== '' ? 'md:mt-[-90px]' : ''} text-center mt-5`}>
           {props.imgProfile !== "" ? (
             <div className={`${props.bgImageProfileColor} relative w-[170px] aspect-square mx-auto p-5 rounded-full overflow-hidden`}>
               <img className='w-[170px]  md:w-[180px] aspect-square object-contain rounded-full mx-auto' src={props.imgProfile} alt="" />
