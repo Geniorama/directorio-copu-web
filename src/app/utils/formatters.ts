@@ -90,7 +90,11 @@ export const transformDataCompany = (item: any): Company => {
     })) || [],
     cities: item.attributes.cities?.data.map((city: any) => ({
       name: city.attributes.name,
-      slug: city.attributes.slug
+      slug: city.attributes.slug,
+      country: {
+        name: city.attributes.country.data.attributes.name,
+        slug: city.attributes.country.data.attributes.slug
+      }
     })),
     specialities: item.attributes.specialities,
     map: item.attributes.map,

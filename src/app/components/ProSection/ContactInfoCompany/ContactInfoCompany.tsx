@@ -10,6 +10,7 @@ type ContactInfoCompanyProps = {
   nit?: Company["nit"];
   sectors?: Company["sectors"];
   cols?: string;
+  cities?: Company["cities"];
 };
 
 export default function ContactInfoCompany({
@@ -20,6 +21,7 @@ export default function ContactInfoCompany({
   nit,
   sectors,
   cols,
+  cities
 }: ContactInfoCompanyProps) {
   return (
     <div
@@ -103,13 +105,13 @@ export default function ContactInfoCompany({
           </div>
         )}
 
-        {countries && countries.length > 0 && (
+        {cities && cities.length > 0 && (
           <div className="mt-10">
             <h5 className="text-[#D9D7D7] font-bold text-sm">
-              {countries.length > 1 ? "Sedes" : "Sede"}
+              {cities.length > 1 ? "Sedes" : "Sede"}
             </h5>
             <p className="text-[#C7C7DF] text-xs leading-7">
-              {countries.map((country) => country.name).join(", ")}
+              {cities.map((city) => `${city.name} - ${city.country.name}`).join(", ")}
             </p>
           </div>
         )}

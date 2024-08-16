@@ -58,7 +58,6 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
     const isPro = () => plan && plan.slug == "pro";
     const isPremium = () => plan && plan.slug == "premium";
     const isBasic = () => plan && plan.slug == "basico";
-
     return (
       <div>
         <HeadingCompany
@@ -149,6 +148,7 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
               specialities={isNotBasic() ? dataCompany.specialities : undefined}
               map={isPremium() ? dataCompany.map : undefined}
               contactCols={isBasic() ? 'grid-cols-1' : 'grid-cols-2'}
+              cities={isNotBasic() ? dataCompany.cities : undefined}
             />
           )}
           {section === "personas" &&

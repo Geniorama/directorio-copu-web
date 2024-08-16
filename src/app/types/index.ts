@@ -1,5 +1,5 @@
 export type Country = {
-    id: string | number,
+    id?: string | number,
     slug: string,
     name: string,
     cities?: City[]
@@ -8,7 +8,10 @@ export type Country = {
 export type City = {
     slug: string,
     name: string,
-    country: Country
+    country: {
+        name: string,
+        slug: string
+    }
 }
 
 export type Tag = {

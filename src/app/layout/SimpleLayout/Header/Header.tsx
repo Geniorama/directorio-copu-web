@@ -1,6 +1,5 @@
 "use client";
 
-import LogoCopu from "../../../../../public/img/logo-copu.svg";
 import LogoDirectorio from "../../../../../public/img/Logo-DIR-COPU.png";
 import Link from "next/link";
 import { Switch } from "@/app/components/Switch";

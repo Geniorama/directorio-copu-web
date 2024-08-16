@@ -404,6 +404,22 @@ export const GetCompanyBySlug = gql`
               }
             }
           }
+          cities {
+            data {
+              attributes {
+                name
+                slug
+                country {
+                  data {
+                    attributes {
+                      name
+                      slug
+                    }
+                  }
+                }
+              }
+            }
+          }
           cover {
             data {
               attributes {
