@@ -11,7 +11,7 @@ export default function SimpleLayout(props: SimpleLayoutProps) {
   return (
     <>
       <Header />
-        <main className="lg:min-h-[calc(100vh_-_130px)] flex pt-5 pb-1">
+        <main className="lg:min-h-[calc(100vh_-_130px)] flex pt-12 lg:pt-5 pb-1">
           <aside className="hidden lg:block w-[13%] h-[calc(100vh_-_150px)]">
             <Sidebar />
           </aside>

@@ -1,6 +1,7 @@
 "use client";
 
 import LogoCopu from "../../../../../public/img/logo-copu.svg";
+import LogoDirectorio from "../../../../../public/img/Logo-DIR-COPU.png";
 import Link from "next/link";
 import { Switch } from "@/app/components/Switch";
 import { Button } from "@/app/utils/Button";
@@ -43,8 +44,7 @@ export default function Header() {
     <header className="fixed w-full lg:relative z-50 bg-secondary-color-light text-text-light py-5">
       <div className="flex justify-between items-center px-4">
         <Link className="text-lg flex gap-2 items-center" href={"/"}>
-          <span>Directorio de</span>
-          <img src={LogoCopu.src} alt="Logo Copu" />
+          <img className="max-w-[200px] lg:max-h-auto" src={LogoDirectorio.src} alt="Logo Direc Copu" />
         </Link>
 
         {!openSidebar && (
@@ -113,7 +113,7 @@ export default function Header() {
           <ul className="text-[#D7D7D7] font-light text-lg">
             {menuHeader.map((menuItem, i) => (
               <li key={i} className="border-t border-t-[#696969] py-6 px-4">
-                <Link onClick={handleMenu} href={menuItem.slug}>
+                <Link target={menuItem.target ? menuItem.target : '_self'} onClick={handleMenu} href={menuItem.slug}>
                   {menuItem.title}
                 </Link>
               </li>

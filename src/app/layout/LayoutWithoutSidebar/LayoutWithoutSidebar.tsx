@@ -11,7 +11,7 @@ export default function LayoutWithoutSidebar({children}: LayoutWithoutSidebarPro
   return (
     <>
         <Header />
-            <main>
+            <main className="pt-12 lg:pt-0">
                 {children}
             </main>
         <Footer />
