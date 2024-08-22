@@ -54,6 +54,7 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
   }
 
   if (dataCompany) {
+    console.log(dataCompany)
     const isNotBasic = () => plan && plan.slug !== "basico";
     const isPro = () => plan && plan.slug == "pro";
     const isPremium = () => plan && plan.slug == "premium";
@@ -142,7 +143,6 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
               tags={isNotBasic() ? dataCompany.tags : undefined}
               webSite={isNotBasic() ? dataCompany.webSite : undefined}
               phones={isNotBasic() ? dataCompany.phones : undefined}
-              countries={isNotBasic() ? dataCompany.countries : undefined}
               nit={isNotBasic() ? dataCompany.nit : undefined}
               sectors={isNotBasic() ? dataCompany.sectors : undefined}
               specialities={isNotBasic() ? dataCompany.specialities : undefined}

@@ -372,6 +372,7 @@ export const GetCompanyBySlug = gql`
             }
           }
           phones {
+            name
             phoneNumber
             link
           }

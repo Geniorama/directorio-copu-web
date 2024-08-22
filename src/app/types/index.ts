@@ -86,7 +86,7 @@ export type Company = {
     socialMedia?: [{name?: string, icon?: string, url?: string}],
     webSite?: string,
     emails?: [{email?: string}],
-    phones?: [{phoneNumber?: string, link?: string}],
+    phones?: [{name?: string, phoneNumber?: string, link?: string}],
     type?: Type,
     specialities?: string,
     map?: string,

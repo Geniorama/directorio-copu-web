@@ -18,7 +18,6 @@ type TabContactoProps = {
   webSite?: Company["webSite"];
   emails?: Company["emails"];
   phones?: Company["phones"];
-  countries?: Company["countries"];
   sectors?: Company["sectors"];
   nit?: Company["nit"];
   specialities?: Company["specialities"];
@@ -33,7 +32,6 @@ export default function TabContacto({
   webSite,
   emails,
   phones,
-  countries,
   sectors,
   nit,
   specialities,
@@ -51,7 +49,6 @@ export default function TabContacto({
 
       <ContactInfoCompany
         nit={nit}
-        countries={countries}
         emails={emails}
         webSite={webSite}
         phones={phones}

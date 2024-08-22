@@ -1,7 +1,7 @@
 import type { Company } from "@/app/types";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faTwitter, faInstagram, faPinterest, faXTwitter, faThreads, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faTwitter, faInstagram, faPinterest, faXTwitter, faThreads, faLinkedinIn, faTiktok, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 const iconMapping: { [key: string]: any } = {
     facebook: faFacebook,
@@ -10,7 +10,9 @@ const iconMapping: { [key: string]: any } = {
     xTwitter: faXTwitter,
     linkedIn: faLinkedinIn,
     pinterest: faPinterest,
-    threads: faThreads
+    threads: faThreads,
+    tiktok: faTiktok,
+    youtube: faYoutube
 };
 
 
