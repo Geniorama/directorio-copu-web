@@ -46,7 +46,7 @@ export default function WidgetTipoEmpresa() {
           <button
             key={i}
             onClick={() => dispatch(filterType(companyType))}
-            className={`transition text-left w-full border p-3 rounded-full mb-2 outline-none ${
+            className={`transition text-left w-full border p-3 md:p-2 rounded-full mb-2 outline-none ${
               selectedTypes.some((type) => type.slug === companyType.slug)
                 ? "bg-primary-color text-secondary-color font-bold border-primary-color"
                 : "bg-secondary-color-light hover:bg-secondary-color-hover hover:border-secondary-color-hover"

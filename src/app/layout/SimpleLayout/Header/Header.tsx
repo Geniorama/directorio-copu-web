@@ -43,7 +43,7 @@ export default function Header() {
     <header className="fixed w-full lg:relative z-50 bg-secondary-color-light text-text-light py-5">
       <div className="flex justify-between items-center px-4">
         <Link className="text-lg flex gap-2 items-center" href={"/"}>
-          <img className="max-w-[200px] lg:max-h-auto" src={LogoDirectorio.src} alt="Logo Direc Copu" />
+          <img className="w-[210px]" src={LogoDirectorio.src} alt="Logo Direc Copu" />
         </Link>
 
         {!openSidebar && (

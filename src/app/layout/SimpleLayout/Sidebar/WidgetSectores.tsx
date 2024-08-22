@@ -17,7 +17,7 @@ export default function WidgetSectores() {
     <div>
       <TitleWidget title="Sectores Creativos" icon={<img src={Icon.src} />} />
 
-      <ul className="text-xs mt-4 max-h-[13vh] lg:max-h-[30vh] overflow-y-scroll custom-scroll">
+      <ul className="text-xs mt-4 max-h-[13vh] lg:max-h-[20vh] overflow-y-scroll custom-scroll">
         <li onClick={() => dispatch(resetSectors())} className={`py-1 cursor-pointer ${selectedSectors.length === 0 ? 'text-primary-color font-bold' : 'font-light'}`}>Todos los sectores creativos</li>
         {sortedSectors.length > 0 && sortedSectors.map((item) => (
           <li onClick={() => dispatch(filterSector(item))} className={`py-1 hover:font-bold cursor-pointer transition ${selectedSectors.some(sector => sector.slug === item.slug) ? 'text-primary-color font-bold' : 'font-light'}`} key={item.id}>
