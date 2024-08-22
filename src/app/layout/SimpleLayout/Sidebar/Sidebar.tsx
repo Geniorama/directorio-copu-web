@@ -16,7 +16,7 @@ type SidebarProps = {
 };
 
 export default function Sidebar({ handleSidebar }: SidebarProps) {
-  const [displaySidebar, setDisplaySidebar] = useState(true)
+  const [displaySidebar, setDisplaySidebar] = useState(true);
   const isMobile = useIsMobile();
   const selectedSectors = useAppSelector(
     (state) => state.searchReducer.selectedSectors
@@ -38,12 +38,15 @@ export default function Sidebar({ handleSidebar }: SidebarProps) {
     selectedSectors.length + selectedTypes.length + (selectedCountry ? 1 : 0);
 
   const handleToggleSidebar = () => {
-    setDisplaySidebar(!displaySidebar)
-  }
+    setDisplaySidebar(!displaySidebar);
+  };
 
   return (
-    <div className={`p-3 h-full transition ${displaySidebar ? 'bg-secondary-color-light p-3 w-full' : 'w-[160px]'}`}>
-      <div className="flex gap-2 justify-between">
+    <div
+      className={`h-full transition ${displaySidebar ? "bg-secondary-color-light w-full" : "w-[160px]"
+      }`}
+    >
+      <div className={`flex gap-2 justify-between p-3 bg-secondary-color-light rounded-full ${!displaySidebar && 'ml-2'} transition`}>
         <button className="flex items-center text-2xl lg:text-lg  gap-2">
           <img src={IconFilter.src} alt="" />
           <span className="leading-4">Filtrar</span>
@@ -57,7 +60,9 @@ export default function Sidebar({ handleSidebar }: SidebarProps) {
         <div className=" hidden lg:block">
           <button
             onClick={handleToggleSidebar}
-            className={`w-[35px] h-[35px] flex items-center justify-center rounded-full hover:bg-secondary-color-hover ${!displaySidebar && 'rotate-180'}`}
+            className={`w-[35px] h-[35px] flex items-center justify-center rounded-full hover:bg-secondary-color-hover ${
+              !displaySidebar && "rotate-180"
+            }`}
           >
             <img src={IconCollapse.src} alt="" />
           </button>
@@ -73,16 +78,16 @@ export default function Sidebar({ handleSidebar }: SidebarProps) {
         </div>
       </div>
       {displaySidebar && (
-        <>
-          <hr className="border-1 mt-3 mb-5 border-[#2D2D2D]" />
+        <div className="p-3 pt-0">
+          <hr className="border-1 mt-0 mb-5 border-[#2D2D2D]" />
           <WidgetSectores />
           <hr className="border-1 my-5 border-[#2D2D2D]" />
           <WidgetUbicacion />
           <hr className="border-1 my-5 border-[#2D2D2D]" />
           <WidgetTipoEmpresa />
-    
+
           <hr className="border-1 my-5 border-[#2D2D2D] block lg:hidden" />
-    
+
           <div className="flex gap-3 lg:hidden">
             <button
               onClick={() => dispatch(resetFilters())}
@@ -98,9 +103,8 @@ export default function Sidebar({ handleSidebar }: SidebarProps) {
               {!activeSomeFilters ? "Cerrar" : "Aplicar"}
             </button>
           </div>
-        </>
+        </div>
       )}
-      
     </div>
   );
 }

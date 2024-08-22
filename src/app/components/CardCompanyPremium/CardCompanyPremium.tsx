@@ -26,7 +26,7 @@ export default function CardCompanyPremium({
   return (
     <>
       <div
-        style={{ backgroundImage: `url(${cover})` }}
+        style={{ backgroundImage: `url(${cover})`, backgroundColor: 'black' }}
         className={`relative flex flex-col justify-between p-6 bg-cover bg-no-repeat w-full aspect-video rounded-3xl overflow-hidden ${exactlyMatch && 'border-primary-color border-2'}`}
       >
         <div
