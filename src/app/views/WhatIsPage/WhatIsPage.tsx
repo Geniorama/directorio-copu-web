@@ -13,14 +13,18 @@ export default function WhatIsPage() {
         bgImage={BgWhatIsCopu.src}
         bgImageMobile={BgWhatIsCopuMob.src}
         title="¿Qué es COPU?"
-        description="COPU es el medio de comunicación más importante sobre marketing y publicidad en Colombia y la región. Con más de XX años de trayectoria, COPU es hoy un referente para las marcas, agencias y profesionales afines que buscan estar conectados con el resto de la industria."
+        description="COPU es el medio de comunicación y plataforma líder en Colombia para conectar, informar y potenciar a la industria creativa, publicitaria y de marketing en Colombia. Desde noticias, contenidos y eventos, hasta este Directorio especializado, a través de nuestro entendimiento dentro del negocio, bajo el contacto con miles de compañías, y la referencia, testimonio y experiencia comercial, centralizamos los recursos y oportunidades en un solo lugar, facilitando la visibilidad y las conexiones entre agencias, marcas, productoras, estudios, consultoras y todo tipo de proveedores."
       />
 
       <CardFullWidth
         bgImage={BgWhatIsCopu.src}
         bgImageMobile={BgWhatIsCopuMob.src}
         title="¿Qué es el directorio?"
-        description={`El directorio de COPU es un aplicativo web que agrupa un gran número de empresas de la industria creativa en toda la región. Las compañías listadas aquí, han sido sometidas a un proceso de selección por parte del equipo de COPU asegurando su autenticidad y reconocimiento.<br><br>En este directorio encontrarás productoras audiovisuales, agencias de publicidad, estudios de diseño, agencias digitales, postproductoras, estudios fotográficos, consultoras creativas y estratégicas, agencias de producto y muchas más empresas con distintas propuestas de valor orientadas al marketing, la publicidad y las comunicaciones.`}
+        description={`El Directorio COPU es el nodo central de la industria creativa, publicitaria y de marketing en Colombia. Aquí puedes buscar y registrar productoras audiovisuales, agencias de publicidad, estudios de diseño, agencias digitales, postproductoras, estudios fotográficos, consultoras estratégicas, y muchas más. Este directorio centraliza proveedores y oportunidades, facilitando la visibilidad y conexión con las mejores empresas del sector.<br/><br/>
+        ¿Buscas proveedores para tu compañía? ¿O buscas clientes para la tuya?
+        <br/><br/>
+        Sé parte de DirCOPU, La Guía de Proveedores de las Industrias Creativas.  
+        `}
       />
 
       <div className=" grid grid-cols-1 lg:grid-cols-3 gap-6">
