@@ -263,9 +263,9 @@ export default function HomePage({
            * PREMIUM LEVEL
            */}
           {filteredPremiumCompanies && filteredPremiumCompanies.length > 0 && (
-            <div className="lg:w-[90%] mx-auto text-center space-y-4 my-16">
-              <h1 className="font-bold text-xl lg:text-3xl text-white mb-5 lg:mb-16">
-                Empresas más relevantes
+            <div className="lg:w-[90%] mx-auto text-center space-y-4 mb-16 mt-8">
+              <h1 className="text-xl text-white mb-0 lg:mb-8">
+                Compañías destacadas
               </h1>
               {filteredPremiumCompanies.length === 1 ? (
                 <>
@@ -341,7 +341,7 @@ export default function HomePage({
           {filteredBasicCompanies && filteredBasicCompanies.length > 0 && (
             <div className="mt-10 lg:w-[90%] mx-auto space-y-4">
               <h5 className="text-[#C7C7DF]">
-                Otras empresas que pueden interesarte
+                Otras compañías que pueden interesarte
               </h5>
 
               <div className=" hidden lg:block">
