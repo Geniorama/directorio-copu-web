@@ -11,7 +11,7 @@ export const menuHeader = [
 
     {
         title: "Contacto",
-        slug: "https://wa.link/afu43n",
+        slug: "https://wa.link/y5v35j",
         target: "_blank"
     }
 ]

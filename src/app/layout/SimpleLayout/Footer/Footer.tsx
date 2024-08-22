@@ -109,7 +109,7 @@ export default function Footer() {
       <div className="md:flex gap-20 md:w-1/3 justify-end">
         <Link
           className=" underline md:no-underline pt-5 block md:pt-0 hover:underline"
-          href={"https://wa.link/afu43n"}
+          href={"https://wa.link/y5v35j"}
           target="_blank"
         >
           Contacto

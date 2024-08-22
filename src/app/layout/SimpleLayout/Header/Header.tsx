@@ -90,7 +90,7 @@ export default function Header() {
             </li>
             <li>
               <Button 
-                href={"https://wa.link/afu43n"}
+                href={"https://wa.link/y5v35j"}
                 target="_blank"
                 icon={<img src={WpIcon.src} alt="whatsapp" />}>
                 Contacto
