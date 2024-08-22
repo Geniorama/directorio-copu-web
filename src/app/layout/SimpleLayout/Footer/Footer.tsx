@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import LogoBito from "../../../../../public/img/logo-bito.svg";
 import LogoGeniorama from "../../../../../public/img/logo-geniorama.svg";
@@ -11,7 +11,6 @@ import MailIcon from "../../../../../public/img/mail.svg";
 import ThreadsIcon from "../../../../../public/img/threads-icon.svg";
 import Xicon from "../../../../../public/img/x-icon.svg";
 import TikTokIcon from "../../../../../public/img/tik-tok-icon.svg";
-
 
 import { useEffect } from "react";
 
@@ -66,31 +65,35 @@ const socialMedia = [
 ];
 
 export default function Footer() {
-  useEffect(()=>{
-    const listItems = document.querySelectorAll('.social-nav-list li a img')
-    
+  useEffect(() => {
+    const listItems = document.querySelectorAll(".social-nav-list li a img");
+
     // Aligment elements in social nav
-    if(listItems.length > 0){
+    if (listItems.length > 0) {
       listItems.forEach((item, i) => {
-        if(i === 3 || i === 7){
-          item.classList.add('ml-auto')
-        } else if(i === 0 || i === 4){
-          item.classList.add('mr-auto')
+        if (i === 3 || i === 7) {
+          item.classList.add("ml-auto");
+        } else if (i === 0 || i === 4) {
+          item.classList.add("mr-auto");
         } else {
-          item.classList.add('mx-auto')
+          item.classList.add("mx-auto");
         }
-      })
+      });
     }
-  }, [])
+  }, []);
 
   return (
     <footer className="bg-secondary-color-light text-xs p-5 flex md:justify-between flex-col-reverse md:flex-row">
       <div className="md:w-1/3">
         <p className="flex gap-1 mt-9 md:mt-0">
           <span>Designed by</span>
-          <Link href={'https://bitoinc.net/'} target="_blank"><img src={LogoBito.src} alt="" /></Link>
+          <Link href={"https://bitoinc.net/"} target="_blank">
+            <img src={LogoBito.src} alt="" />
+          </Link>
           <span>&</span>
-          <Link href={'https://geniorama.co/'} target="_blank"><img src={LogoGeniorama.src} alt="" /></Link>
+          <Link href={"https://geniorama.co/"} target="_blank">
+            <img src={LogoGeniorama.src} alt="" />
+          </Link>
         </p>
       </div>
 
@@ -99,7 +102,11 @@ export default function Footer() {
           {socialMedia.map((item, i) => (
             <li key={i}>
               <Link title={item.name} href={item.link} target="blank">
-                <img className="h-5 md:h-4" src={item.image.src} alt={item.name} />
+                <img
+                  className="h-5 md:h-4"
+                  src={item.image.src}
+                  alt={item.name}
+                />
               </Link>
             </li>
           ))}
@@ -107,6 +114,20 @@ export default function Footer() {
       </div>
 
       <div className="md:flex gap-20 md:w-1/3 justify-end">
+        <Link
+          className=" underline md:no-underline pt-5 block md:pt-0 hover:underline"
+          href={"https://s3.copu.media/TERMINOS%20Y%20CONDICIONES%20DIRECTORIO%20BY%20COPU.pdf"}
+          target="_blank"
+        >
+          Términos y condiciones
+        </Link>
+        <Link
+          className=" underline md:no-underline pt-5 block md:pt-0 hover:underline"
+          href={"https://s3.copu.media/AUTORIZACION%20PARA%20EL%20TRATAMIENTO%20DE%20DATOS%20DIRECTORIO%20COPU.pdf"}
+          target="_blank"
+        >
+          Tratamiento de datos
+        </Link>
         <Link
           className=" underline md:no-underline pt-5 block md:pt-0 hover:underline"
           href={"https://wa.link/y5v35j"}
