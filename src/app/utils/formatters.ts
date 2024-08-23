@@ -102,8 +102,8 @@ export const transformDataCompany = (item: any): Company => {
       name: member.name,
       position: member.position,
       image: {
-        url: member.image.data.attributes.url,
-        alternativeText: member.image.data.attributes.alternativeText
+        url: member.image.data && member.image.data.attributes.url,
+        alternativeText: member.image.data && member.image.data.attributes.alternativeText
       }
     })),
     awards: item.attributes.awards?.map((award: any) => ({
