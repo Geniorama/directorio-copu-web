@@ -12,15 +12,16 @@ interface HeadingCompanyProps {
 export default function HeadingCompany(props: HeadingCompanyProps) {
   return (
     <div>
-      {props.cover && props.cover !== "" && (
-        <div>
+      <div className={`${props.cover === undefined && 'lg:mb-28'}`}>
+        {props.cover && props.cover !== "" && (
           <img
             src={props.cover}
             className="w-full h-[113px] md:h-[40vh] object-cover rounded-3xl overflow-hidden"
             alt=""
           />
-        </div>
-      )}
+        )}
+      </div>
+
       <div
         className={`${
           props.imgProfile !== "" ? "md:mt-[-90px]" : ""
