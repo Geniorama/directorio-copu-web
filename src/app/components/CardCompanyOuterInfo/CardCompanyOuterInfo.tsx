@@ -23,8 +23,10 @@ export default function CardCompanyOuterInfo({
 }: CardCompanyOuterInfoProps) {
   return (
     <div>
-      <div className={` rounded-lg overflow-hidden w-full aspect-video ${exactlyMatch && ' border-2 border-primary-color'}`}>
-        <img className="w-full h-full object-cover" src={cover} alt="" />
+      <div className={` rounded-lg overflow-hidden w-full aspect-video bg-[#18181B] ${exactlyMatch && ' border-2 border-primary-color'}`}>
+        {cover && (
+          <img className="w-full h-full object-cover" src={cover} alt="" />
+        )}
       </div>
 
       <div className="py-4 text-left">

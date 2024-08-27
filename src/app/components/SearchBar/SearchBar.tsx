@@ -40,7 +40,7 @@ export default function SearchBar({placeholder, backgroundColor}: SearchBarProps
   },[searchValue])
 
   return (
-    <div className={`flex items-center gap-3 ${backgroundColor ? backgroundColor : 'bg-secondary-color'} p-3 rounded-full h-[55px]`}>
+    <div className={`flex items-center gap-3 ${backgroundColor ? backgroundColor : 'bg-secondary-color'} p-3 rounded-full lg:h-[55px]`}>
       <img src={IconSearch.src} alt="" />
       <input
         onChange={(e) => handleChange(e)}

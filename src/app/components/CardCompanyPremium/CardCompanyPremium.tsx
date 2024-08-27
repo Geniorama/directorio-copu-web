@@ -55,7 +55,7 @@ export default function CardCompanyPremium({
 
         </div>
 
-        <div className="flex justify-between items-end relative">
+        <div className="flex justify-between gap-10 items-end relative">
           <div className="text-left text-[#C7C7DF]">
             <h2 className="text-4xl font-bold">{name}</h2>
             <h5 className="text-xl">
@@ -70,7 +70,7 @@ export default function CardCompanyPremium({
             <Button href={`/empresas/${slug}`}>Ir al perfil</Button>
             {reel && (
               <Button
-                icon={<img src={IconPlay.src} alt="play video" />}
+                icon={<img src={IconPlay.src} className="w-5 block" alt="play video" />}
                 color="secondary"
                 onClick={()=>handleOpen(reel, `/empresas/${slug}`, name, slogan , sectors)}
               >

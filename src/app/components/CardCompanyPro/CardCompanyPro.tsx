@@ -8,10 +8,11 @@ export default function CardCompanyPro({
   tags,
   cover,
 }: Company) {
+  console.log('cover', cover)
   return (
     <div
       style={{ backgroundImage: `url(${cover})` }}
-      className="aspect-video rounded-2xl text-[#C7C7DF] flex items-end bg-cover bg-no-repeat overflow-hidden relative"
+      className="aspect-video rounded-2xl text-[#C7C7DF] bg-[#18181B] flex items-end bg-cover bg-no-repeat overflow-hidden relative"
     >
       <div
         style={{

@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
+import { useState, useEffect } from "react"
 interface CardFullWidthProps {
   bgImage?: string;
   bgImageMobile?: string;
@@ -27,10 +26,10 @@ export default function CardFullWidth({
 
   return (
     <div
-      style={{ backgroundImage: `url(${!isMobile && bgImage})` }}
+      style={{ backgroundImage: `url(${!isMobile && bgImage})`, backgroundPosition: 'right center' }}
       className={`bg-cover bg-no-repeat lg:p-10 lg:h-[576px] flex items-center lg:bg-black lg:rounded-2xl overflow-hidden text-[#E9E9E9]`}
     >
-      <div className=" space-y-7 lg:w-1/5">
+      <div className=" space-y-7 lg:w-1/5 mt-12 lg:mt-0">
         {isMobile && bgImageMobile && (
           <img src={bgImageMobile} alt="" className="w-full rounded-2xl" />
         )}

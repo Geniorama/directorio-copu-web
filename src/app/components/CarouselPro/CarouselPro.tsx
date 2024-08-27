@@ -25,7 +25,15 @@ export default function CarouselPro({ slides }: CarouselProProps) {
       const viewportWidth = window.innerWidth;
       let visibleSlides = 1.2; // Default slides visible on mobile
 
-      if (viewportWidth >= 480) {
+      if (viewportWidth >= 480 && viewportWidth < 600) {
+        visibleSlides = 3; // Slides visible on desktop
+      }
+
+      if (viewportWidth >= 600 && viewportWidth < 1200) {
+        visibleSlides = 3; // Slides visible on desktop
+      }
+
+      if (viewportWidth >= 1440) {
         visibleSlides = 4; // Slides visible on desktop
       }
 
@@ -53,8 +61,14 @@ export default function CarouselPro({ slides }: CarouselProProps) {
           nextEl: ".custom-swiper-next",
         } : false}
         breakpoints={{
-          480: {
+          1440: {
             slidesPerView: 4,
+          },
+          600: {
+            slidesPerView: 3,
+          },
+          480: {
+            slidesPerView: 3,
           },
         }}
       >

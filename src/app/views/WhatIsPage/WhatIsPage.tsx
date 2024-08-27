@@ -5,21 +5,22 @@ import { CardRelated } from "@/app/components/CardRelated";
 import CoverCardRelated from "../../../../public/img/cover-card-related.png"
 import CoverDescubre from "../../../../public/img/cover-card-related_descubre.png"
 import CoverEnjoy from "../../../../public/img/cover-card-related_enjoy.png"
-import BgCopu from "../../../:./../../public/img/back-copu.png"
+import BgCopu from "../../../:./../../public/img/back-copu.png";
+import LogoCopu from "../../../../public/img/logo-copu.svg";
 
 export default function WhatIsPage() {
   return (
     <div className="p-5 space-y-12 lg:space-y-6">
       <CardFullWidth
         bgImage={BgCopu.src}
-        bgImageMobile={BgWhatIsCopuMob.src}
+        bgImageMobile={LogoCopu.src}
         title="¿Qué es COPU?"
         description="COPU es el medio de comunicación y plataforma líder en Colombia para conectar, informar y potenciar a la industria creativa, publicitaria y de marketing en Colombia. Desde noticias, contenidos y eventos, hasta este Directorio especializado, a través de nuestro entendimiento dentro del negocio, bajo el contacto con miles de compañías, y la referencia, testimonio y experiencia comercial, centralizamos los recursos y oportunidades en un solo lugar, facilitando la visibilidad y las conexiones entre agencias, marcas, productoras, estudios, consultoras y todo tipo de proveedores."
       />
 
       <CardFullWidth
         bgImage={BgCopu.src}
-        bgImageMobile={BgWhatIsCopuMob.src}
+        bgImageMobile={LogoCopu.src}
         title="¿Qué es el directorio?"
         description={`El Directorio COPU es el nodo central de la industria creativa, publicitaria y de marketing en Colombia. Aquí puedes buscar y registrar productoras audiovisuales, agencias de publicidad, estudios de diseño, agencias digitales, postproductoras, estudios fotográficos, consultoras estratégicas, y muchas más. Este directorio centraliza proveedores y oportunidades, facilitando la visibilidad y conexión con las mejores empresas del sector.<br/><br/>
         ¿Buscas proveedores para tu compañía? ¿O buscas clientes para la tuya?

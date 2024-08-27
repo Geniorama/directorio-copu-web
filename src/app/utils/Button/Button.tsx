@@ -16,11 +16,11 @@ export default function Button({children, href, icon, target, color, onClick}:Bu
   return (
     <Link href={href ? href : '#'} onClick={onClick} target={target} className={`justify-center ${colors} text-center whitespace-nowrap px-4 py-1 rounded-full text-text-dark font-bold flex gap-1 items-center transition`} >
         {icon && (
-            <span>
+            <span className="block w-5">
                 {icon}
             </span>
         )}
-        <span>
+        <span className=" flex-grow">
             {children}
         </span>
     </Link>

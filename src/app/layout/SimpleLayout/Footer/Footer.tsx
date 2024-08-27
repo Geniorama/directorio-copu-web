@@ -23,7 +23,7 @@ const socialMedia = [
 
   {
     name: "Instagram",
-    link: "https://www.behance.net/",
+    link: "https://www.instagram.com/copu___/",
     image: IgIcon,
   },
 

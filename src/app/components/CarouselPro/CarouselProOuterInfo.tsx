@@ -19,7 +19,7 @@ export default function CarouselProOuterInfo({
       <Swiper
         modules={[Navigation]}
         spaceBetween={20}
-        slidesPerView={slides && slides.length > 1 ? 1.2 : 1}
+        slidesPerView={1.4}
         onSwiper={(swiper) => console.log(swiper)}
         loop
         // centeredSlides
@@ -28,8 +28,14 @@ export default function CarouselProOuterInfo({
           nextEl: ".custom-swiper-next",
         }}
         breakpoints={{
-          480: {
+          1440: {
             slidesPerView: 4,
+          },
+          600: {
+            slidesPerView: 3,
+          },
+          480: {
+            slidesPerView: 3,
           },
         }}
       >
