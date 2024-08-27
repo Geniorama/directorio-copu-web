@@ -15,6 +15,11 @@ const contexDefault = {
   }
 }
 
+function shuffleArray(array:any) {
+  const arrayCopy = [...array]; // Hacer una copia del array
+  return arrayCopy.sort(() => Math.random() - 0.5);
+}
+
 async function loadData() {
   const basic = await getClient().query({
     query: GetCompaniesBasic,
@@ -41,10 +46,14 @@ async function loadData() {
     context: contexDefault
   });
 
+  const shuffledPremium = shuffleArray(premium.data.companies.data);
+  const shuffledPro = shuffleArray(pro.data.companies.data)
+  const shuffledBasic = shuffleArray(basic.data.companies.data)
+
   return {
-    companiesBasic: basic.data.companies.data,
-    companiesPro: pro.data.companies.data,
-    companiesPremium: premium.data.companies.data,
+    companiesBasic: shuffledPro,
+    companiesPro: shuffledBasic,
+    companiesPremium: shuffledPremium,
     sectors: sectors.data.categories.data,
     countries: countries.data.countries.data,
     types: types.data.types.data,
