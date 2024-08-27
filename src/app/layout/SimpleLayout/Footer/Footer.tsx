@@ -116,14 +116,14 @@ export default function Footer() {
       <div className="md:flex gap-20 md:w-1/3 justify-end">
         <Link
           className=" underline md:no-underline pt-5 block md:pt-0 hover:underline"
-          href={"https://s3.copu.media/TERMINOS%20Y%20CONDICIONES%20DIRECTORIO%20BY%20COPU.pdf"}
+          href={"/tyc"}
           target="_blank"
         >
           Términos y condiciones
         </Link>
         <Link
           className=" underline md:no-underline pt-5 block md:pt-0 hover:underline"
-          href={"https://s3.copu.media/AUTORIZACION%20PARA%20EL%20TRATAMIENTO%20DE%20DATOS%20DIRECTORIO%20COPU.pdf"}
+          href={"/habeasdata"}
           target="_blank"
         >
           Tratamiento de datos
