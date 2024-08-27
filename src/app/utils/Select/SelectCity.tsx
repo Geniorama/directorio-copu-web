@@ -17,14 +17,13 @@ export default function SelectCity({ selectedCountry, onSelect }: SelectProps) {
   const [allCities, setAllCities] = useState<City[]>();
   const selectRef = useRef<HTMLDivElement>(null);
   
-
   function isValidCity(name: string) {
     return cities?.some((city) => city.name === name);
   }
 
   function handleClick(e: React.MouseEvent<HTMLLIElement>) {
     const text = e.currentTarget.innerText;
-    const selectedCity = cities?.find(city => city.name === text)
+    const selectedCity = cities?.find(city => city.name === text);
     if (selectedCity) {
       setValue(text);
       onSelect(selectedCity);
@@ -44,44 +43,37 @@ export default function SelectCity({ selectedCountry, onSelect }: SelectProps) {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-        if (
-          selectRef.current &&
-          !selectRef.current.contains(event.target as Node)
-        ) {
-          setOpenList(false);
-        }
+      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+        setOpenList(false);
+      }
     }
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  },[selectRef])
+  }, [selectRef]);
 
+  useEffect(() => {
+    if (selectedCountry) {
+      const countrySlug = selectedCountry.slug;
+      const apiUrl = `https://copu-directorio-dashboard-c4049c4424ba.herokuapp.com/api/cities?filters[country][slug][$eq]=${countrySlug}&sort=name:asc`;
 
-  useEffect(()=>{
-    if(selectedCountry){
-        const countrySlug = selectedCountry.slug
-        const apiUrl = `https://copu-directorio-dashboard-c4049c4424ba.herokuapp.com/api/cities?filters[country][slug][$eq]=${countrySlug}&sort=name:asc`
+      const fetchCities = async () => {
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+        const dataFormat = data.data.map((city: any) => ({
+          name: city.attributes.name,
+          slug: city.attributes.slug,
+        }));
 
-        const fetchCities = async () => {
-            const res = await fetch(apiUrl)
-            const data = await res.json()
-            console.log(data.data)
-            const dataFormat = data.data.map((city:any )=> ({
-                name: city.attributes.name,
-                slug: city.attributes.slug
-            }))
-
-            setAllCities(dataFormat);
-            setCities(dataFormat);
-            setValue("");
-        }
-        fetchCities();
+        setAllCities(dataFormat);
+        setCities(dataFormat);
+        setValue("");
+      };
+      fetchCities();
     }
-    
-  },[selectedCountry])
-  
+  }, [selectedCountry]);
 
   return (
     <div className="text-xs relative" ref={selectRef}>
@@ -99,8 +91,8 @@ export default function SelectCity({ selectedCountry, onSelect }: SelectProps) {
           onChange={(e) => handleChange(e)}
         />
 
-        <span className="absolute right-2">
-          <img className={`w-[15px] ${openList || isValidCity(value) && 'brightness-0'}`} src={ArrowUpWhite.src} alt="" />
+        <span className="absolute right-2 cursor-pointer" onClick={() => setOpenList(!openList)}>
+          <img className={`w-[15px] ${openList || isValidCity(value) && 'brightness-0'}`} src={ArrowUpWhite.src} alt="Dropdown arrow" />
         </span>
       </div>
       {openList && cities && cities.length > 0 && (

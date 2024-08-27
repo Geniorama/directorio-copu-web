@@ -85,8 +85,8 @@ export default function SelectCountry({ options, selectedCountry, onSelect }: Se
           onChange={(e) => handleChange(e)}
         />
 
-        <span className="absolute right-2">
-          <img className={`w-[15px] ${openList || isValidCountry(value) && 'brightness-0'}`} src={ArrowUpWhite.src} alt="" />
+        <span className="absolute right-2 cursor-pointer" onClick={handleClickInput}>
+          <img className={`w-[15px] ${openList || isValidCountry(value) && 'brightness-0'}`} src={ArrowUpWhite.src} alt="Dropdown arrow" />
         </span>
       </div>
       {openList && filteredOptions && filteredOptions.length > 0 && (
