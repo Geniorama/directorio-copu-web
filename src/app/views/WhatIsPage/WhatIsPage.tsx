@@ -7,6 +7,8 @@ import CoverDescubre from "../../../../public/img/cover-card-related_descubre.pn
 import CoverEnjoy from "../../../../public/img/cover-card-related_enjoy.png"
 import BgCopu from "../../../:./../../public/img/back-copu.png";
 import LogoCopu from "../../../../public/img/logo-copu.svg";
+import BgWhatIsDirectory from "../../../../public/img/002.png";
+import BgWhatIsDirectoryMob from "../../../../public/img/002-mobile.png";
 
 export default function WhatIsPage() {
   return (
@@ -19,14 +21,15 @@ export default function WhatIsPage() {
       />
 
       <CardFullWidth
-        bgImage={BgCopu.src}
-        bgImageMobile={LogoCopu.src}
+        bgImage={BgWhatIsDirectory.src}
+        bgImageMobile={BgWhatIsDirectoryMob.src}
         title="¿Qué es el directorio?"
         description={`El Directorio COPU es el nodo central de la industria creativa, publicitaria y de marketing en Colombia. Aquí puedes buscar y registrar productoras audiovisuales, agencias de publicidad, estudios de diseño, agencias digitales, postproductoras, estudios fotográficos, consultoras estratégicas, y muchas más. Este directorio centraliza proveedores y oportunidades, facilitando la visibilidad y conexión con las mejores empresas del sector.<br/><br/>
         ¿Buscas proveedores para tu compañía? ¿O buscas clientes para la tuya?
         <br/><br/>
         Sé parte de DirCOPU, La Guía de Proveedores de las Industrias Creativas.  
         `}
+        link={{text: 'Ver video', target: '_blank', href: 'https://www.youtube.com/watch?v=BJ80_D0JaWE'}}
       />
 
       <div className=" grid grid-cols-1 lg:grid-cols-3 gap-6">
