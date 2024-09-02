@@ -51,8 +51,8 @@ async function loadData() {
   const shuffledBasic = shuffleArray(basic.data.companies.data)
 
   return {
-    companiesBasic: shuffledPro,
-    companiesPro: shuffledBasic,
+    companiesBasic: shuffledBasic,
+    companiesPro: shuffledPro,
     companiesPremium: shuffledPremium,
     sectors: sectors.data.categories.data,
     countries: countries.data.countries.data,
