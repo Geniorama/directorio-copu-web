@@ -4,12 +4,6 @@ import StoreProvider from "../StoreProvider";
 import { Metadata } from "next";
 import favicon from "../../../public/favicon-directorio.png";
 import GTM from "@/lib/GTM";
-
-export const metadata: Metadata = {
-  title: 'Company | Directorio Copu',
-  icons: {icon: favicon.src}
-}
-
 interface LayoutProps {
   children: React.ReactNode;
 }
