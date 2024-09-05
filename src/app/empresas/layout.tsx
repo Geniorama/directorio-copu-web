@@ -3,6 +3,7 @@ import "../globals.css";
 import StoreProvider from "../StoreProvider";
 import { Metadata } from "next";
 import favicon from "../../../public/favicon-directorio.png";
+import GTM from "@/lib/GTM";
 
 export const metadata: Metadata = {
   title: 'Company | Directorio Copu',
@@ -17,6 +18,7 @@ export default function Layout(props: LayoutProps) {
   return (
     <html lang="es">
       <body>
+        <GTM id="GTM-WGP2WK5Z" />
         <StoreProvider>
           <CompanyLayout>{props.children}</CompanyLayout>
         </StoreProvider>

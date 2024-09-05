@@ -4,12 +4,11 @@ import { Suspense } from "react";
 import favicon from "../../../public/favicon-directorio.png";
 import GTM from "@/lib/GTM";
 
-
-export const metadata = {
-  title: "Directorio copu",
-  description: "La guía de proveedores de las industrias creativas",
-  icons: {icon: favicon.src}
-};
+// export const metadata = {
+//   title: "Directorio copu",
+//   description: "La guía de proveedores de las industrias creativas",
+//   icons: {icon: favicon.src}
+// };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
