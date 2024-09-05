@@ -22,7 +22,6 @@ type TabContactoProps = {
   nit?: Company["nit"];
   specialities?: Company["specialities"];
   map?: Company["map"]
-  contactCols?: string;
   cities?: Company["cities"];
 };
 
@@ -36,7 +35,6 @@ export default function TabContacto({
   nit,
   specialities,
   map,
-  contactCols,
   cities
 }: TabContactoProps) {
   return (
@@ -53,7 +51,6 @@ export default function TabContacto({
         webSite={webSite}
         phones={phones}
         sectors={sectors}
-        cols={contactCols}
         cities={cities}
       />
 

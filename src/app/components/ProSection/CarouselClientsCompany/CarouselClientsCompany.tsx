@@ -52,7 +52,7 @@ export default function CarouselClientsCompany({clients}: CarouselClientsCompany
                         title={client.name}
                         alt={client.name}
                         src={client.url}
-                        className="mx-auto max-w-60 max-h-[80px] h-auto block grayscale brightness-100 contrast-200 hover:grayscale-0 hover:brightness-100 hover:contrast-100 transition"
+                        className="mx-auto max-w-60 max-h-[80px] h-auto block"
                       />
                     </div>
                   </SwiperSlide>

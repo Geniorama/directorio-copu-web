@@ -147,7 +147,6 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
               sectors={isNotBasic() ? dataCompany.sectors : undefined}
               specialities={isNotBasic() ? dataCompany.specialities : undefined}
               map={isPremium() ? dataCompany.map : undefined}
-              contactCols={isBasic() ? 'grid-cols-1' : 'grid-cols-2'}
               cities={isNotBasic() ? dataCompany.cities : undefined}
             />
           )}
