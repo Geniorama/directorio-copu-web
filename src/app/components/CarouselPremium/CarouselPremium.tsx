@@ -10,6 +10,8 @@ import "swiper/css/effect-coverflow";
 import styles from "./CarouselPremium.module.css";
 import IconLeft from "@/app/utils/Icons/IconLeft";
 import IconRight from "@/app/utils/Icons/IconRight";
+import { useEffect, useRef, useState } from "react";
+import SwiperCore from "swiper";
 
 interface CarouselPremiumProps {
   slides?: Company[];
@@ -26,9 +28,41 @@ export default function CarouselPremium({
   slides,
   handleOpen,
 }: CarouselPremiumProps) {
+  const masterSlider = useRef<SwiperCore | null>(null)
+  const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0)
+
+  useEffect(() => {
+    const slider = masterSlider.current;
+
+    if (slider) {
+      const allSlides = slider.slides;
+      // Reset styles for all slides
+      allSlides.forEach((slide) => {
+        slide.classList.remove(styles.adjacentSlide);
+      });
+
+      // Apply custom styles to the adjacent slides
+      if (activeSlideIndex > 0) {
+        const prevSlide = allSlides[activeSlideIndex - 1];
+        prevSlide?.classList.add(styles.prevSlide); // Apply a custom class
+      }
+
+      if (activeSlideIndex < allSlides.length - 1) {
+        const nextSlide = allSlides[activeSlideIndex + 1];
+        nextSlide?.classList.add(styles.nextSlide); // Apply a custom class
+      }
+    }
+  }, [activeSlideIndex]);
+
   return (
     <div className="w-full relative max-w-full">
       <Swiper
+        onSwiper={(swiper) => {
+          masterSlider.current = swiper;
+        }}
+        onSlideChange={(swiper) => {
+          setActiveSlideIndex(swiper.activeIndex);
+        }}
         className={styles.Swiper}
         modules={[EffectCoverflow, Navigation]}
         loop
@@ -39,13 +73,26 @@ export default function CarouselPremium({
           nextEl: "#nextButtonPremium",
         }}
         breakpoints={{
-          600: {
+          1440: {
             centeredSlides: true,
             slidesPerView: "auto",
             grabCursor: true,
             coverflowEffect: {
-              rotate: 50,
+              rotate: 40,
               stretch: 0,
+              depth: 500,
+              modifier: 1,
+              slideShadows: true,
+            },
+          },
+
+          1560: {
+            centeredSlides: true,
+            slidesPerView: "auto",
+            grabCursor: true,
+            coverflowEffect: {
+              rotate: 30,
+              stretch: 100,
               depth: 500,
               modifier: 1,
               slideShadows: true,
