@@ -54,7 +54,6 @@ export default function SingleCompanyPage({ data }: SingleCompanyPageProps) {
   }
 
   if (dataCompany) {
-    console.log(dataCompany)
     const isNotBasic = () => plan && plan.slug !== "basico";
     const isPro = () => plan && plan.slug == "pro";
     const isPremium = () => plan && plan.slug == "premium";

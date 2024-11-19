@@ -16,7 +16,7 @@ export default function HeadingCompany(props: HeadingCompanyProps) {
         {props.cover && props.cover !== "" && (
           <img
             src={props.cover}
-            className="w-full h-[113px] md:h-[40vh] object-cover rounded-3xl overflow-hidden"
+            className="w-full aspect-[16/6] object-cover rounded-3xl overflow-hidden"
             alt=""
           />
         )}
