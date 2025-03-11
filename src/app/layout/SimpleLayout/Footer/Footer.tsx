@@ -130,7 +130,7 @@ export default function Footer() {
         </Link>
         <Link
           className=" underline md:no-underline pt-5 block md:pt-0 hover:underline"
-          href={"https://wa.link/y5v35j"}
+          href={"https://wa.link/mgi9db"}
           target="_blank"
         >
           Contacto
