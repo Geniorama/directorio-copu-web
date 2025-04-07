@@ -1,8 +1,11 @@
 import { gql } from "@apollo/client";
 
 export const GetCompaniesBasic = gql`
-  query GetCompaniesBasic {
-    companies(filters: { plan: { slug: { eq: "basico" } } }) {
+  query GetCompaniesBasic($limit: Int, $offset: Int) {
+    companies(
+      filters: { plan: { slug: { eq: "basico" } } }
+      pagination: { limit: $limit, start: $offset }
+    ) {
       data {
         id
         attributes {
@@ -47,13 +50,6 @@ export const GetCompaniesBasic = gql`
               }
             }
           }
-          logoLight {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
           categories {
             data {
               attributes {
@@ -85,8 +81,11 @@ export const GetCompaniesBasic = gql`
 `;
 
 export const GetCompaniesPro = gql`
-  query GetCompaniesPro {
-    companies(filters: { plan: { slug: { eq: "pro" } } }) {
+  query GetCompaniesPro($limit: Int, $offset: Int) {
+    companies(
+      filters: { plan: { slug: { eq: "pro" } } }
+      pagination: { limit: $limit, start: $offset }
+      ) {
       data {
         id
         attributes {
@@ -169,8 +168,11 @@ export const GetCompaniesPro = gql`
 `;
 
 export const GetCompaniesPremium = gql`
-  query GetCompaniesPremium {
-    companies(filters: { plan: { slug: { eq: "premium" } } }) {
+  query GetCompaniesPremium($limit: Int, $offset: Int) {
+    companies(
+      filters: { plan: { slug: { eq: "premium" } } }
+      pagination: { limit: $limit, start: $offset }
+      ) {
       data {
         id
         attributes {

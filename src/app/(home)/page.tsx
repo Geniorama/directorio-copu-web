@@ -23,15 +23,27 @@ function shuffleArray(array:any) {
 async function loadData() {
   const basic = await getClient().query({
     query: GetCompaniesBasic,
-    context: contexDefault
+    context: contexDefault,
+    variables: {
+      limit: 100,
+      offset: 0,
+    }
   });
   const pro = await getClient().query({
     query: GetCompaniesPro,
-    context: contexDefault
+    context: contexDefault,
+    variables: {
+      limit: 100,
+      offset: 0,
+    }
   });
   const premium = await getClient().query({
     query: GetCompaniesPremium,
-    context: contexDefault
+    context: contexDefault,
+    variables: {
+      limit: 100,
+      offset: 0,
+    }
   });
   const sectors = await getClient().query({
     query: GetSectors,
@@ -45,6 +57,8 @@ async function loadData() {
     query: GetTypes,
     context: contexDefault
   });
+
+  console.log("basic", (basic.data.companies.data).length);
 
   const shuffledPremium = shuffleArray(premium.data.companies.data);
   const shuffledPro = shuffleArray(pro.data.companies.data)
