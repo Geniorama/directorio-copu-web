@@ -48,7 +48,7 @@ export default function WhatIsPage() {
 
         <CardRelated 
           cover={CoverCardRelated.src}
-          link={{text: 'Habla con nosotros', href: 'https://wa.link/y5v35j', target: '_blank'}}
+          link={{text: 'Habla con nosotros', href: 'https://wa.link/mgi9db', target: '_blank'}}
           title="¿Tienes dudas?"
         />
       </div>
