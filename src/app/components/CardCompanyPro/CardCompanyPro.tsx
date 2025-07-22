@@ -25,11 +25,11 @@ export default function CardCompanyPro({
       </div>
       <div className=" flex justify-between items-end gap-10 w-full p-3 relative">
         <div className="space-y-1 text-[#C7C7DF]">
-          <h2 className="font-bold text-2xl leading-5">{name}</h2>
-          <p className="text-sm">
+          <h2 className="font-bold text-2xl leading-6">{name}</h2>
+          {/* <p className="text-sm">
             {sectors?.map((item) => item.name).join(", ")}
           </p>
-          <p className="text-xs">{tags?.map((item) => item.name).join(", ")}</p>
+          <p className="text-xs">{tags?.map((item) => item.name).join(", ")}</p> */}
         </div>
 
         <div>
