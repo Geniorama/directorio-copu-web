@@ -21,57 +21,69 @@ function shuffleArray(array:any) {
 }
 
 async function loadData() {
-  const basic = await getClient().query({
-    query: GetCompaniesBasic,
-    context: contexDefault,
-    variables: {
-      limit: 100,
-      offset: 0,
-    }
-  });
-  const pro = await getClient().query({
-    query: GetCompaniesPro,
-    context: contexDefault,
-    variables: {
-      limit: 100,
-      offset: 0,
-    }
-  });
-  const premium = await getClient().query({
-    query: GetCompaniesPremium,
-    context: contexDefault,
-    variables: {
-      limit: 100,
-      offset: 0,
-    }
-  });
-  const sectors = await getClient().query({
-    query: GetSectors,
-    context: contexDefault
-  });
-  const countries = await getClient().query({
-    query: GetCountries,
-    context: contexDefault
-  });
-  const types = await getClient().query({
-    query: GetTypes,
-    context: contexDefault
-  });
+  try {
+    const basic = await getClient().query({
+      query: GetCompaniesBasic,
+      context: contexDefault,
+      variables: {
+        limit: 100,
+        offset: 0,
+      }
+    });
+    const pro = await getClient().query({
+      query: GetCompaniesPro,
+      context: contexDefault,
+      variables: {
+        limit: 100,
+        offset: 0,
+      }
+    });
+    const premium = await getClient().query({
+      query: GetCompaniesPremium,
+      context: contexDefault,
+      variables: {
+        limit: 100,
+        offset: 0,
+      }
+    });
+    const sectors = await getClient().query({
+      query: GetSectors,
+      context: contexDefault
+    });
+    const countries = await getClient().query({
+      query: GetCountries,
+      context: contexDefault
+    });
+    const types = await getClient().query({
+      query: GetTypes,
+      context: contexDefault
+    });
 
-  console.log("basic", (basic.data.companies.data).length);
+    console.log("basic", (basic.data.companies.data).length);
 
-  const shuffledPremium = shuffleArray(premium.data.companies.data);
-  const shuffledPro = shuffleArray(pro.data.companies.data)
-  const shuffledBasic = shuffleArray(basic.data.companies.data)
+    const shuffledPremium = shuffleArray(premium.data.companies.data);
+    const shuffledPro = shuffleArray(pro.data.companies.data)
+    const shuffledBasic = shuffleArray(basic.data.companies.data)
 
-  return {
-    companiesBasic: shuffledBasic,
-    companiesPro: shuffledPro,
-    companiesPremium: shuffledPremium,
-    sectors: sectors.data.categories.data,
-    countries: countries.data.countries.data,
-    types: types.data.types.data,
-  };
+    return {
+      companiesBasic: shuffledBasic,
+      companiesPro: shuffledPro,
+      companiesPremium: shuffledPremium,
+      sectors: sectors.data.categories.data,
+      countries: countries.data.countries.data,
+      types: types.data.types.data,
+    };
+  } catch (error) {
+    console.error('Error loading data:', error);
+    return {
+      companiesBasic: [],
+      companiesPro: [],
+      companiesPremium: [],
+      sectors: [],
+      countries: [],
+      types: [],
+    };
+  }
 }
 
 export default async function Home() {

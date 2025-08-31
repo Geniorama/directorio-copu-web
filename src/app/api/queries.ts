@@ -256,24 +256,23 @@ export const GetCompaniesPremium = gql`
   }
 `;
 
-export const GetPlans = {
-  query: gql`
-    query GetPlans {
-      plans {
-        data {
-          attributes {
-            title
-            slug
-            description
-            features
-            price
-            link
-          }
+export const GetPlans = gql`
+  query GetPlans {
+    plans {
+      data {
+        id
+        attributes {
+          title
+          slug
+          description
+          features
+          price
+          link
         }
       }
     }
-  `,
-};
+  }
+`;
 
 export const GetCountries = gql`
   query GetCountries {

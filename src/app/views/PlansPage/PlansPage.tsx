@@ -27,13 +27,13 @@ const colors = [
 const transformData = (data: any[]): Plan[] => {
   const dataFormat = data.map((item) => ({
     id: item.id,
-    name: item.attributes.title,
-    description: item.attributes.description,
-    price: item.attributes.price,
-    link: item.attributes.link,
-    slug: item.attributes.slug,
+    name: item.attributes?.title || '',
+    description: item.attributes?.description || '',
+    price: item.attributes?.price || 0,
+    link: item.attributes?.link || '',
+    slug: item.attributes?.slug || '',
     sufixPrice: "COP/Año + IVA",
-    features: item.attributes.features,
+    features: item.attributes?.features || '',
     // ...item.attributes,
   }));
 
@@ -58,9 +58,13 @@ export default function PlansPage({ data }: PlansPageProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const transformedData = transformData(data);
-    const sortedData = sortData(transformedData);
-    setPlans(sortedData);
+    if (data && Array.isArray(data)) {
+      const transformedData = transformData(data);
+      const sortedData = sortData(transformedData);
+      setPlans(sortedData);
+    } else {
+      setPlans([]);
+    }
   }, [data]);
 
   useEffect(() => {

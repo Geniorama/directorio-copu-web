@@ -50,7 +50,6 @@ export const transformDataCompanies = (data: any[]): Company[] => {
 };
 
 export const transformDataCompany = (item: any): Company => {
-
   const dataFormat = {
     id: item?.attributes?.slug || '',
     name: item?.attributes?.name || '',
@@ -151,7 +150,6 @@ export const transformDataTypes = (data: any[]): Type[] => {
     title: type.attributes.title,
     slug: type.attributes.slug,
   }));
-
 };
 
 export const simplifyURL = (url: string) => {
