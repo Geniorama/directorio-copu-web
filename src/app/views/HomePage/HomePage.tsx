@@ -117,18 +117,47 @@ export default function HomePage({
     dispatch(setInitialTypes(transformDataTypes(types)));
   }, [dispatch, sectors, countries, types]);
 
+  // Función auxiliar para buscar palabras completas en el mismo orden
+  const matchesWordSequence = (text: string, searchTerms: string): boolean => {
+    if (!searchTerms.trim()) return true;
+    
+    const searchLower = searchTerms.toLowerCase().trim();
+    const textLower = text.toLowerCase();
+    
+    // Si es una sola letra, buscar empresas que empiecen con esa letra
+    if (searchLower.length === 1) {
+      return textLower.startsWith(searchLower);
+    }
+    
+    // Si es una sola palabra (no múltiples palabras separadas por espacios)
+    if (!searchLower.includes(' ')) {
+      return textLower.startsWith(searchLower);
+    }
+    
+    // Si son múltiples palabras, buscar palabras completas en el mismo orden
+    const words = searchLower.split(/\s+/);
+    
+    let lastIndex = 0;
+    for (const word of words) {
+      const index = textLower.indexOf(word, lastIndex);
+      if (index === -1) return false;
+      lastIndex = index + word.length;
+    }
+    return true;
+  };
+
   const filterCompanies = (companies?: Company[]) => {
     if (!companies) return [];
 
     return companies.filter((company) => {
       // Filter by words in search
       const matchesSearchValue =
-        company.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+        matchesWordSequence(company.name, searchValue) ||
         company.sectors?.some((sector) =>
-          sector.name.toLowerCase().includes(searchValue.toLowerCase())
+          matchesWordSequence(sector.name, searchValue)
         ) ||
         company.tags?.some((tag) =>
-          tag.name.toLowerCase().includes(searchValue.toLowerCase())
+          matchesWordSequence(tag.name, searchValue)
         );
 
       // Filters by sector
